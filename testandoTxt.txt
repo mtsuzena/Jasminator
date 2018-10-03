@@ -1,0 +1,11 @@
+Julio;normal;90;
+Marcos;admin;15;
+Julioaaa;normalsss;60;
+
+Julio;normal;90;
+Marcos;admin;15;
+Julioaaa;normalsss;60;
+Julio;normal;90;
+Marcos;admin;15;
+Julioaaa;normalsss;60;
+
