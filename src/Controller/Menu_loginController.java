@@ -1,20 +1,31 @@
 
 package Controller;
 
+import Telas.App;
 import Telas.GerenciarDados;
 import Telas.MenuLogin;
 import Telas.Menuinicial;
+import Telas.TrocarCenas;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.Interpolator;
+import javafx.animation.KeyFrame;
+import javafx.animation.KeyValue;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.bytedeco.javacv.FrameGrabber;
 import reconhecimento.CapturaImagens;
@@ -22,12 +33,16 @@ import reconhecimento.Reconhecedor;
 import reconhecimento.Treinamento;
 
 public class Menu_loginController implements Initializable {
-
+    private Boolean cont = true;
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       id_voltar.setOnAction((ActionEvent event)->{
-        voltar_menu_principal();
+          try {
+              voltar_menu_principal();
+          } catch (IOException ex) {
+              Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+          }
     });
       
       id_entrar.setOnAction((ActionEvent event)->{
@@ -43,21 +58,21 @@ public class Menu_loginController implements Initializable {
     });
     
       id_reconhe_cads.setOnAction((ActionEvent event)->{
-          
-          try{
-              
-            cadastrar_reconhecimento();
-            
-          }catch(Exception e){
-              e.printStackTrace();
-          }        
-          
-          
+        
+          try {
+              cadastrar_reconhecimento();
+          } catch (InterruptedException ex) {
+              Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+          } catch (Exception ex) {
+              Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+          }
           
         });
       
     }    
     
+    @FXML
+    private AnchorPane id_anchor;
     
     @FXML
     private JFXTextField id_textusuario;
@@ -77,10 +92,12 @@ public class Menu_loginController implements Initializable {
      @FXML
     private JFXButton id_reconhe_cads;
      
-    public void voltar_menu_principal(){
-        MenuLogin.getStage().close();
-        Menuinicial.getStage().show();
-    }
+    public void voltar_menu_principal()throws IOException {
+        id_anchor.setVisible(false);
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Menu_inicial.fxml"));
+        TrocarCenas.trocarcena_direita(root, id_voltar, id_anchor);
+     
+   }
     
     public void entrar_usuario_senha(){
         
@@ -106,7 +123,7 @@ public class Menu_loginController implements Initializable {
         
     }
     public void reconhedor_facial()throws Exception{
-        finalizar_stage();
+        
         Reconhecedor recog = new Reconhecedor(); 
         
         if (recog.reconhece()){
@@ -116,7 +133,7 @@ public class Menu_loginController implements Initializable {
                 Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
                }
         }else{
-            abrir_stage();
+           
             System.out.println("Voce não foi reconhecido");
         }
         
@@ -124,10 +141,13 @@ public class Menu_loginController implements Initializable {
     }
     
      public void GerenciarCadastros() throws Exception{
-        GerenciarDados gerenciar = new GerenciarDados();
-        finalizar_stage();
-        gerenciar.start(new Stage());
-    
+//        GerenciarDados gerenciar = new GerenciarDados();
+//        finalizar_stage();
+//        gerenciar.start(new Stage());
+       id_anchor.setVisible(false);
+       Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Gerenciar_Dados.fxml"));
+       TrocarCenas.trocarcena_direita(root, id_entrar, id_anchor);
+       
     }
     public void finalizar_stage(){
         MenuLogin.getStage().close();
@@ -136,12 +156,16 @@ public class Menu_loginController implements Initializable {
         MenuLogin.getStage().show();
     }
     public void cadastrar_reconhecimento() throws FrameGrabber.Exception, InterruptedException, Exception{
+       Menuinicial.getStage().close();
         CapturaImagens.capturaImg();
         Treinamento.treinador();
-        System.out.println("passei aki");
-        
-        //Menuinicial.start();
-        
+        System.out.println("KK EAE GERENTE DE PROJETO");
+        Menuinicial.getStage().show();
+       
+          
+           
+           
+             
         
     }
     

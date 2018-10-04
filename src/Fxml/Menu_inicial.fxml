@@ -5,23 +5,27 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="id_anchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_inicialController">
+
+<StackPane fx:id="id_stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_inicialController">
    <children>
-      <StackPane fx:id="id_stackpane" prefHeight="150.0" prefWidth="200.0" />
-      <JFXButton fx:id="id_jogar" layoutX="162.0" layoutY="126.0" text="Jogar">
-         <font>
-            <Font name="Arial" size="24.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="id_entrar" layoutX="51.0" layoutY="169.0" text="Entrar como administrador">
-         <font>
-            <Font name="Arial" size="24.0" />
-         </font>
-      </JFXButton>
-      <JFXButton fx:id="id_sairjogo" layoutX="128.0" layoutY="223.0" text="Sair do jogo">
-         <font>
-            <Font name="Arial" size="24.0" />
-         </font>
-      </JFXButton>
+      <AnchorPane fx:id="id_anchor" prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <JFXButton fx:id="id_jogar" layoutX="151.0" layoutY="179.0" text="Jogar">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="id_entrar" layoutX="38.0" layoutY="230.0" text="Entrar como administrador">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="id_sairjogo" layoutX="104.0" layoutY="275.0" prefHeight="60.0" prefWidth="185.0" text="Sair do jogo">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </AnchorPane>
    </children>
-</AnchorPane>
+</StackPane>

@@ -50,16 +50,3 @@ false;
 true;
 false;
 
-Rodirgo Jr;
-5;
-40;
-false;
-false;
-false;
-true;
-true;
-true;
-false;
-true;
-true;
-

@@ -12,6 +12,7 @@ import Telas.GerenciarDados;
 import Telas.MenuLogin;
 
 import ModelosTela.PessoaTela;
+import Telas.TrocarCenas;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -24,11 +25,14 @@ import javafx.collections.ObservableList;
 import javafx.css.StyleableBooleanProperty;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.AnchorPane;
 
 
 /**
@@ -52,16 +56,14 @@ public class Gerenciar_DadosController implements Initializable {
                voltar_login();
         });
         
-        id_remover.setOnAction((ActionEvent event)->{
-            
-            String id = id_textfield.getText();
-            Integer idInt = Integer.parseInt(id);
-            excluirCadastro(idInt);
-        
-        });
+
         id_cadastrar.setOnAction((ActionEvent event )->{
         cadastrar();
     });
+        tabela.getSelectionModel().selectedItemProperty().addListener((obsPerson,oldValue, newValue)-> {
+            selecionar_item(newValue);
+        });
+                
         
     }    
     
@@ -77,23 +79,21 @@ public class Gerenciar_DadosController implements Initializable {
     private JFXButton id_voltar;
     
     @FXML
-    private JFXButton id_remover;
-    
-    @FXML
-    private JFXTextField id_textfield;
-    
+    private JFXButton id_remover;    
      @FXML
     private JFXButton id_ok;
       
     @FXML
     private JFXButton id_cadastrar;
+    @FXML
+    private AnchorPane id_anchor;
      
     private List<PessoaTela> listClientes = new ArrayList();
     
     private ObservableList<PessoaTela> obsPerson;
    
     public void carregarDados(){
-       id_textfield.setVisible(true);
+      
        coluna1.setCellValueFactory(new PropertyValueFactory<>("cod"));
        coluna2.setCellValueFactory(new PropertyValueFactory<>("nome"));
        List<Pessoa> p2 = new ArrayList<>();
@@ -114,8 +114,14 @@ public class Gerenciar_DadosController implements Initializable {
     }
 
     public void voltar_login(){
-        GerenciarDados.getStage().close();
-        MenuLogin.getStage().show();
+        try{
+            Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Menu_login.fxml"));
+            id_anchor.setVisible(false);
+            TrocarCenas.trocarcena_baixo(root, id_voltar, id_anchor);
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+        
     }
     
     public void cadastrar(){
@@ -123,15 +129,20 @@ public class Gerenciar_DadosController implements Initializable {
        p2 = ArquivoTxt.capturaTxt("dados_pessoas.txt");
        p2 = CadastraPessoa.cadastraPessoa(p2);
     }
-    public void excluirCadastro(Integer id){
-        
+   
+    
+    
+    public void excluirCadastro(){
+        Integer id;
+        id = tabela.getSelectionModel().getSelectedItem().getCod();
        // Integer id = Integer.parseInt(id_textfield.getText());
       ArquivoTxt.excluirTxt("dados_pessoas.txt",id );
-          
-       
-       
-       
        System.out.println("Excluido com sucesso!");
+    }
+    public void selecionar_item(PessoaTela pessoa){
+       
+        System.out.println("kk eae ");
         
     }
+    
 }

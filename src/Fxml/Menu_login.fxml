@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_loginController">
+<AnchorPane id="AnchorPane" fx:id="id_anchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_loginController">
    <children>
       <JFXTextField fx:id="id_textusuario" layoutX="72.0" layoutY="107.0" maxWidth="181.0" minWidth="181.0" prefHeight="37.0" prefWidth="181.0" promptText="Digite seu usuário" />
       <JFXButton fx:id="id_entrar" layoutX="128.0" layoutY="200.0" text="Entrar">
