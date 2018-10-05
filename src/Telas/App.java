@@ -5,7 +5,7 @@ import java.util.Scanner;
 import org.bytedeco.javacv.FrameGrabber;
 import reconhecimento.Reconhecedor;
 //import org.bytedeco.javacv.FrameGrabber;
-//import reconhecimento.Reconhecedor;
+//import reconheqqcimento.Reconhecedor;
 
 public class App {
     

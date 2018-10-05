@@ -135,8 +135,11 @@ public class Menu_loginController implements Initializable {
                 Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
                }
         }else{
-           
-            System.out.println("Voce não foi reconhecido");
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText(":(");
+            alert.setTitle("ERROR");
+            alert.setContentText("Desculpe, nao conseguimos reconhece-lo!");
+            alert.show();
         }
         
         

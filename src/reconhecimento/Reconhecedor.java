@@ -36,7 +36,7 @@ public class Reconhecedor {
     
     
     public boolean reconhece() throws FrameGrabber.Exception, InterruptedException{
-       
+        int a=0;
         this.chave=false;
         KeyEvent tecla = null;
         OpenCVFrameConverter.ToMat converteMat = new OpenCVFrameConverter.ToMat();
@@ -90,7 +90,14 @@ public class Reconhecedor {
                 int predicao = rotulo.get(0);
                 this.decisao = (int) confianca.get(0);
                 //String nome;
-                
+                System.out.println(a);
+                a++;
+                if(a==150){
+                    camera.stop();
+                    cFrame.dispose();
+                    
+                    return false;
+                }
                 /*if (decisao > 5000){
                     this.nome = "Desconhecido";
                     System.out.println("Voce nao tem permissa para"
@@ -124,6 +131,8 @@ public class Reconhecedor {
                     this.chave = true;
                     camera.stop();
                     cFrame.dispose();
+                    camera.close();
+                   
                     break;
                 }
                 
@@ -159,6 +168,7 @@ public class Reconhecedor {
         camera.stop();
         cFrame.dispose();
         camera.stop();
+        camera.close();
         return this.chave;
     }
 }

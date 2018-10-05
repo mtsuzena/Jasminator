@@ -21,7 +21,6 @@ import org.bytedeco.javacpp.opencv_face.LBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imread;
 import static org.bytedeco.javacpp.opencv_imgproc.resize;
-import org.opencv.face.FaceRecognizer;
 
 
 //CLASSE TREINAMENTO (EXPLICADO ACIMA)
@@ -53,15 +52,15 @@ public class Treinamento {
         } 
         
         EigenFaceRecognizer eigenfaces = EigenFaceRecognizer.create();
-        FisherFaceRecognizer fisherfaces = FisherFaceRecognizer.create();
-        LBPHFaceRecognizer lbph = LBPHFaceRecognizer.create(2,9,9,9,1);
+        //FisherFaceRecognizer fisherfaces = FisherFaceRecognizer.create();
+        //LBPHFaceRecognizer lbph = LBPHFaceRecognizer.create(2,9,9,9,1);
         
         eigenfaces.train(fotos, rotulos);
         eigenfaces.save("src\\recursos\\classificadores\\classificadorEigenFaces.yml");
-        fisherfaces.train(fotos, rotulos);
-        fisherfaces.save("src\\recursos\\classificadores\\classificadorFisherFaces.yml");
-        lbph.train(fotos, rotulos);
-        lbph.save("src\\recursos\\classificadores\\classificadorLBPH.yml");
+        //fisherfaces.train(fotos, rotulos);
+        //fisherfaces.save("src\\recursos\\classificadores\\classificadorFisherFaces.yml");
+        //lbph.train(fotos, rotulos);
+        //lbph.save("src\\recursos\\classificadores\\classificadorLBPH.yml");
         System.out.println("Treinado com sucesso!!");
     }
     }

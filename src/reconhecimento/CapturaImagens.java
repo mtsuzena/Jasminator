@@ -40,6 +40,7 @@ public class CapturaImagens {
         
         // Monitora os eventos do teclado   Importação java.awt.event.KeyEvent
         KeyEvent tecla = null;
+        int a=0;
         
         // Converter imagem do disco ou web para formato mat (matriz)   
         //OBS: o JAVACV ja converte para matriz com esse metodo... se fosse com OPENCV teria que criar na mao
@@ -73,7 +74,7 @@ public class CapturaImagens {
         // 1 param = Titulo da janela, 2 param CFG grafica por default ambos sao 2.2 --> COM BASE NA DOCUMENTACAO 
 	// DO JAVA É recomendado utilziar para fins de otmização de processamento de hardware
         // Obs: o cFrame esta sendo executando la em baixo.. junto com o metodo showImage
-        CanvasFrame cFrame = new CanvasFrame("Preview", CanvasFrame.getDefaultGamma() / camera.getGamma());
+        CanvasFrame cFrame = new CanvasFrame("Reconhecimento Facial", CanvasFrame.getDefaultGamma() / camera.getGamma());
         
         // Objeto do tipo Frame para armazenar os frames da webcam
         Frame frameCapturado = null;
@@ -140,7 +141,8 @@ public class CapturaImagens {
                     }else{
                         nome = pessoas[predicao] + " - " + confianca.get(0);
                     }
-
+                    System.out.println(a);
+                    a++;
                     // Se a teclado for diferente de null, ou seja, teclado pressionado
                     if (tecla != null){
                         // "q" foi utilizado para capturar as fotos
