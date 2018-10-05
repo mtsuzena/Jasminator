@@ -158,5 +158,41 @@ public class ArquivoTxt {
             return false;
         }
     }
+    public static boolean writeAdm(){
+        try{
+            FileWriter arq = new FileWriter("adm_cadastrado.txt");
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.println("1");
+            gravarArq.close();
+            return true;
+        } catch(IOException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
     
+    public static String readAdm(){
+        String conteudo = "";
+        
+        try{
+            FileReader arq = new FileReader("adm_cadastrado.txt");
+            BufferedReader lerArq = new BufferedReader(arq);
+            String linha = "";
+            try{
+                linha = lerArq.readLine();
+                while(linha!=null){
+                    conteudo += linha;
+                    linha = lerArq.readLine();
+                }
+                arq.close();
+                return conteudo;
+            } catch(IOException ex){
+                System.out.println("Erro ao ler o arquivo");
+                return "";
+            }
+        } catch(FileNotFoundException ex){
+            System.out.println("Erro ao abrir o arquivo");
+            return "";
+        }
+    }
 }

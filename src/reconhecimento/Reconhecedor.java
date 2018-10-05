@@ -120,7 +120,7 @@ public class Reconhecedor {
                     //break;
                 }
                 
-                if(confianca.get(0)<3000){
+                if(confianca.get(0)<2500){
                     this.chave = true;
                     camera.stop();
                     cFrame.dispose();

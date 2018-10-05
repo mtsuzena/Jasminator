@@ -82,7 +82,7 @@ public class CapturaImagens {
         Mat imagemColorida = new Mat();
         
         // Variavel limite de amostras, no nosso caso as fotos
-        int numeroAmostras = 15;
+        int numeroAmostras = 20;
         // Variavel para contar ate o maximo de amostrar
         int amostra = 1;
         
@@ -96,7 +96,7 @@ public class CapturaImagens {
        
         // Joga o que esta sendo capturado pela webcam no frameCapturado e 
         // enquanto estiver capturando com a webcam ele executa o while
-        while(idPessoa <= 2){
+        
             while ((frameCapturado = camera.grab()) != null){  
 
                 // convertemos o frameCapturado para uma matriz e 
@@ -172,17 +172,11 @@ public class CapturaImagens {
                     cFrame.showImage(frameCapturado);
                 }
 
-                if (amostra > numeroAmostras){
-                   if(idPessoa==2){
-                       idPessoa=3;
-                       break;
-                   }
-                   amostra=1;
-                   idPessoa = 2;
+                if (amostra == numeroAmostras){
                     break;
                 }
             }
-        }
+        
         // Libera a memoria da jnaela cFrame
         cFrame.dispose();
         // Desliga a webcam

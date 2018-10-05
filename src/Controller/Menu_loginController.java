@@ -1,6 +1,7 @@
 
 package Controller;
 
+import Classes.ArquivoTxt;
 import Telas.App;
 import Telas.GerenciarDados;
 import Telas.MenuLogin;
@@ -34,6 +35,7 @@ import reconhecimento.Treinamento;
 
 public class Menu_loginController implements Initializable {
     private Boolean cont = true;
+    private String adm_cadastrado = ArquivoTxt.readAdm();
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -59,8 +61,8 @@ public class Menu_loginController implements Initializable {
     
       id_reconhe_cads.setOnAction((ActionEvent event)->{
         
-          try {
-              cadastrar_reconhecimento();
+          try {  
+            cadastrar_reconhecimento();
           } catch (InterruptedException ex) {
               Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
           } catch (Exception ex) {
