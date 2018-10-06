@@ -15,10 +15,13 @@ import ModelosTela.PessoaTela;
 import Telas.TrocarCenas;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -58,7 +61,11 @@ public class Gerenciar_DadosController implements Initializable {
         
 
         id_cadastrar.setOnAction((ActionEvent event )->{
-        cadastrar();
+            try {
+                cadastrar();
+            } catch (IOException ex) {
+                Logger.getLogger(Gerenciar_DadosController.class.getName()).log(Level.SEVERE, null, ex);
+            }
     });
         tabela.getSelectionModel().selectedItemProperty().addListener((obsPerson,oldValue, newValue)-> {
             selecionar_item(newValue);
@@ -124,10 +131,13 @@ public class Gerenciar_DadosController implements Initializable {
         
     }
     
-    public void cadastrar(){
-       List<Pessoa> p2 = new ArrayList<>();
-       p2 = ArquivoTxt.capturaTxt("dados_pessoas.txt");
-       p2 = CadastraPessoa.cadastraPessoa(p2);
+    public void cadastrar() throws IOException{
+//       List<Pessoa> p2 = new ArrayList<>();
+//       p2 = ArquivoTxt.capturaTxt("dados_pessoas.txt");
+//       p2 = CadastraPessoa.cadastraPessoa(p2);
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Cadastrar_Pessoa.fxml"));
+        TrocarCenas.trocarcena_baixo(root, id_cadastrar, id_anchor);
+
     }
    
     
