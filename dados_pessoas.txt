@@ -24,16 +24,3 @@ true;
 true;
 false;
 
-Prof SUb;
-3;
-40;
-false;
-false;
-false;
-false;
-true;
-true;
-false;
-true;
-true;
-

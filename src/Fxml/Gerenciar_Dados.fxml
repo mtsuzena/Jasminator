@@ -15,7 +15,7 @@
       </TableView>
       <JFXButton fx:id="id_cadastrar" layoutX="149.0" layoutY="361.0" text="Cadastrar" />
       <JFXButton layoutX="255.0" layoutY="361.0" text="Alterar" />
-      <JFXButton fx:id="id_remover" layoutX="334.0" layoutY="361.0" onAction="#excluirCadastro" text="Remover" />
+      <JFXButton fx:id="id_remover" layoutX="334.0" layoutY="361.0" text="Remover" />
       <JFXButton fx:id="id_voltar" layoutX="522.0" layoutY="361.0" text="Voltar" />
    </children>
 </AnchorPane>

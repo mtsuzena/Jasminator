@@ -27,10 +27,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.css.StyleableBooleanProperty;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -50,7 +52,8 @@ public class Gerenciar_DadosController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+       coluna1.setCellValueFactory(new PropertyValueFactory<>("cod"));
+       coluna2.setCellValueFactory(new PropertyValueFactory<>("nome"));
         carregarDados();
         
         
@@ -71,8 +74,22 @@ public class Gerenciar_DadosController implements Initializable {
             selecionar_item(newValue);
         });
                 
+
+        id_remover.setOnAction(new EventHandler<ActionEvent>() {
+           @Override
+           public void handle(ActionEvent event) {
+             
+               excluirCadastro();
+              
+             
+               }
+       }
+                    
+        );
+        
         
     }    
+    
     
     @FXML
     private TableView<PessoaTela> tabela;
@@ -95,27 +112,28 @@ public class Gerenciar_DadosController implements Initializable {
     @FXML
     private AnchorPane id_anchor;
      
-    private List<PessoaTela> listClientes = new ArrayList();
+    private List<PessoaTela> lista_pesssoa_tab = new ArrayList();
     
     private ObservableList<PessoaTela> obsPerson;
    
     public void carregarDados(){
       
-       coluna1.setCellValueFactory(new PropertyValueFactory<>("cod"));
-       coluna2.setCellValueFactory(new PropertyValueFactory<>("nome"));
-       List<Pessoa> p2 = new ArrayList<>();
-       p2 = ArquivoTxt.capturaTxt("dados_pessoas.txt");
-      
-       for(Integer i=0;i<p2.size();i++){
-           
-        PessoaTela pessoatela = new PessoaTela(p2.get(i).getCodPessoa(), p2.get(i).getNome());
+       List<Pessoa> lista_pessoas = new ArrayList<>();
+     
+       lista_pessoas = ArquivoTxt.capturaTxt("dados_pessoas.txt");
+         for(Integer i=0;i<lista_pessoas.size();i++){ 
+        PessoaTela pessoatela = new PessoaTela(lista_pessoas.get(i).getCodPessoa(), lista_pessoas.get(i).getNome());
         System.out.println(pessoatela.getCod());
-        listClientes.add(pessoatela);
-        
+        lista_pesssoa_tab.add(pessoatela);
+    
        }
+         obsPerson = FXCollections.observableArrayList(lista_pesssoa_tab);
+         tabela.setItems(obsPerson); 
+      
        
-       obsPerson = FXCollections.observableArrayList(listClientes);
-       tabela.setItems(obsPerson);
+       
+      
+       
       
        
     }
@@ -135,24 +153,44 @@ public class Gerenciar_DadosController implements Initializable {
 //       List<Pessoa> p2 = new ArrayList<>();
 //       p2 = ArquivoTxt.capturaTxt("dados_pessoas.txt");
 //       p2 = CadastraPessoa.cadastraPessoa(p2);
+        
+        
         Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Cadastrar_Pessoa.fxml"));
         TrocarCenas.trocarcena_baixo(root, id_cadastrar, id_anchor);
-
+        
+        
     }
    
     
     
     public void excluirCadastro(){
-        Integer id;
-        id = tabela.getSelectionModel().getSelectedItem().getCod();
-       // Integer id = Integer.parseInt(id_textfield.getText());
-      ArquivoTxt.excluirTxt("dados_pessoas.txt",id );
-       System.out.println("Excluido com sucesso!");
-    }
-    public void selecionar_item(PessoaTela pessoa){
-       
-        System.out.println("kk eae ");
+      
+         PessoaTela pessoa = tabela.getSelectionModel().getSelectedItem(); 
+        if(pessoa != null){
+            ArquivoTxt.excluirTxt("dados_pessoas.txt",pessoa.getCod() );
+            System.out.println("Excluido com sucesso!");
+            recarregar();
+            carregarDados();
+           
+        }else{
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Não há ninguém cadastrado!");
+                    alert.setTitle(":(");
+                    alert.show();
+        }
         
+        
+        }
+    public void selecionar_item(PessoaTela pessoa){
+       if(pessoa != null){   
+        System.out.println("kk eae ");
+       }
+    }
+    
+    public void recarregar(){
+        tabela.getItems().clear();
+        tabela.refresh(); 
+        lista_pesssoa_tab.clear();
     }
     
 }
