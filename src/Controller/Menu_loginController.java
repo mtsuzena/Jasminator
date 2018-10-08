@@ -56,6 +56,7 @@ public class Menu_loginController implements Initializable {
               reconhedor_facial();
           } catch (Exception ex) {
               Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+              retorna_mensagem(":(","ERROR","Não foi possivel executar esta funcionalidade!!");
           }
     });
     
@@ -65,8 +66,10 @@ public class Menu_loginController implements Initializable {
             cadastrar_reconhecimento();
           } catch (InterruptedException ex) {
               Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+              retorna_mensagem(":(","ERROR","Não foi possivel executar esta funcionalidade!!");
           } catch (Exception ex) {
               Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+              retorna_mensagem(":(","ERROR","Não foi possivel executar esta funcionalidade!!");
           }
           
         });
@@ -116,11 +119,13 @@ public class Menu_loginController implements Initializable {
         }else{
             id_textusuario.setText("");
             id_textsenha.setText("");
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            retorna_mensagem("Erro na aunteticação",":(","Usuário ou senha incorretos!");
+            /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText("Erro na aunteticação");
             alert.setTitle(":(");
             alert.setContentText("Usuário ou senha incorretos!");
-            alert.show();
+            alert.show();*/
+            
         }
         
     }
@@ -135,11 +140,13 @@ public class Menu_loginController implements Initializable {
                 Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
                }
         }else{
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            retorna_mensagem(":(","ERROR","Desculpe, nao conseguimos reconhece-lo!");
+            /*Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setHeaderText(":(");
             alert.setTitle("ERROR");
             alert.setContentText("Desculpe, nao conseguimos reconhece-lo!");
             alert.show();
+            */
         }
         
         
@@ -161,17 +168,18 @@ public class Menu_loginController implements Initializable {
         MenuLogin.getStage().show();
     }
     public void cadastrar_reconhecimento() throws FrameGrabber.Exception, InterruptedException, Exception{
-       Menuinicial.getStage().close();
+        //Menuinicial.getStage().close();
         CapturaImagens.capturaImg();
         Treinamento.treinador();
         System.out.println("KK EAE GERENTE DE PROJETO");
-        Menuinicial.getStage().show();
-       
-          
-           
-           
-             
-        
+        Menuinicial.getStage().show();   
     }
     
+    public void retorna_mensagem(String header, String tittle, String mensagem){
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(header);
+        alert.setTitle(tittle);
+        alert.setContentText(mensagem);
+        alert.show();
+    }
 }
