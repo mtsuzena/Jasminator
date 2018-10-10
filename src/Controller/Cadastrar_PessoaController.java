@@ -35,7 +35,10 @@ public class Cadastrar_PessoaController implements Initializable {
         lista_pessoa = Capturar_pessoas();
        
         if(lista_pessoa != null){
-            pessoa.setCodPessoa(lista_pessoa.size()+1);
+            if(lista_pessoa.size()!=0)
+                pessoa.setCodPessoa((lista_pessoa.get(lista_pessoa.size()-1).getCodPessoa()+1));
+            else
+                pessoa.setCodPessoa(1);
         }//else{
           // pessoa.setCodPessoa((lista_pessoa.get(lista_pessoa.size()-1).getCodPessoa()+1));  
         //}
@@ -44,7 +47,7 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
               
-             if(validacao()){
+             //if(validacao()){
              pessoa.setNome(id_nome.getText());
              pessoa.setIdade(Integer.parseInt(id_idade.getText()));
              if(pessoa.getIdade() > 20){
@@ -58,7 +61,7 @@ public class Cadastrar_PessoaController implements Initializable {
             alert.setTitle(":)");
             alert.setContentText("A "+pessoa.getNome()+" Foi cadastrada! ");
             alert.show();
-            }
+            //}
           }
             
         }

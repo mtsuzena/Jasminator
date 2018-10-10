@@ -64,6 +64,7 @@ public class Menu_loginController implements Initializable {
         
           try {  
             cadastrar_reconhecimento();
+              retorna_mensagem("CADASTRO REALIZADO", ":)", "Sua face foi cadastrada!!");
           } catch (InterruptedException ex) {
               Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
               retorna_mensagem(":(","ERROR","Não foi possivel executar esta funcionalidade!!");
