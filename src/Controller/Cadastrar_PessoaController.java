@@ -2,6 +2,7 @@ package Controller;
 
 import Classes.ArquivoTxt;
 import Classes.Pessoa;
+import Telas.AnimacaoCampos;
 import Telas.TrocarCenas;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -10,6 +11,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -17,20 +20,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Control;
 import javafx.scene.layout.AnchorPane;
-import org.controlsfx.validation.ValidationResult;
-import org.controlsfx.validation.ValidationSupport;
-import org.controlsfx.validation.Validator;
+import javafx.util.Duration;
+import org.apache.commons.lang3.StringUtils;
+
 
 
 public class Cadastrar_PessoaController implements Initializable {
-       
+    Pessoa pessoa = new Pessoa();   
+    private Integer idade_check;
     @Override
     public void initialize(URL url, ResourceBundle rb) {      
-        id_nome.setText("");
-        id_idade.setText("");
-        Pessoa pessoa = new Pessoa();
         List<Pessoa> lista_pessoa = new ArrayList<>(); 
         lista_pessoa = Capturar_pessoas();
        
@@ -39,40 +39,33 @@ public class Cadastrar_PessoaController implements Initializable {
                 pessoa.setCodPessoa((lista_pessoa.get(lista_pessoa.size()-1).getCodPessoa()+1));
             else
                 pessoa.setCodPessoa(1);
-        }//else{
-          // pessoa.setCodPessoa((lista_pessoa.get(lista_pessoa.size()-1).getCodPessoa()+1));  
-        //}
-           
+        }  
             id_salvar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-              
-             //if(validacao()){
-             pessoa.setNome(id_nome.getText());
-             pessoa.setIdade(Integer.parseInt(id_idade.getText()));
-             if(pessoa.getIdade() > 20){
-                 pessoa.setMaior20(true);
-             }else{
-                 pessoa.setMaior20(false);
-             }
-             ArquivoTxt.salvaTxt("dados_pessoas.txt", pessoa);
-            Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Arquivo Salvo!");
-            alert.setTitle(":)");
-            alert.setContentText("A "+pessoa.getNome()+" Foi cadastrada! ");
-            alert.show();
-            //}
+                 if(validacao()){ 
+                    ArquivoTxt.salvaTxt("dados_pessoas.txt", pessoa);
+                    mensagem_salvar();
+                    limpar_campos();
+                 }else{
+                     //Setar delay na mensagem 
+                    Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(1000),
+                    kk -> mensagem_erro()));
+                        timeline.play();
+                    limpar_campos();
+                 }
           }
             
         }
         );
+            
         id_voltar.setOnAction(new EventHandler<ActionEvent>(){
             @Override
             public void handle(ActionEvent event){
                try{
                 Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Gerenciar_Dados.fxml"));
-                TrocarCenas.trocarcena_direita(root, id_voltar, id_pane);
-              
+                TrocarCenas.trocarcena_direita(root, id_voltar, id_pane); 
                }catch(Exception e){
                    e.printStackTrace();
                }
@@ -227,11 +220,6 @@ public class Cadastrar_PessoaController implements Initializable {
             }
         }
         );
-       
-        
-        
-        
-        
     }
 
     @FXML
@@ -288,8 +276,6 @@ public class Cadastrar_PessoaController implements Initializable {
     @FXML
     private JFXTextField id_idade;
      
-    
-
     @FXML
     private JFXCheckBox id_sim_8;
 
@@ -305,102 +291,120 @@ public class Cadastrar_PessoaController implements Initializable {
         return lista_pessoa;
     }
     public Boolean validacao(){
-        ArrayList<Control> erros = new ArrayList<>();
-       // StringBuilder sb = new StringBuilder();
-//        for(Integer i=0 ; i<campos.size();i++){
-//            if(i == 0){
-//                campos.add("O campo nome é necessario!!");
-//            }else if(i == 1){
-//                campos.add("Campo idade é necessário!");
-//            }
-//            campos.add("Erros na checkBox!!");
-//        }
-        ValidationSupport validationSupport = new ValidationSupport();
        
-        validationSupport.registerValidator(id_nome, Validator.createEmptyValidator("dsfsd"));
-        erros.add(id_nome);
+        Boolean nome = StringUtils.isBlank(id_nome.getText());
+        Boolean idade = StringUtils.isBlank(id_idade.getText());
+        Boolean flag = true;
         
-        validationSupport.registerValidator(id_idade, Validator.createEmptyValidator("Campo necessário!"));
-        erros.add(id_idade);
-        
-        
-        validationSupport.registerValidator(id_sim_1, (Control c, Boolean newValue) ->
-                   ValidationResult.fromErrorIf( c, "KK EAE", !newValue));
-        erros.add(id_sim_1);
-//        validationSupport.registerValidator(id_nao_1, (Control c, Boolean newValue) ->
-//                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-//        erros.add(id_nao_1);
-        validationSupport.registerValidator(id_sim_2, (Control c, Boolean newValue) ->
-                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-        erros.add(id_sim_2);
-//        validationSupport.registerValidator(id_nao_2, (Control c, Boolean newValue) ->
-//                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-//        erros.add(id_nao_2);
-        
-        validationSupport.registerValidator(id_sim_3, (Control c, Boolean newValue) ->
-                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-        erros.add(id_sim_3);
-//        validationSupport.registerValidator(id_nao_3, (Control c, Boolean newValue) ->
-//                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-//        erros.add(id_nao_3);
-        
-        validationSupport.registerValidator(id_sim_4, (Control c, Boolean newValue) ->
-                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-        erros.add(id_sim_4);
-//        validationSupport.registerValidator(id_nao_4, (Control c, Boolean newValue) ->
-//                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-//        erros.add(id_nao_4);
-        
-        validationSupport.registerValidator(id_sim_5, (Control c, Boolean newValue) ->
-                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-        erros.add(id_sim_5);
-//        validationSupport.registerValidator(id_nao_5, (Control c, Boolean newValue) ->
-//                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-//        erros.add(id_nao_5);
-        
-        validationSupport.registerValidator(id_sim_6, (Control c, Boolean newValue) ->
-                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-        erros.add(id_sim_6);
-//        validationSupport.registerValidator(id_nao_6, (Control c, Boolean newValue) ->
-//                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-//        erros.add(id_nao_6);
-        
-        validationSupport.registerValidator(id_sim_7, (Control c, Boolean newValue) ->
-                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-        erros.add(id_sim_7);
-//        validationSupport.registerValidator(id_nao_7, (Control c, Boolean newValue) ->
-//                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-//        erros.add(id_nao_7);
-//        
-        validationSupport.registerValidator(id_sim_8, (Control c, Boolean newValue) ->
-                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-        erros.add(id_sim_8);
-//        validationSupport.registerValidator(id_nao_8, (Control c, Boolean newValue) ->
-//                   ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue));
-//        erros.add(id_nao_8);
-//        
-        if(!erros.isEmpty()){
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setHeaderText("Erro na aunteticação");
-            alert.setTitle(":(");
-            alert.setContentText("Problemas nos campos!");
-            alert.show();
-            return false;
-        }else{
-            return true;   
+        if(nome == true){
+                AnimacaoCampos.vibrar(id_nome);
+                flag = false;
         }
+        if(idade == true){
+            AnimacaoCampos.vibrar(id_idade);
+            flag = false;
+        }
+        if(nome == false) {
+            pessoa.setNome(id_nome.getText());
+        }
+        
+       if(idade == false){
+            try{
+             idade_check = Integer.parseInt(id_idade.getText());
+             pessoa.setIdade(idade_check);
+                        if(pessoa.getIdade() > 20){
+                            pessoa.setMaior20(true);
+                        }else{
+                            pessoa.setMaior20(false);
+                         }   
+            }catch(NumberFormatException e){
+               flag = false;    
+            }
+       }     
+        if(id_sim_1.isSelected() == false && id_nao_1.isSelected() == false){
+                  AnimacaoCampos.vibrar(id_sim_1);
+                  AnimacaoCampos.vibrar(id_nao_1);  
+                 flag = false;
+            }
+        if(id_sim_2.isSelected() == false && id_nao_2.isSelected() == false){
+                  AnimacaoCampos.vibrar(id_sim_2);
+                  AnimacaoCampos.vibrar(id_nao_2); 
+                  flag = false;
+        }
+        if(id_sim_3.isSelected() == false && id_nao_3.isSelected() == false){
+                  AnimacaoCampos.vibrar(id_sim_3);
+                  AnimacaoCampos.vibrar(id_nao_3); 
+                  flag = false;
+        }
+        if(id_sim_4.isSelected() == false && id_nao_4.isSelected() == false){
+                  AnimacaoCampos.vibrar(id_sim_4);
+                  AnimacaoCampos.vibrar(id_nao_4); 
+                 flag = false;
+        }
+        if(id_sim_5.isSelected() == false && id_nao_5.isSelected() == false){
+                  AnimacaoCampos.vibrar(id_sim_5);
+                  AnimacaoCampos.vibrar(id_nao_5); 
+                  flag = false;
+        }
+        if(id_sim_6.isSelected() == false && id_nao_6.isSelected() == false){
+                  AnimacaoCampos.vibrar(id_sim_6);
+                  AnimacaoCampos.vibrar(id_nao_6); 
+                  flag = false;
+       
+        }
+        if(id_sim_7.isSelected() == false && id_nao_7.isSelected() == false){
+                  AnimacaoCampos.vibrar(id_sim_7);
+                  AnimacaoCampos.vibrar(id_nao_7); 
+                  flag = false;
+        }
+        if(id_sim_8.isSelected() == false && id_nao_8.isSelected() == false){
+                  AnimacaoCampos.vibrar(id_sim_8);
+                  AnimacaoCampos.vibrar(id_nao_8); 
+                 flag = false;
+       
+                 
+        }
+       
+        if(flag){
+            return true;
+        }else{  
+            return false;
+        }
+   }
+   
+    public void mensagem_salvar(){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Arquivo Salvo!");
+            alert.setTitle(":)");
+            alert.setContentText("Cadastro realizado! ");
+            alert.show();
             
-        
-        
-        
-//        validationSupport.registerValidator(textField, Validator.createEmptyValidator("Text is required"));
-//        validationSupport.registerValidator(combobox, Validator.createEmptyValidator( "ComboBox Selection required"));
-//        validationSupport.registerValidator(checkBox, (Control c, Boolean newValue) ->
-//                    ValidationResult.fromErrorIf( c, "Checkbox should be checked", !newValue)
-//      
-   
     }
-   
-    
-    
+    public void mensagem_erro(){   
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setHeaderText("Erro ao tentar cadastrar uma nova pessoa");
+            alert.setTitle(":(");
+            alert.setContentText("Nome, idade inválidos ou checkboxs em brancos!");
+            alert.show();
+    }
+    public void limpar_campos(){
+        id_nome.clear();
+        id_idade.clear();
+        id_sim_1.setSelected(false);
+        id_sim_2.setSelected(false);
+        id_sim_3.setSelected(false);
+        id_sim_4.setSelected(false);
+        id_sim_5.setSelected(false);
+        id_sim_6.setSelected(false);
+        id_sim_7.setSelected(false);
+        id_sim_8.setSelected(false);
+        id_nao_1.setSelected(false);
+        id_nao_2.setSelected(false);
+        id_nao_3.setSelected(false);
+        id_nao_4.setSelected(false);
+        id_nao_5.setSelected(false);
+        id_nao_6.setSelected(false);
+        id_nao_7.setSelected(false);
+        id_nao_8.setSelected(false);               
+    }
 }

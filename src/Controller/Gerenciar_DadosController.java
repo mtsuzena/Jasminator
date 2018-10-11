@@ -56,8 +56,6 @@ public class Gerenciar_DadosController implements Initializable {
        coluna2.setCellValueFactory(new PropertyValueFactory<>("nome"));
         carregarDados();
         
-        
-        
         id_voltar.setOnAction((ActionEvent event)->{
                voltar_login();
         });

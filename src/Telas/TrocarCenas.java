@@ -21,6 +21,7 @@ import javafx.util.Duration;
  *
  * @author Flávio
  */
+//Classe para realizar a troca de cenas entre as telas
 public class TrocarCenas {
     public static void trocarcena_direita(Parent root, Button botao, AnchorPane janel){
            
