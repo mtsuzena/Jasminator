@@ -19,15 +19,7 @@ salvaTxt  -->  recebendo o caminho, ou nome do arquivo que sera salvo.
 */
 
 public class ArquivoTxt {
-    
-    /*public static void exibirTxt(){
-        List<Pessoa> lista_pessoas = new ArrayList<Pessoa>();
-        lista_pessoas=capturaTxt("dados_pessoas.txt");
-        for(int i=0; i<lista_pessoas.size();i++){
-            System.out.println("Nome: "+lista_pessoas.get(i).getNome()+"  Codigo: "+lista_pessoas.get(i).getCodPessoa());
-        }
-    }*/
-    
+        
     public static void excluirTxt(String caminho, Integer codPessoa){
         List<Pessoa> lista_pessoas = new ArrayList<Pessoa>();
         lista_pessoas=capturaTxt(caminho);

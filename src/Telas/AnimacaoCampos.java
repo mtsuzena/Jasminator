@@ -1,4 +1,3 @@
-
 package Telas;
 
 import com.jfoenix.controls.JFXCheckBox;

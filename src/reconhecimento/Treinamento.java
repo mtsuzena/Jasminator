@@ -3,7 +3,6 @@ CLASSE PARA TREINAR A INTELIGENCIA ARTIFICAL A RECONHECER AS FACES
 COM BASE NAS FOTOS QUE FORAM CAPTURADAS PELA CLASSE CapturaImagens
 */
 
-
 // Importacoes necessarias para o correto funcionamento da API JAVACV
 package reconhecimento;
 
@@ -15,13 +14,9 @@ import org.bytedeco.javacpp.opencv_core.Mat;
 import org.bytedeco.javacpp.opencv_core.MatVector;
 import org.bytedeco.javacpp.opencv_core.Size;
 import org.bytedeco.javacpp.opencv_face.EigenFaceRecognizer;
-import org.bytedeco.javacpp.opencv_face.FisherFaceRecognizer;
-import org.bytedeco.javacpp.opencv_face.LBPHFaceRecognizer;
-
 import static org.bytedeco.javacpp.opencv_imgcodecs.CV_LOAD_IMAGE_GRAYSCALE;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imread;
 import static org.bytedeco.javacpp.opencv_imgproc.resize;
-
 
 //CLASSE TREINAMENTO (EXPLICADO ACIMA)
 public class Treinamento {
@@ -63,4 +58,4 @@ public class Treinamento {
         //lbph.save("src\\recursos\\classificadores\\classificadorLBPH.yml");
         System.out.println("Treinado com sucesso!!");
     }
-    }
+}

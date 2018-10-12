@@ -6,9 +6,6 @@ import java.util.List;
 import java.util.Scanner;
 
 public class GameRun {
-    /*public GameRun(){
-        run();
-    }*/
     
     public static void start(){
         // Array do tipo pessoa para armazenar as pessoas cadastradas no sistema
@@ -18,36 +15,8 @@ public class GameRun {
         // Array tipo String para armazenar as perguntas do jogo
         List<String> lista_perguntaPadrao = new ArrayList<String>();
         // Classe para o cadastro de novas pessoas no sistema
-        CadastraPessoa cadastros = new CadastraPessoa();
-        //Classe para setar algumas pessoas e seus dados par afins de testes
  
-        
-        //lista_pessoas = cadastros.cadastraPessoa();
-        
-        // armazena as pessoas cadastradas na classe
-        //lista_pessoas = pessoas_test.pessoasPreDefinidas();
-        
-        /*   Obejto pessoa para testar a metodo salvaTxt()
-        Pessoa pessoa_test = new Pessoa();
-        pessoa_test.setNome("Pessoa Test");
-        pessoa_test.setIdade(19);
-        pessoa_test.setCalvo(true);
-        pessoa_test.setCabeloLongo(false);
-        pessoa_test.setAlto(false);
-        pessoa_test.setBarba(true);
-        pessoa_test.setProfessor(true);
-        pessoa_test.setMasculino(false);
-        pessoa_test.setCabeloClaro(true);
-        pessoa_test.setMaior20(true);
-        pessoa_test.setOlhoEscuro(false);
-
-        ArquivoTxt.salvaTxt("dados_pessoas.txt", pessoa_test);
-        Exemplo de como salvar uma pessoa no txt
-        */
-        
         lista_pessoas = ArquivoTxt.capturaTxt("dados_pessoas.txt");
-        
-        //lista_pessoasBCKP = lista_pessoas;
         
         // array de numeros para sortear as perguntas
         List<Integer> numeros = new ArrayList<Integer>();
@@ -55,12 +24,6 @@ public class GameRun {
         // adiciona as perguntas para o array 
         ListaPerguntas lista = new ListaPerguntas();
         lista_perguntaPadrao=lista.retornaLista();
-        
-        //ArquivoTxt.excluirTxt("dados_pessoas.txt", 2);  EXCLUIU A PESSOA COM CODIGO 2
-       // for(int i=0; i<10; i++){
-            //lista_pessoas = CadastraPessoa.cadastraPessoa(lista_pessoas);
-        //}
-        
         
          //armazena de um a 6  OBS: e o numero de perguntas atualmente
         for(int i = 0; i < 9; i++)

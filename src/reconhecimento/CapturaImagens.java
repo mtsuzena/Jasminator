@@ -5,7 +5,6 @@ package reconhecimento;
 
 import java.awt.event.KeyEvent;
 import java.util.Scanner;
-import static javafx.application.Platform.exit;
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
 import static org.bytedeco.javacpp.opencv_core.FONT_HERSHEY_PLAIN;
@@ -16,8 +15,6 @@ import org.bytedeco.javacpp.opencv_core.RectVector;
 import org.bytedeco.javacpp.opencv_core.Scalar;
 import org.bytedeco.javacpp.opencv_core.Size;
 import org.bytedeco.javacpp.opencv_face.EigenFaceRecognizer;
-import org.bytedeco.javacpp.opencv_face.FisherFaceRecognizer;
-import org.bytedeco.javacpp.opencv_face.LBPHFaceRecognizer;
 import static org.bytedeco.javacpp.opencv_imgcodecs.imwrite;
 import static org.bytedeco.javacpp.opencv_imgproc.COLOR_BGRA2GRAY;
 import static org.bytedeco.javacpp.opencv_imgproc.cvtColor;
@@ -32,15 +29,11 @@ import org.bytedeco.javacv.OpenCVFrameConverter;
 import org.bytedeco.javacv.OpenCVFrameGrabber;
 
 public class CapturaImagens {
-    
     private boolean chave;
     
-    
     public static void capturaImg() throws FrameGrabber.Exception, InterruptedException{
-        
         // Monitora os eventos do teclado   Importação java.awt.event.KeyEvent
         KeyEvent tecla = null;
-        int a=0;
         
         // Converter imagem do disco ou web para formato mat (matriz)   
         //OBS: o JAVACV ja converte para matriz com esse metodo... se fosse com OPENCV teria que criar na mao
@@ -83,26 +76,22 @@ public class CapturaImagens {
         Mat imagemColorida = new Mat();
         
         // Variavel limite de amostras, no nosso caso as fotos
-        int numeroAmostras = 55;
+        int numeroAmostras = 50;
         // Variavel para contar ate o maximo de amostrar
         int amostra = 1;
         
-        // Captura o id da pessoa
-        //System.out.println("Digite seu id: ");
-        // Objeto do tipo scanner para leitura do teclado
-        Scanner cadastro = new Scanner(System.in);
         // variavel para armazenar o ID da pessoa
         int idPessoa = 1;
-        //amostra=40;
        
         // Joga o que esta sendo capturado pela webcam no frameCapturado e 
         // enquanto estiver capturando com a webcam ele executa o while
         while(idPessoa<=2){
             while ((frameCapturado = camera.grab()) != null){  
-
                 // convertemos o frameCapturado para uma matriz e 
                 // jogamos na imagemColorida   // Tbm ja pronto no javacv
                 imagemColorida = converteMat.convert(frameCapturado);
+                
+                System.out.println(imagemColorida);
 
                 // novo objeto mat --> um tipo de matriz
                 Mat imagemCinza = new Mat();
@@ -134,15 +123,14 @@ public class CapturaImagens {
                     DoublePointer confianca = new DoublePointer(1);
                     reconhecedor.predict(faceCapturada, rotulo, confianca);
                     int predicao = rotulo.get(0);
-                    int decisao = (int)confianca.get(0);
                     String nome;
+
                     if (confianca.get(0) > 7000){
                         nome = "Desconhecido";
                     }else{
                         nome = pessoas[predicao] + " - " + confianca.get(0);
                     }
-                    //System.out.println(a);
-                    a++;
+
                     // Se a teclado for diferente de null, ou seja, teclado pressionado
                     if (tecla != null){
                         // "q" foi utilizado para capturar as fotos
@@ -183,7 +171,6 @@ public class CapturaImagens {
                     idPessoa=2;
                     break;
                 }
-                
             }
         }
         // Libera a memoria da jnaela cFrame

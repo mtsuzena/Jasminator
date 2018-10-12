@@ -1,31 +1,21 @@
-
 package Controller;
 
 import Classes.GameRun;
-import Telas.MenuLogin;
 import Telas.Menuinicial;
 import Telas.TrocarCenas;
 import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
-import java.time.Duration;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.animation.Interpolator;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Stage;
-
 
 public class Menu_inicialController implements Initializable {
     
@@ -89,21 +79,17 @@ public class Menu_inicialController implements Initializable {
         id_sairjogo.setVisible(false);
          Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Menu_login.fxml"));
          TrocarCenas.trocarcena_baixo(root, id_entrar, id_anchor);
-        
-    
     }
        
-       public void finalizar_stage(){
-            Menuinicial.getStage().close();}
-       
-       public void abrirstage(){
-             Menuinicial.getStage().show();
-       }
-    
-       public void sair_jogo(){
-            System.exit(0); }
-            
-   
-    
-    
+    public void finalizar_stage(){
+         Menuinicial.getStage().close();
+    }
+
+    public void abrirstage(){
+          Menuinicial.getStage().show();
+    }
+
+    public void sair_jogo(){
+         System.exit(0);
+    }
 }

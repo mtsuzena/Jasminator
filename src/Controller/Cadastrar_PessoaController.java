@@ -21,14 +21,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.GridPane;
+import javafx.scene.text.Text;
 import javafx.util.Duration;
 import org.apache.commons.lang3.StringUtils;
-
-
 
 public class Cadastrar_PessoaController implements Initializable {
     Pessoa pessoa = new Pessoa();   
     private Integer idade_check;
+    @FXML
+    private GridPane id_grid;
+    @FXML
+    private Text id_label;
     @Override
     public void initialize(URL url, ResourceBundle rb) {      
         List<Pessoa> lista_pessoa = new ArrayList<>(); 
