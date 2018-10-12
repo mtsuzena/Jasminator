@@ -35,6 +35,7 @@ public class CapturaImagens {
         // Monitora os eventos do teclado   Importação java.awt.event.KeyEvent
         KeyEvent tecla = null;
         
+        
         // Converter imagem do disco ou web para formato mat (matriz)   
         //OBS: o JAVACV ja converte para matriz com esse metodo... se fosse com OPENCV teria que criar na mao
         OpenCVFrameConverter.ToMat converteMat = new OpenCVFrameConverter.ToMat();

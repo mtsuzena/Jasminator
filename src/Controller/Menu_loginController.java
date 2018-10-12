@@ -5,6 +5,7 @@ import Telas.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import java.awt.event.KeyEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +16,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
 import org.bytedeco.javacv.FrameGrabber;
 import reconhecimento.CapturaImagens;
@@ -38,6 +42,29 @@ public class Menu_loginController implements Initializable {
       id_entrar.setOnAction((ActionEvent event)->{
         entrar_usuario_senha();
     });
+      
+      id_textusuario.setOnKeyPressed(k ->{
+              final KeyCombination ENTER = new KeyCodeCombination(KeyCode.ENTER);
+            if (ENTER.match(k)) {
+              id_textsenha.requestFocus();
+            }
+        });
+
+        id_textsenha.setOnKeyPressed(k ->{
+            final KeyCombination ENTER = new KeyCodeCombination(KeyCode.ENTER);
+            if (ENTER.match(k)) {
+              entrar_usuario_senha();
+            }
+        });
+      
+      /*KeyEvent tecla = null;
+        
+        if (tecla != null){
+            if (tecla.getKeyChar() == 13){
+                entrar_usuario_senha();
+            }
+            tecla = null;
+        }*/
       
       id_reconhecimento.setOnAction((ActionEvent event)->{
           try {
@@ -70,21 +97,21 @@ public class Menu_loginController implements Initializable {
     
     @FXML
     private JFXTextField id_textusuario;
+    
+    @FXML
+    private JFXPasswordField id_textsenha;
 
     @FXML
     private JFXButton id_entrar;
 
     @FXML
     private JFXButton id_reconhecimento;
-
-    @FXML
-    private JFXButton id_voltar;
-
-    @FXML
-    private JFXPasswordField id_textsenha;
     
     @FXML
     private JFXButton id_reconhe_cads;
+
+    @FXML
+    private JFXButton id_voltar;
      
     public void voltar_menu_principal()throws IOException {
         id_anchor.setVisible(false);
@@ -108,6 +135,7 @@ public class Menu_loginController implements Initializable {
             id_textusuario.setText("");
             id_textsenha.setText("");
             retorna_mensagem("Erro na aunteticação",":(","Usuário ou senha incorretos!");
+            id_textusuario.requestFocus();
             
         }
         
