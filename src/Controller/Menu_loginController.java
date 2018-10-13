@@ -31,19 +31,20 @@ public class Menu_loginController implements Initializable {
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-      id_voltar.setOnAction((ActionEvent event)->{
+      
+        id_voltar.setOnAction((ActionEvent event)->{
           try {
               voltar_menu_principal();
           } catch (IOException ex) {
               Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
           }
-    });
+        });
       
-      id_entrar.setOnAction((ActionEvent event)->{
-        entrar_usuario_senha();
-    });
+        id_entrar.setOnAction((ActionEvent event)->{
+            entrar_usuario_senha();
+        });
       
-      id_textusuario.setOnKeyPressed(k ->{
+        id_textusuario.setOnKeyPressed(k ->{
               final KeyCombination ENTER = new KeyCodeCombination(KeyCode.ENTER);
             if (ENTER.match(k)) {
               id_textsenha.requestFocus();
@@ -57,37 +58,26 @@ public class Menu_loginController implements Initializable {
             }
         });
       
-      /*KeyEvent tecla = null;
-        
-        if (tecla != null){
-            if (tecla.getKeyChar() == 13){
-                entrar_usuario_senha();
-            }
-            tecla = null;
-        }*/
+        System.out.println("Maluco\n");
       
-      id_reconhecimento.setOnAction((ActionEvent event)->{
-          try {
-              reconhedor_facial();
-          } catch (Exception ex) {
-              Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
-              retorna_mensagem(":(","ERROR","Não foi possivel executar esta funcionalidade!!");
-          }
-    });
+        id_reconhecimento.setOnAction((ActionEvent event)->{
+            try {
+                reconhedor_facial();
+            } catch (Exception ex) {
+                Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+                retorna_mensagem(":(","ERROR","Não foi possivel executar esta funcionalidade!!");
+            }
+        });
     
-      id_reconhe_cads.setOnAction((ActionEvent event)->{
+        id_reconhe_cads.setOnAction((ActionEvent event)->{
         
-          try {  
-            cadastrar_reconhecimento();
-            retorna_mensagem("CADASTRO REALIZADO", ":)", "Sua face foi cadastrada!!");
-          } catch (InterruptedException ex) {
-              Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
-              retorna_mensagem(":(","ERROR","Não foi possivel executar esta funcionalidade!!");
-          } catch (Exception ex) {
-              Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
-              retorna_mensagem(":(","ERROR","Não foi possivel executar esta funcionalidade!!");
-          }
-          
+            try {  
+              cadastrar_reconhecimento();
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
         });
       
     }    
@@ -173,11 +163,11 @@ public class Menu_loginController implements Initializable {
         MenuLogin.getStage().show();
     }
     public void cadastrar_reconhecimento() throws FrameGrabber.Exception, InterruptedException, Exception{
-        Menuinicial.getStage().close(); 
+        //Menuinicial.getStage().close(); 
         CapturaImagens.capturaImg();
-        Treinamento.treinador();
+        retorna_mensagem("Cadastrar reconhecimento facial",":)","Segure a tecla Q para tirar fotos");
         System.out.println("KK EAE GERENTE DE PROJETO");
-        Menuinicial.getStage().show();   
+        //Menuinicial.getStage().show();   
     }
     public static void retorna_mensagem(String header, String tittle, String mensagem){
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
