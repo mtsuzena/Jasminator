@@ -16,6 +16,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Label;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
@@ -28,6 +32,7 @@ import reconhecimento.Treinamento;
 public class Menu_loginController implements Initializable {
     private Boolean cont = true;
     private String adm_cadastrado = ArquivoTxt.readAdm();
+    private Reconhecedor recog=null;
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -130,9 +135,9 @@ public class Menu_loginController implements Initializable {
         }
         
     }
-    public void reconhedor_facial()throws Exception{
+    public void reconhedor_facial()throws Exception{   
         
-        Reconhecedor recog = new Reconhecedor(); 
+        recog = new Reconhecedor(); 
         
         if (recog.reconhece()){
                try {
@@ -163,11 +168,34 @@ public class Menu_loginController implements Initializable {
         MenuLogin.getStage().show();
     }
     public void cadastrar_reconhecimento() throws FrameGrabber.Exception, InterruptedException, Exception{
-        //Menuinicial.getStage().close(); 
-        CapturaImagens.capturaImg();
+        //Menuinicial.getStage().close()
+        /*adm_cadastrado = ArquivoTxt.readAdm();
+        if(adm_cadastrado.equals("0")){
+            retorna_mensagem("Cadastrar reconhecimento facial",":)","Segure a tecla Q para tirar fotos");
+            try { Thread.sleep (2000); } catch (InterruptedException ex) {}
+            CapturaImagens.capturaImg();
+            System.out.println("KK EAE GERENTE DE PROJETO");
+            //Menuinicial.getStage().show();
+            ArquivoTxt.writeAdm();
+        }else{
+           recog = new Reconhecedor();     
+           if (recog.reconhece()){
+                retorna_mensagem("Cadastrar reconhecimento facial",":)","Segure a tecla Q para tirar fotos");
+                try { Thread.sleep (3000); } catch (InterruptedException ex) {}
+                CapturaImagens.capturaImg();
+                System.out.println("KK EAE GERENTE DE PROJETO");
+                //Menuinicial.getStage().show();
+                ArquivoTxt.writeAdm();
+           }else{
+             retorna_mensagem("ERRO",":)","Administrador nao reconhecido!!!!");
+           }
+        }*/
         retorna_mensagem("Cadastrar reconhecimento facial",":)","Segure a tecla Q para tirar fotos");
+        try { Thread.sleep (3000); } catch (InterruptedException ex) {}
+        CapturaImagens.capturaImg();
         System.out.println("KK EAE GERENTE DE PROJETO");
-        //Menuinicial.getStage().show();   
+        //Menuinicial.getStage().show();
+        ArquivoTxt.writeAdm();
     }
     public static void retorna_mensagem(String header, String tittle, String mensagem){
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);

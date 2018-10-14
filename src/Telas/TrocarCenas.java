@@ -27,6 +27,7 @@ public class TrocarCenas {
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> { parentContainer.getChildren().remove(janel);});
         timeline.play();
+        
     }
 
     public static void trocarcena_baixo(Parent root, Button botao, AnchorPane janel){

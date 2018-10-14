@@ -4,10 +4,8 @@
 package reconhecimento;
 
 import java.awt.event.KeyEvent;
-import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javafx.scene.control.Alert;
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
 import static org.bytedeco.javacpp.opencv_core.FONT_HERSHEY_PLAIN;
@@ -139,7 +137,6 @@ public class CapturaImagens {
                                 IntPointer rotulo = new IntPointer(1);
                                 DoublePointer confianca = new DoublePointer(1);
                                 reconhecedor.predict(faceCapturada, rotulo, confianca);
-                                int predicao = rotulo.get(0);
                                 String nome;
                                 
                                 /*if (confianca.get(0) > 7000){

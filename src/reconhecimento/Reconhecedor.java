@@ -1,6 +1,8 @@
 package reconhecimento;
 
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
 import static org.bytedeco.javacpp.opencv_core.FONT_HERSHEY_PLAIN;
@@ -27,15 +29,20 @@ public class Reconhecedor {
     private boolean chave;
     private int decisao;
     private String nome;
+
     
-    public boolean reconhece() throws FrameGrabber.Exception, InterruptedException{
+    public boolean reconhece(){
         int a=0;
         this.chave=false;
         KeyEvent tecla = null;
         OpenCVFrameConverter.ToMat converteMat = new OpenCVFrameConverter.ToMat();
         OpenCVFrameGrabber camera = new OpenCVFrameGrabber(0);
         String[] pessoas = {"", "Mateus", "Mateus"};
-        camera.start();
+        try {
+            camera.start();
+        } catch (FrameGrabber.Exception ex) {
+            Logger.getLogger(Reconhecedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         CascadeClassifier detectorFace = new CascadeClassifier("src\\recursos\\classificadores\\haarcascade-frontalface-alt.xml");
         EigenFaceRecognizer reconhecedor = EigenFaceRecognizer.create();
@@ -54,83 +61,105 @@ public class Reconhecedor {
         int amostra = 1;
         int cont = 0; 
        
-        while ((frameCapturado = camera.grab()) != null){
-            cont++;            
-            imagemColorida = converteMat.convert(frameCapturado);
-            Mat imagemCinza = new Mat();
-            cvtColor(imagemColorida, imagemCinza, COLOR_BGRA2GRAY);
-            RectVector facesDetectadas = new RectVector();
-            detectorFace.detectMultiScale(imagemCinza, facesDetectadas, 1.1, 1, 0, new Size(150,150), new Size(500,500));
-            if (tecla == null){
-                tecla = cFrame.waitKey(5);
-            }
-            for (int i=0; i < facesDetectadas.size(); i++){
-                Rect dadosFace = facesDetectadas.get(0);
-                rectangle(imagemColorida, dadosFace, new Scalar(0,0,255, 0));
-                Mat faceCapturada = new Mat(imagemCinza, dadosFace);
-                resize(faceCapturada, faceCapturada, new Size(160,160));
-                
-                IntPointer rotulo = new IntPointer(1);
-                DoublePointer confianca = new DoublePointer(1);
-                reconhecedor.predict(faceCapturada, rotulo, confianca);
-
-                int predicao = rotulo.get(0);
-                this.decisao = (int) confianca.get(0);
-                //String nome;
-                System.out.println(a);
-                a++;
-                if(a==150){
-                    camera.stop();
-                    cFrame.dispose();
+        try {
+            while ((frameCapturado = camera.grab()) != null){
+                cont++;
+                imagemColorida = converteMat.convert(frameCapturado);
+                Mat imagemCinza = new Mat();
+                cvtColor(imagemColorida, imagemCinza, COLOR_BGRA2GRAY);
+                RectVector facesDetectadas = new RectVector();
+                detectorFace.detectMultiScale(imagemCinza, facesDetectadas, 1.1, 1, 0, new Size(150,150), new Size(500,500));
+                if (tecla == null){
+                    try {
+                        tecla = cFrame.waitKey(5);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(Reconhecedor.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+                for (int i=0; i < facesDetectadas.size(); i++){
+                    Rect dadosFace = facesDetectadas.get(0);
+                    rectangle(imagemColorida, dadosFace, new Scalar(0,0,255, 0));
+                    Mat faceCapturada = new Mat(imagemCinza, dadosFace);
+                    resize(faceCapturada, faceCapturada, new Size(160,160));
                     
-                    return false;
+                    IntPointer rotulo = new IntPointer(1);
+                    DoublePointer confianca = new DoublePointer(1);
+                    reconhecedor.predict(faceCapturada, rotulo, confianca);
+                    
+                    int predicao = rotulo.get(0);
+                    this.decisao = (int) confianca.get(0);
+                    //String nome;
+                    System.out.println(a);
+                    a++;
+                    if(a==150){
+                        camera.stop();
+                        cFrame.dispose();
+                        
+                        return false;
+                    }
+                    
+                    if (decisao > 3000) {
+                        this.nome = "Desconhecido... - "+confianca.get(0);
+                        ///this.chave = false;
+                    } else {
+                        //this.nome = pessoas[predicao] + " - " + confianca.get(0);
+                        this.nome = "Reconhecendo... - "+confianca.get(0);
+                        //this.chave = true;
+                        //break;
+                    }
+                    
+                    if((confianca.get(0)<3500)&&(a>30)){
+                        this.chave = true;
+                        camera.stop();
+                        cFrame.dispose();
+                        camera.close();
+                        break;
+                    }
+                    
+                    int x = Math.max(dadosFace.tl().x() - 10, 0);
+                    int y = Math.max(dadosFace.tl().y() - 10, 0);
+                    putText(imagemColorida, this.nome, new Point(x, y), FONT_HERSHEY_PLAIN, 1.4, new Scalar(0, 255, 0, 0));
                 }
-                
-                if (decisao > 3000) {
-                    this.nome = "Desconhecido... - "+confianca.get(0);
-                    ///this.chave = false;
-                } else {
-                    //this.nome = pessoas[predicao] + " - " + confianca.get(0);
-                    this.nome = "Reconhecendo... - "+confianca.get(0);
-                    //this.chave = true;
-                    //break;
-                }
-                
-                if((confianca.get(0)<3500)&&(a>30)){
-                    this.chave = true;
+                if(this.chave){
                     camera.stop();
                     cFrame.dispose();
-                    camera.close();
+                    camera.stop();
                     break;
                 }
-
-               int x = Math.max(dadosFace.tl().x() - 10, 0);
-               int y = Math.max(dadosFace.tl().y() - 10, 0);
-               putText(imagemColorida, this.nome, new Point(x, y), FONT_HERSHEY_PLAIN, 1.4, new Scalar(0, 255, 0, 0)); 
-            }
-            if(this.chave){
-                camera.stop();
-                cFrame.dispose();
-                camera.stop();
-                break;
-            }
-            
-            if (cFrame.isVisible()){
-                cFrame.showImage(frameCapturado);
-            }
-            
-            if (tecla != null){
+                
+                if (cFrame.isVisible()){
+                    cFrame.showImage(frameCapturado);
+                }
+                
+                if (tecla != null){
                     // "q" foi utilizado para capturar as fotos
                     if (tecla.getKeyChar() == 'q'){
                         break;
                     }
                     tecla = null;
+                }
             }
+        } catch (FrameGrabber.Exception ex) {
+            Logger.getLogger(Reconhecedor.class.getName()).log(Level.SEVERE, null, ex);
         }
-        camera.stop();
+        try {
+            camera.stop();
+        } catch (FrameGrabber.Exception ex) {
+            Logger.getLogger(Reconhecedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         cFrame.dispose();
-        camera.stop();
-        camera.close();
+        try {
+            camera.stop();
+        } catch (FrameGrabber.Exception ex) {
+            Logger.getLogger(Reconhecedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+            camera.close();
+        } catch (FrameGrabber.Exception ex) {
+            Logger.getLogger(Reconhecedor.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return this.chave;
     }
+
+  
 }

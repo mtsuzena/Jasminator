@@ -10,7 +10,6 @@ import Controller.Menu_loginController;
 import java.io.File;
 import java.io.FilenameFilter;
 import java.nio.IntBuffer;
-import javafx.scene.control.Alert;
 import static org.bytedeco.javacpp.opencv_core.CV_32SC1;
 import org.bytedeco.javacpp.opencv_core.Mat;
 import org.bytedeco.javacpp.opencv_core.MatVector;
@@ -53,13 +52,12 @@ public class Treinamento {
         //LBPHFaceRecognizer lbph = LBPHFaceRecognizer.create(2,9,9,9,1);
         
         eigenfaces.train(fotos, rotulos);
-        eigenfaces.save("src\\recursos\\classificadores\\classificadorEigenFaces2.yml");
+        eigenfaces.save("src\\recursos\\classificadores\\classificadorEigenFaces.yml");
         //fisherfaces.train(fotos, rotulos);
         //fisherfaces.save("src\\recursos\\classificadores\\classificadorFisherFaces.yml");
         //lbph.train(fotos, rotulos);
         //lbph.save("src\\recursos\\classificadores\\classificadorLBPH.yml");
         System.out.println("Treinado com sucesso!!");
-        
     }
     
     

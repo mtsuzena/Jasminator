@@ -27,7 +27,8 @@ import javafx.util.Duration;
 import org.apache.commons.lang3.StringUtils;
 
 public class Cadastrar_PessoaController implements Initializable {
-    Pessoa pessoa = new Pessoa();   
+    private List<Pessoa> lista_pessoa = new ArrayList<>(); 
+    Pessoa pessoa=null;  
     private Integer idade_check;
     @FXML
     private GridPane id_grid;
@@ -35,34 +36,34 @@ public class Cadastrar_PessoaController implements Initializable {
     private Text id_label;
     @Override
     public void initialize(URL url, ResourceBundle rb) {      
-        List<Pessoa> lista_pessoa = new ArrayList<>(); 
+        pessoa= new Pessoa(); 
         lista_pessoa = Capturar_pessoas();
-       
-        if(lista_pessoa != null){
-            if(lista_pessoa.size()!=0)
-                pessoa.setCodPessoa((lista_pessoa.get(lista_pessoa.size()-1).getCodPessoa()+1));
-            else
-                pessoa.setCodPessoa(1);
-        }  
-            id_salvar.setOnAction(new EventHandler<ActionEvent>() {
+          
+        id_salvar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                 if(validacao()){ 
+                 if(validacao()){
+                    if(lista_pessoa != null){
+                        if(lista_pessoa.size()!=0)
+                            pessoa.setCodPessoa((lista_pessoa.get(lista_pessoa.size()-1).getCodPessoa()+1));
+                        else
+                            pessoa.setCodPessoa(1);
+                    } 
                     ArquivoTxt.salvaTxt("dados_pessoas.txt", pessoa);
                     mensagem_salvar();
                     limpar_campos();
+                    lista_pessoa = Capturar_pessoas();
+                    pessoa= new Pessoa(); 
                  }else{
                      //Setar delay na mensagem 
                     Timeline timeline = new Timeline(new KeyFrame(
                     Duration.millis(1000),
                     kk -> mensagem_erro()));
                         timeline.play();
-                    limpar_campos();
+                    //limpar_campos();
                  }
-          }
-            
-        }
-        );
+            }
+        });
             
         id_voltar.setOnAction(new EventHandler<ActionEvent>(){
             @Override
@@ -85,8 +86,8 @@ public class Cadastrar_PessoaController implements Initializable {
             id_nao_1.setSelected(false);
             pessoa.setCalvo(true);
             }
-        }
-        );
+        });
+        
         id_nao_1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -411,4 +412,6 @@ public class Cadastrar_PessoaController implements Initializable {
         id_nao_7.setSelected(false);
         id_nao_8.setSelected(false);               
     }
+    
+    
 }
