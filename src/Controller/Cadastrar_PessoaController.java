@@ -34,6 +34,7 @@ public class Cadastrar_PessoaController implements Initializable {
     private GridPane id_grid;
     @FXML
     private Text id_label;
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {      
         pessoa= new Pessoa(); 

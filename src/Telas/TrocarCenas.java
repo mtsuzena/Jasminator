@@ -27,7 +27,6 @@ public class TrocarCenas {
         timeline.getKeyFrames().add(kf);
         timeline.setOnFinished(t -> { parentContainer.getChildren().remove(janel);});
         timeline.play();
-        
     }
 
     public static void trocarcena_baixo(Parent root, Button botao, AnchorPane janel){
@@ -45,4 +44,19 @@ public class TrocarCenas {
         timeline.setOnFinished(t -> { parentContainer.getChildren().remove(janel);});
         timeline.play();
     }
+    public static void cena_jogador(Parent root, AnchorPane janel){
+         Scene scene = janel.getScene();
+         root.translateYProperty().set(scene.getWidth());
+         StackPane parentContainer = (StackPane) janel.getScene().getRoot();
+         parentContainer.getChildren().add(root);
+        
+        Timeline timeline = new Timeline();
+        KeyValue kv = new KeyValue(root.translateYProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame kf = new KeyFrame(Duration.seconds(1), kv);
+        timeline.getKeyFrames().add(kf);
+        timeline.setOnFinished(t -> {  parentContainer.getChildren().remove(janel);});
+        timeline.play();
+        
+    }
+        
 }

@@ -22,7 +22,13 @@ public class Menu_inicialController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        id_jogar.setOnAction((ActionEvent event)->{
-        iniciar_jogo(); });
+           try {
+               iniciar_jogo();
+               id_anchor.getChildren().clear();
+           } catch (IOException ex) {
+               Logger.getLogger(Menu_inicialController.class.getName()).log(Level.SEVERE, null, ex);
+           }
+});
        
       id_sairjogo.setOnAction((ActionEvent event)->{
           sair_jogo(); }); 
@@ -58,10 +64,9 @@ public class Menu_inicialController implements Initializable {
     @FXML
     private JFXButton id_sairjogo;
     
-       public void iniciar_jogo(){
-           finalizar_stage(); 
-           GameRun.start();
-           abrirstage();
+       public void iniciar_jogo() throws IOException{
+        Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Jogo_p1.fxml"));
+          TrocarCenas.trocarcena_baixo(root, id_jogar, id_anchor);
        }
            
        

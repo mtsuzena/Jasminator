@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+
+<AnchorPane id="AnchorPane" fx:id="id_pane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.Final_Jogo_UnkController">
+   <children>
+      <Text fx:id="id_text" layoutX="62.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meu pau alado não achou em que vocÊ estava pensando!">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <JFXButton fx:id="id_jogar_nov" layoutX="69.0" layoutY="325.0" text="Jogar novamente" />
+      <JFXButton fx:id="id_voltar" layoutX="392.0" layoutY="325.0" text="Voltar ao menu" />
+   </children>
+</AnchorPane>
