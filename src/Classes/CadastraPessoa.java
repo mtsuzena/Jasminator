@@ -5,8 +5,8 @@ import java.util.Scanner;
 
 public class CadastraPessoa {  
     
-    public static List<Pessoa> cadastraPessoa(List<Pessoa> lista_pessoas){ 
-      
+    public static List<Pessoa> cadastraPessoa(List<Pessoa> lista_pessoas){
+        
             Pessoa pessoa = new Pessoa();
             Scanner sc = new Scanner(System.in);
             System.out.printf("CADASTRAR PESSOA\n\n");
