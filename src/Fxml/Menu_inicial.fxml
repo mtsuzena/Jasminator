@@ -5,22 +5,21 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-
-<StackPane fx:id="id_stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_inicialController">
+<StackPane fx:id="id_stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_inicialController">
    <children>
-      <AnchorPane fx:id="id_anchor" prefHeight="200.0" prefWidth="200.0">
+      <AnchorPane fx:id="id_anchor" prefHeight="600.0" prefWidth="800.0">
          <children>
-            <JFXButton fx:id="id_jogar" layoutX="151.0" layoutY="179.0" text="Jogar">
+            <JFXButton fx:id="id_jogar" layoutX="349.0" layoutY="258.0" text="Jogar">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="id_entrar" layoutX="38.0" layoutY="230.0" text="Entrar como administrador">
+            <JFXButton fx:id="id_entrar" layoutX="236.0" layoutY="329.0" text="Entrar como administrador">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="id_sairjogo" layoutX="104.0" layoutY="275.0" prefHeight="60.0" prefWidth="185.0" text="Sair do jogo">
+            <JFXButton fx:id="id_sairjogo" layoutX="302.0" layoutY="427.0" prefHeight="60.0" prefWidth="185.0" text="Sair do jogo">
                <font>
                   <Font size="24.0" />
                </font>

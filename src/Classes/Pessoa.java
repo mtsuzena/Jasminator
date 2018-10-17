@@ -15,9 +15,11 @@ public class Pessoa {
         private boolean cabeloOndulado;
         private boolean cabeloCrespo;
         private boolean cabeloLiso;
+        
         private boolean cabeloCurto;
         private boolean cabeloMedio;
         private boolean cabeloLongo;
+        
         private boolean cabeloLoiro;
         private boolean cabeloPreto;
         private boolean cabeloCastanho;

@@ -6,26 +6,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="id_anchor" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_loginController">
+<AnchorPane id="AnchorPane" fx:id="id_anchor" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_loginController">
    <children>
-      <JFXTextField fx:id="id_textusuario" layoutX="72.0" layoutY="107.0" maxWidth="181.0" minWidth="181.0" prefHeight="37.0" prefWidth="181.0" promptText="Digite seu usuário" />
-	  <JFXPasswordField fx:id="id_textsenha" layoutX="72.0" layoutY="155.0" maxWidth="181.0" minWidth="181.0" prefHeight="31.0" prefWidth="181.0" promptText="Digite sua senha" />
-      <JFXButton fx:id="id_entrar" layoutX="128.0" layoutY="200.0" text="Entrar">
+      <JFXTextField fx:id="id_textusuario" layoutX="255.0" layoutY="269.0" maxWidth="254.0" minWidth="181.0" prefHeight="31.0" prefWidth="254.0" promptText="Digite seu usuário" />
+	  <JFXPasswordField fx:id="id_textsenha" layoutX="255.0" layoutY="300.0" maxWidth="254.0" minWidth="181.0" prefHeight="31.0" prefWidth="254.0" promptText="Digite sua senha" />
+      <JFXButton fx:id="id_entrar" layoutX="346.0" layoutY="339.0" prefHeight="45.0" prefWidth="73.0" text="Entrar">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
-	  <JFXButton fx:id="id_reconhecimento" layoutX="24.0" layoutY="251.0" text="Entrar com reconhecimento facial">
+	  <JFXButton fx:id="id_reconhecimento" layoutX="245.0" layoutY="489.0" text="Entrar com reconhecimento facial">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
-	  <JFXButton fx:id="id_reconhe_cads" layoutX="22.0" layoutY="315.0" text="Cadastrar reconhecimento facial">
+	  <JFXButton fx:id="id_reconhe_cads" layoutX="226.0" layoutY="527.0" prefHeight="0.0" prefWidth="312.0" text="Cadastrar reconhecimento facial">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="id_voltar" layoutX="396.0" layoutY="20.0" text="Voltar ao menu principal">
+      <JFXButton fx:id="id_voltar" layoutX="569.0" layoutY="14.0" text="Voltar ao menu principal">
          <font>
             <Font size="15.0" />
          </font>

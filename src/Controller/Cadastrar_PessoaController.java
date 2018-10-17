@@ -6,6 +6,7 @@ import Telas.AnimacaoCampos;
 import Telas.TrocarCenas;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ArrayList;
@@ -13,6 +14,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -20,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
@@ -35,11 +39,37 @@ public class Cadastrar_PessoaController implements Initializable {
     @FXML
     private Text id_label;
     
+    @FXML
+    private Label label_op_n_per_cor_cabelo;
+    
+    @FXML
+    private JFXComboBox periodo_combobox; // Combo box para cadastrar o periodo do curso
+    ObservableList<String> list_periodos = FXCollections.observableArrayList("1º Periodo","2º Periodo",
+            "3º Periodo","Nao Sou Aluno");
+    
+    @FXML
+    private JFXComboBox estilo_cabelo_combobox;
+    ObservableList<String> list_estilo_cabelo = FXCollections.observableArrayList("Raspado/Calvo","Ondulado e Curto",
+            "Ondulado e Medio","Ondulado e Longo","Crespo e Curto","Crespo e Medio","Crespo e Longo",
+                "Liso e Curto","Liso e Medio","Liso e Longo");
+    
+    @FXML
+    private JFXComboBox cor_cabelo_combobox;
+    ObservableList<String> list_cor_cabelo = FXCollections.observableArrayList("Loiro","Preto",
+            "Castanho","Avermelhado");
+    
+    
+    
     @Override
-    public void initialize(URL url, ResourceBundle rb) {      
+    public void initialize(URL url, ResourceBundle rb) {    
+
         pessoa= new Pessoa(); 
         lista_pessoa = Capturar_pessoas();
-          
+        periodo_combobox.setItems(list_periodos);
+        estilo_cabelo_combobox.setItems(list_estilo_cabelo);
+        cor_cabelo_combobox.setItems(list_cor_cabelo);
+        label_op_n_per_cor_cabelo.setVisible(false);
+        
         id_salvar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -65,6 +95,8 @@ public class Cadastrar_PessoaController implements Initializable {
                  }
             }
         });
+        
+        
             
         id_voltar.setOnAction(new EventHandler<ActionEvent>(){
             @Override
@@ -79,6 +111,194 @@ public class Cadastrar_PessoaController implements Initializable {
         }
         );
         
+        System.out.println("ComboPeriodo: "+periodo_combobox.getValue());
+        periodo_combobox.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(periodo_combobox.getValue().equals("1º Periodo")){
+                    System.out.println("1 perido selecionado");
+                    pessoa.setP_periodo(true);
+                    pessoa.setS_periodo(false);
+                    pessoa.setT_periodo(false);
+                }else if (periodo_combobox.getValue().equals("2º Periodo")){
+                    System.out.println("2 perido selecionado");
+                    pessoa.setP_periodo(false);
+                    pessoa.setS_periodo(true);
+                    pessoa.setT_periodo(false);
+                }else if (periodo_combobox.getValue().equals("3º Periodo")){
+                    System.out.println("3 perido selecionado");
+                    pessoa.setP_periodo(false);
+                    pessoa.setS_periodo(false);
+                    pessoa.setT_periodo(true);
+                }else if (periodo_combobox.getValue().equals("Nao Sou Aluno")){
+                    System.out.println("Nao sou aluno selecionado");
+                    pessoa.setP_periodo(false);
+                    pessoa.setS_periodo(false);
+                    pessoa.setT_periodo(false);
+                }
+            }
+            
+        });
+        
+        System.out.println("ComboCabelEstilo: "+estilo_cabelo_combobox.getValue());;
+        estilo_cabelo_combobox.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(estilo_cabelo_combobox.getValue().equals("Raspado/Calvo")){
+                    System.out.println("Raspado/Calvo");
+                    pessoa.setCalvo(true);
+                    pessoa.setCabeloOndulado(false);
+                    pessoa.setCabeloCurto(false);
+                    pessoa.setCabeloCrespo(false);
+                    pessoa.setCabeloLiso(false);
+                    pessoa.setCabeloMedio(false);
+                    pessoa.setCabeloLongo(false);
+                    
+                    pessoa.setCabeloLoiro(false);
+                    pessoa.setCabeloPreto(false);   // seta as cores como falso, pois nao tem cabelo
+                    pessoa.setCabeloCastanho(false);
+                    pessoa.setCabeloAvermelhado(false);
+                    
+                    System.out.println("ComboCorCabelo: "+cor_cabelo_combobox.getValue());
+                    label_op_n_per_cor_cabelo.setVisible(true);
+                    cor_cabelo_combobox.setVisible(false);
+                }else if(estilo_cabelo_combobox.getValue().equals("Ondulado e Curto")){
+                    System.out.println("Ondulado e Curto");
+                    pessoa.setCabeloOndulado(true);
+                    pessoa.setCabeloCurto(true);
+                    pessoa.setCabeloCrespo(false);
+                    pessoa.setCabeloLiso(false);
+                    pessoa.setCabeloMedio(false);
+                    pessoa.setCabeloLongo(false);
+                    pessoa.setCalvo(false);
+                    label_op_n_per_cor_cabelo.setVisible(false);
+                    cor_cabelo_combobox.setVisible(true);
+                }else if (estilo_cabelo_combobox.getValue().equals("Ondulado e Medio")){
+                    System.out.println("Ondulado e Medio");
+                    pessoa.setCabeloOndulado(true);
+                    pessoa.setCabeloCurto(false);
+                    pessoa.setCabeloCrespo(false);
+                    pessoa.setCabeloLiso(false);
+                    pessoa.setCabeloMedio(true);
+                    pessoa.setCabeloLongo(false);
+                    pessoa.setCalvo(false);
+                    label_op_n_per_cor_cabelo.setVisible(false);
+                    cor_cabelo_combobox.setVisible(true);
+                }else if (estilo_cabelo_combobox.getValue().equals("Ondulado e Longo")){
+                    System.out.println("Ondulado e Longo");
+                    pessoa.setCabeloOndulado(true);
+                    pessoa.setCabeloCurto(false);
+                    pessoa.setCabeloCrespo(false);
+                    pessoa.setCabeloLiso(false);
+                    pessoa.setCabeloMedio(false);
+                    pessoa.setCabeloLongo(true);
+                    pessoa.setCalvo(false);
+                    label_op_n_per_cor_cabelo.setVisible(false);
+                    cor_cabelo_combobox.setVisible(true);
+                }else if (estilo_cabelo_combobox.getValue().equals("Crespo e Curto")){
+                    System.out.println("Crespo e Curto");
+                    pessoa.setCabeloOndulado(false);
+                    pessoa.setCabeloCurto(true);
+                    pessoa.setCabeloCrespo(true);
+                    pessoa.setCabeloLiso(false);
+                    pessoa.setCabeloMedio(false);
+                    pessoa.setCabeloLongo(false);
+                    pessoa.setCalvo(false);
+                    label_op_n_per_cor_cabelo.setVisible(false);
+                    cor_cabelo_combobox.setVisible(true);
+                }else if (estilo_cabelo_combobox.getValue().equals("Crespo e Medio")){
+                    System.out.println("Crespo e Medio");
+                    pessoa.setCabeloOndulado(false);
+                    pessoa.setCabeloCurto(false);
+                    pessoa.setCabeloCrespo(true);
+                    pessoa.setCabeloLiso(false);
+                    pessoa.setCabeloMedio(true);
+                    pessoa.setCabeloLongo(false);
+                    pessoa.setCalvo(false);
+                    label_op_n_per_cor_cabelo.setVisible(false);
+                    cor_cabelo_combobox.setVisible(true);
+                }else if (estilo_cabelo_combobox.getValue().equals("Crespo e Longo")){
+                    System.out.println("Crespo e Longo");
+                    pessoa.setCabeloOndulado(false);
+                    pessoa.setCabeloCurto(false);
+                    pessoa.setCabeloCrespo(true);
+                    pessoa.setCabeloLiso(false);
+                    pessoa.setCabeloMedio(false);
+                    pessoa.setCabeloLongo(true);
+                    pessoa.setCalvo(false);
+                    label_op_n_per_cor_cabelo.setVisible(false);
+                    cor_cabelo_combobox.setVisible(true);
+                }else if (estilo_cabelo_combobox.getValue().equals("Liso e Curto")){
+                    System.out.println("Liso e Curto");
+                    pessoa.setCabeloOndulado(false);
+                    pessoa.setCabeloCurto(true);
+                    pessoa.setCabeloCrespo(false);
+                    pessoa.setCabeloLiso(true);
+                    pessoa.setCabeloMedio(false);
+                    pessoa.setCabeloLongo(false);
+                    pessoa.setCalvo(false);
+                    label_op_n_per_cor_cabelo.setVisible(false);
+                    cor_cabelo_combobox.setVisible(true);
+                }else if (estilo_cabelo_combobox.getValue().equals("Liso e Medio")){
+                    System.out.println("Liso e Medio");
+                    pessoa.setCabeloOndulado(false);
+                    pessoa.setCabeloCurto(false);
+                    pessoa.setCabeloCrespo(false);
+                    pessoa.setCabeloLiso(true);
+                    pessoa.setCabeloMedio(true);
+                    pessoa.setCabeloLongo(false);
+                    pessoa.setCalvo(false);
+                    label_op_n_per_cor_cabelo.setVisible(false);
+                    cor_cabelo_combobox.setVisible(true);
+                }else if (estilo_cabelo_combobox.getValue().equals("Liso e Longo")){
+                    System.out.println("Liso e Longo");
+                    pessoa.setCabeloOndulado(false);
+                    pessoa.setCabeloCurto(false);
+                    pessoa.setCabeloCrespo(false);
+                    pessoa.setCabeloLiso(true);
+                    pessoa.setCabeloMedio(false);
+                    pessoa.setCabeloLongo(true);
+                    pessoa.setCalvo(false);
+                    label_op_n_per_cor_cabelo.setVisible(false);
+                    cor_cabelo_combobox.setVisible(true);
+                }
+            }
+            
+        });
+        
+        System.out.println("ComboCorCabelo: "+cor_cabelo_combobox.getValue());
+        cor_cabelo_combobox.setOnAction(new EventHandler<ActionEvent>(){
+            @Override
+            public void handle(ActionEvent event) {
+                if(cor_cabelo_combobox.getValue().equals("Loiro")){
+                    System.out.println("Cabelo Loiro");
+                    pessoa.setCabeloLoiro(true);
+                    pessoa.setCabeloPreto(false);
+                    pessoa.setCabeloCastanho(false);
+                    pessoa.setCabeloAvermelhado(false);
+                }else if(cor_cabelo_combobox.getValue().equals("Preto")){
+                    System.out.println("Cabelo Preto");
+                    pessoa.setCabeloLoiro(false);
+                    pessoa.setCabeloPreto(true);
+                    pessoa.setCabeloCastanho(false);
+                    pessoa.setCabeloAvermelhado(false);
+                }else if(cor_cabelo_combobox.getValue().equals("Castanho")){
+                    System.out.println("Cabelo Castanho");
+                    pessoa.setCabeloLoiro(false);
+                    pessoa.setCabeloPreto(false);
+                    pessoa.setCabeloCastanho(true);
+                    pessoa.setCabeloAvermelhado(false);
+                }else if(cor_cabelo_combobox.getValue().equals("Avermelhado")){
+                    System.out.println("Cabelo Avermelhado");
+                    pessoa.setCabeloLoiro(false);
+                    pessoa.setCabeloPreto(false);
+                    pessoa.setCabeloCastanho(false);
+                    pessoa.setCabeloAvermelhado(true);
+                }
+            }
+            
+        });
+
          
       //Pergunta 1
         id_sim_1.setOnAction(new EventHandler<ActionEvent>() {
