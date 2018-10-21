@@ -92,7 +92,11 @@ public class CapturaImagens {
                 int idPessoa = 1;
                 
                 int fotosTirada=0;
-
+                
+                int cont=0;
+                int tirando_foto=0;
+                int sequencia_foto=1;
+                
                 // Joga o que esta sendo capturado pela webcam no frameCapturado e 
                 // enquanto estiver capturando com a webcam ele executa o while
                 while(idPessoa<=2){
@@ -101,6 +105,8 @@ public class CapturaImagens {
                             // convertemos o frameCapturado para uma matriz e
                             // jogamos na imagemColorida   // Tbm ja pronto no javacv
                             imagemColorida = converteMat.convert(frameCapturado);
+                            System.out.println(cont);
+                            cont++;
                             
                             System.out.println(imagemColorida);
                             
@@ -149,20 +155,34 @@ public class CapturaImagens {
                                 nome = "Foto " +fotosTirada+" de 100 "+" - " + confianca.get(0);
                                 
                                 // Se a teclado for diferente de null, ou seja, teclado pressionado
-                                if (tecla != null){
+                                //if (tecla != null){
                                     // "q" foi utilizado para capturar as fotos
-                                    if (tecla.getKeyChar() == 'q' || tecla.getKeyChar() == 'Q'){
-                                        if (amostra <= numeroAmostras){
-                                            //Salva imagem em disco como JPG
-                                            imwrite("src\\fotos\\pessoa."+idPessoa+"."+amostra+".jpg",faceCapturada);
-                                            // Imprimi quantas fotos que foi tirada para maior controla
-                                            System.out.println("Foto "+idPessoa+"."+amostra+" capturada\n");
-                                            amostra++;
-                                            fotosTirada++;
+                                    //if (tecla.getKeyChar() == 'q' || tecla.getKeyChar() == 'Q'){
+                                    if(cont>170){    
+                                        if(tirando_foto==0){
+                                            if (amostra <= numeroAmostras && sequencia_foto <= 20){
+                                                //Salva imagem em disco como JPG
+                                                imwrite("src\\fotos\\pessoa."+idPessoa+"."+amostra+".jpg",faceCapturada);
+                                                // Imprimi quantas fotos que foi tirada para maior controla
+                                                System.out.println("Foto "+idPessoa+"."+amostra+" capturada\n");
+                                                amostra++;
+                                                fotosTirada++;
+                                                sequencia_foto++;
+                                            }
                                         }
+                                        tirando_foto++;
                                     }
-                                    tecla = null;
-                                }
+                                    
+                                    if(tirando_foto>9){
+                                        tirando_foto=0;
+                                    }
+                                    
+                                    if(sequencia_foto==20){
+                                        sequencia_foto=1;
+                                    }
+                                    //}
+                                    //tecla = null;
+                                //}
 
                                 int x = Math.max(dadosFace.tl().x() - 10, 0);
                                 int y = Math.max(dadosFace.tl().y() - 10, 0);

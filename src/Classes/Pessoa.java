@@ -65,9 +65,6 @@ public class Pessoa {
         private boolean temPiercing;
 	
 	
-        
-        private boolean cabeloClaro;
-        private boolean olhoEscuro;
 
     public Integer getCodPessoa(){
         return this.codPessoa;
@@ -139,22 +136,6 @@ public class Pessoa {
 
     public void setMasculino(boolean masculino) {
         this.masculino = masculino;
-    }
-
-    public boolean isCabeloClaro() {
-        return cabeloClaro;
-    }
-
-    public void setCabeloClaro(boolean cabeloClaro) {
-        this.cabeloClaro = cabeloClaro;
-    }
- 
-    public boolean isOlhoEscuro() {
-        return olhoEscuro;
-    }
-
-    public void setOlhoEscuro(boolean olhoEscuro) {
-        this.olhoEscuro = olhoEscuro;
     }
 
     public boolean isMaior20() {

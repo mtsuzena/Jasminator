@@ -53,7 +53,7 @@ public class ArquivoTxt {
     
     // Busca a String conteudo (que contem todas as informacoes das pessoas cadastradas) no metodo "read" e, logo em seguida, 
     // processa o conteudo da string ja armazendando nos objetos "Pessoa", ao final do processamento a funcao retorna um List<Pessoa>
-    public static List<Pessoa> capturaTxt(String caminho){
+    public static List<Pessoa> capturaTxt_OLD(String caminho){
         String conteudo = read(caminho);
         List<Pessoa> lista_pessoas = new ArrayList<Pessoa>();
         int i=0;
@@ -79,10 +79,7 @@ public class ArquivoTxt {
                 i+=1;
                 pessoa.setMasculino(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
-                pessoa.setCabeloClaro(Boolean.parseBoolean(conteudo.split(";")[i]));
-                i+=1;
-                pessoa.setOlhoEscuro(Boolean.parseBoolean(conteudo.split(";")[i]));
-                i+=1;
+                
                 pessoa.setMaior20(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
                 
@@ -96,7 +93,7 @@ public class ArquivoTxt {
         return lista_pessoas;
     }
     
-    public static List<Pessoa> capturaTxt_NEW(String caminho){
+    public static List<Pessoa> capturaTxt(String caminho){
         String conteudo = read(caminho);
         List<Pessoa> lista_pessoas = new ArrayList<Pessoa>();
         int i=0;
@@ -143,8 +140,6 @@ public class ArquivoTxt {
                 i+=1;
                 pessoa.setCabeloAvermelhado(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
-                pessoa.setCabeloOndulado(Boolean.parseBoolean(conteudo.split(";")[i]));
-                i+=1;
                 
                 pessoa.setTomPeleClaro(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
@@ -174,9 +169,6 @@ public class ArquivoTxt {
                 i+=1;
                 
                 pessoa.setProfessor(Boolean.parseBoolean(conteudo.split(";")[i]));
-                i+=1;
-                
-                pessoa.setCabeloLongo(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
                 
                 pessoa.setMaior20(Boolean.parseBoolean(conteudo.split(";")[i]));
@@ -257,7 +249,7 @@ public class ArquivoTxt {
     }
     
     // Salva uma lista de pessoas em txt
-    private static boolean Write(String caminho, List<Pessoa> lista_pessoas){
+    private static boolean Write_OLD(String caminho, List<Pessoa> lista_pessoas){
         try{
             FileWriter arq = new FileWriter(caminho);
             PrintWriter gravarArq = new PrintWriter(arq);
@@ -272,8 +264,7 @@ public class ArquivoTxt {
                 gravarArq.println(lista_pessoas.get(i).isBarba()+";");
                 gravarArq.println(lista_pessoas.get(i).isProfessor()+";");
                 gravarArq.println(lista_pessoas.get(i).isMasculino()+";");
-                gravarArq.println(lista_pessoas.get(i).isCabeloClaro()+";");
-                gravarArq.println(lista_pessoas.get(i).isOlhoEscuro()+";");
+                
                 gravarArq.println(lista_pessoas.get(i).isMaior20()+";\r\n");   
             }
             gravarArq.close();
@@ -284,7 +275,7 @@ public class ArquivoTxt {
         }
     }
     
-    private static boolean Write_NEW(String caminho, List<Pessoa> lista_pessoas){
+    private static boolean Write(String caminho, List<Pessoa> lista_pessoas){
         try{
             FileWriter arq = new FileWriter(caminho);
             PrintWriter gravarArq = new PrintWriter(arq);
@@ -328,8 +319,6 @@ public class ArquivoTxt {
                 gravarArq.println(lista_pessoas.get(i).isUsaRoupaSocial()+";");
                 
                 gravarArq.println(lista_pessoas.get(i).isProfessor()+";");
-                
-                gravarArq.println(lista_pessoas.get(i).isCabeloLongo()+";");
                 
                 gravarArq.println(lista_pessoas.get(i).isMaior20()+";");
                 

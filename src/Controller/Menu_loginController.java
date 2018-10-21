@@ -6,11 +6,14 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.awt.event.KeyEvent;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -24,6 +27,10 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyCodeCombination;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 import org.bytedeco.javacv.FrameGrabber;
 import reconhecimento.CapturaImagens;
 import reconhecimento.Reconhecedor;
@@ -161,12 +168,7 @@ public class Menu_loginController implements Initializable {
        TrocarCenas.trocarcena_direita(root, id_entrar, id_anchor);
        
     }
-    public void finalizar_stage(){
-        MenuLogin.getStage().close();
-    }
-    public void abrir_stage(){
-        MenuLogin.getStage().show();
-    }
+    
     public void cadastrar_reconhecimento() throws FrameGrabber.Exception, InterruptedException, Exception{
         //Menuinicial.getStage().close()
         /*adm_cadastrado = ArquivoTxt.readAdm();
@@ -190,12 +192,18 @@ public class Menu_loginController implements Initializable {
              retorna_mensagem("ERRO",":)","Administrador nao reconhecido!!!!");
            }
         }*/
-        retorna_mensagem("Cadastrar reconhecimento facial",":)","Segure a tecla Q para tirar fotos");
-        try { Thread.sleep (3000); } catch (InterruptedException ex) {}
+        
+        //retorna_mensagem("Cadastrar reconhecimento facial",":)","Segure a tecla Q para tirar fotos");
+        
         CapturaImagens.capturaImg();
+        try { Thread.sleep (3000); } catch (InterruptedException ex) {}
         System.out.println("KK EAE GERENTE DE PROJETO");
-        //Menuinicial.getStage().show();
-        ArquivoTxt.writeAdm();
+       
+        reproduzir_audio(1800, "Auxilio_cad_reconhecimento_1_apresent.m4a");
+        reproduzir_audio(8500, "Auxilio_cad_reconhecimento_2.m4a");
+        reproduzir_audio(15000, "Auxilio_cad_reconhecimento_4.m4a");
+        reproduzir_audio(8500, "Auxilio_cad_reconhecimento_5.m4a");
+     
     }
     public static void retorna_mensagem(String header, String tittle, String mensagem){
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
@@ -203,5 +211,11 @@ public class Menu_loginController implements Initializable {
         alert.setTitle(tittle);
         alert.setContentText(mensagem);
         alert.show();
+    }
+    public void reproduzir_audio(Integer time,String musicFile){
+        musicFile = getClass().getResource("/sons/"+musicFile).toString();
+        AudioClip clip = new AudioClip(musicFile);
+        try { Thread.sleep (time); } catch (InterruptedException ex) {}
+        clip.play();
     }
 }

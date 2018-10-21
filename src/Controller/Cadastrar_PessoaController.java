@@ -414,7 +414,7 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
             id_nao_7.setSelected(false);
-            pessoa.setCabeloClaro(true);
+            
             }
         }
         );
@@ -422,7 +422,7 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
             id_sim_7.setSelected(false);
-            pessoa.setCabeloClaro(false);
+           
             
             }
         }
@@ -433,7 +433,7 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
             id_nao_8.setSelected(false);
-             pessoa.setOlhoEscuro(true);
+             
             }
         }
         );
@@ -441,7 +441,7 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
             id_sim_8.setSelected(false);
-             pessoa.setOlhoEscuro(false);
+         
             
             }
         }

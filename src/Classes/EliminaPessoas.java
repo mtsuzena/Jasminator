@@ -113,7 +113,7 @@ public class EliminaPessoas {
                         } 
                     }
                     break;
-                case 6:  
+                /*case 6:  
                     if(resp==0){
                         for (int cont = 0; cont < lista_pessoas.size(); cont++){
                            if(lista_pessoas.get(cont).isCabeloClaro()== true){
@@ -146,7 +146,7 @@ public class EliminaPessoas {
                             } 
                         } 
                     }
-                    break;
+                    break;*/
                 case 8: 
                     if(resp==0){
                         for (int cont = 0; cont < lista_pessoas.size(); cont++){
