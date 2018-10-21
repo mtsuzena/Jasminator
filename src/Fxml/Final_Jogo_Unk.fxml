@@ -5,10 +5,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" fx:id="id_pane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.Final_Jogo_UnkController">
+<AnchorPane id="AnchorPane" fx:id="id_pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Final_Jogo_UnkController">
    <children>
-      <Text fx:id="id_text" layoutX="62.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Meu pau alado não achou em que vocÊ estava pensando!">
+      <Text fx:id="id_text" layoutX="62.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Browwww, vc nao respondeu as perguntas certo brow">
          <font>
             <Font size="20.0" />
          </font>

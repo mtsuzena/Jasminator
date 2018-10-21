@@ -6,7 +6,7 @@ import java.util.List;
 public class ListaPerguntas {
     
     
-    public ArrayList retornaLista(){
+    public static ArrayList retornaLista(){
         List<String> lista_perguntaPadrao = new ArrayList<String>();
         
         lista_perguntaPadrao.add(0,"A pessoa que você esta pensando e calva? ");
@@ -22,7 +22,7 @@ public class ListaPerguntas {
         return (ArrayList) lista_perguntaPadrao;
     }
     
-    public ArrayList retornaLista_New(){
+    public static ArrayList retornaLista_New(){
         List<String> lista_perguntaPadrao = new ArrayList<String>();
         
         lista_perguntaPadrao.add(0,"O personagem é do primeiro periodo de ADS/SI?");

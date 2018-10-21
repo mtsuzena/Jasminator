@@ -1,4 +1,4 @@
-1 - O personagem é do primeiro periodo de Ands/SI?
+﻿1 - O personagem é do primeiro periodo de Ands/SI?
 2 - O personagem é do segundo periodo de Ands/SI?
 3 - O personagem é do terceiro periodo de Ands/SI?
 ------------------------------------------------------ 
@@ -52,6 +52,7 @@
 34 - O personagem leciona a disciplina Arquitetura de Computadores? Carlos Govea
 35 - O personagem leciona a disciplina Matematica Aplicada a Computacao?  Vinicius Langer
 36 - O personagem leciona a disciplina Banco de Dados? Sottomaior
+
 37 - O personagem trabalha em um aviario? Lucas Zorick
 38 - O personagem trabalha em uma mecanica? Flavio vagabundo
 39 - O personagem trabalha na Brafer?  Kevin
