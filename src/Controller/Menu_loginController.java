@@ -5,6 +5,7 @@ import Telas.*;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import com.sun.glass.ui.View;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
@@ -40,6 +41,7 @@ public class Menu_loginController implements Initializable {
     private Boolean cont = true;
     private String adm_cadastrado = ArquivoTxt.readAdm();
     private Reconhecedor recog=null;
+    private static int estagio_reproducao_audio;
    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -198,12 +200,97 @@ public class Menu_loginController implements Initializable {
         CapturaImagens.capturaImg();
         try { Thread.sleep (3000); } catch (InterruptedException ex) {}
         System.out.println("KK EAE GERENTE DE PROJETO");
-       
-        reproduzir_audio(1800, "Auxilio_cad_reconhecimento_1_apresent.m4a");
-        reproduzir_audio(8500, "Auxilio_cad_reconhecimento_2.m4a");
-        reproduzir_audio(15000, "Auxilio_cad_reconhecimento_4.m4a");
-        reproduzir_audio(8500, "Auxilio_cad_reconhecimento_5.m4a");
-     
+        setEstagio_reproducao_audio(0);
+        reproduzir_audio(1800, "apresentacao_jasmine.m4a");
+        reproduzir_audio(8500, "posicione_rosto_centro.m4a");
+        
+        boolean verifica_estagio=true;
+        
+        while(verifica_estagio){
+            System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+            if(estagio_reproducao_audio==1){    
+                System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+                reproduzir_audio(50, "iniciando_captura_fotos.m4a");
+                verifica_estagio=false;
+                System.out.println("ESTAGIO_REPRODUCAO_AUDIO = "+estagio_reproducao_audio);
+            }
+        }
+        
+        verifica_estagio=true;
+        while(verifica_estagio){
+            System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+            if(estagio_reproducao_audio==2){    
+                System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+                reproduzir_audio(50, "vire_rosto_direita.m4a");
+                verifica_estagio=false;
+                System.out.println("ESTAGIO_REPRODUCAO_AUDIO = "+estagio_reproducao_audio);
+            }
+        }
+        
+        
+        reproduzir_audio(6500, "iniciando_captura_fotos.m4a");
+        CapturaImagens.setIniciFotos(true);
+        setEstagio_reproducao_audio(1);
+                
+        
+        verifica_estagio=true;
+        while(verifica_estagio){
+            System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+            if(estagio_reproducao_audio==3){ 
+                CapturaImagens.setIniciFotos(false);
+                System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+                reproduzir_audio(50, "vire_rosto_esquerda.m4a");
+                verifica_estagio=false;
+                System.out.println("ESTAGIO_REPRODUCAO_AUDIO = "+estagio_reproducao_audio);
+            }
+        }
+        
+
+        reproduzir_audio(6500, "iniciando_captura_fotos.m4a");
+        setEstagio_reproducao_audio(1);
+        CapturaImagens.setIniciFotos(true);
+        
+        verifica_estagio=true;
+        while(verifica_estagio){
+            System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+            if(estagio_reproducao_audio==4){    
+                System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+                reproduzir_audio(50, "incline_cabeca_cima.m4a");
+                verifica_estagio=false;
+                System.out.println("ESTAGIO_REPRODUCAO_AUDIO = "+estagio_reproducao_audio);
+            }
+        }
+        
+        reproduzir_audio(6500, "iniciando_captura_fotos.m4a");
+        setEstagio_reproducao_audio(1);
+        CapturaImagens.setIniciFotos(true);
+        
+        verifica_estagio=true;
+        while(verifica_estagio){
+            System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+            if(estagio_reproducao_audio==5){    
+                System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+                reproduzir_audio(50, "incline_cabeca_baixo.m4a");
+                verifica_estagio=false;
+                System.out.println("ESTAGIO_REPRODUCAO_AUDIO = "+estagio_reproducao_audio);
+            }
+        }
+        
+        reproduzir_audio(6500, "iniciando_captura_fotos.m4a");
+        setEstagio_reproducao_audio(1);
+        CapturaImagens.setIniciFotos(true);
+        
+        verifica_estagio=true;
+        while(verifica_estagio){
+            System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+            if(estagio_reproducao_audio==6){    
+                System.out.println("ESTAGIO = "+estagio_reproducao_audio);
+                reproduzir_audio(50, "finalizacao_cadastro.m4a");
+                verifica_estagio=false;
+                System.out.println("ESTAGIO_REPRODUCAO_AUDIO = "+estagio_reproducao_audio);
+            }
+        }
+        
     }
     public static void retorna_mensagem(String header, String tittle, String mensagem){
         javafx.scene.control.Alert alert = new javafx.scene.control.Alert(javafx.scene.control.Alert.AlertType.INFORMATION);
@@ -217,5 +304,12 @@ public class Menu_loginController implements Initializable {
         AudioClip clip = new AudioClip(musicFile);
         try { Thread.sleep (time); } catch (InterruptedException ex) {}
         clip.play();
+    }
+    
+    public static void setEstagio_reproducao_audio(int estagio){
+        estagio_reproducao_audio=estagio;
+    }
+    public static int getEstagio_reproducao_audio(){
+        return estagio_reproducao_audio;
     }
 }

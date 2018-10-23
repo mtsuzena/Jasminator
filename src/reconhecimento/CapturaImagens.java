@@ -3,6 +3,7 @@
 
 package reconhecimento;
 
+import Controller.Menu_loginController;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,13 +32,17 @@ import org.bytedeco.javacv.OpenCVFrameGrabber;
 
 public class CapturaImagens {
     private boolean chave;
+    private static boolean inicio_fotos;
+    private static boolean estagio_fotos;
+
     
     public static void capturaImg() throws FrameGrabber.Exception, InterruptedException{
-        new Thread(){        
+        new Thread(){
             public void run(){    
                 // Monitora os eventos do teclado   Importação java.awt.event.KeyEvent
                 KeyEvent tecla = null;
-
+                inicio_fotos=true;
+                estagio_fotos=true;
 
                 // Converter imagem do disco ou web para formato mat (matriz)   
                 //OBS: o JAVACV ja converte para matriz com esse metodo... se fosse com OPENCV teria que criar na mao
@@ -104,6 +109,7 @@ public class CapturaImagens {
                         while ((frameCapturado = camera.grab()) != null){
                             // convertemos o frameCapturado para uma matriz e
                             // jogamos na imagemColorida   // Tbm ja pronto no javacv
+                            
                             imagemColorida = converteMat.convert(frameCapturado);
                             System.out.println(cont);
                             cont++;
@@ -154,31 +160,77 @@ public class CapturaImagens {
                                 
                                 nome = "Foto " +fotosTirada+" de 100 "+" - " + confianca.get(0);
                                 
+                                if((fotosTirada>0 && fotosTirada<2)){ 
+                                    Menu_loginController.setEstagio_reproducao_audio(1);
+                                }
+                                
                                 // Se a teclado for diferente de null, ou seja, teclado pressionado
                                 //if (tecla != null){
                                     // "q" foi utilizado para capturar as fotos
                                     //if (tecla.getKeyChar() == 'q' || tecla.getKeyChar() == 'Q'){
+                                    System.out.println("ESAGIO DO CAP = "+Menu_loginController.getEstagio_reproducao_audio());
                                     if(cont>170){    
                                         if(tirando_foto==0){
-                                            if (amostra <= numeroAmostras && sequencia_foto <= 20){
-                                                //Salva imagem em disco como JPG
-                                                imwrite("src\\fotos\\pessoa."+idPessoa+"."+amostra+".jpg",faceCapturada);
-                                                // Imprimi quantas fotos que foi tirada para maior controla
-                                                System.out.println("Foto "+idPessoa+"."+amostra+" capturada\n");
-                                                amostra++;
-                                                fotosTirada++;
-                                                sequencia_foto++;
+                                            if (amostra <= numeroAmostras){
+                                                System.out.println(inicio_fotos);
+                                                if(inicio_fotos==true){   
+                                                    //Salva imagem em disco como JPG
+                                                    imwrite("src\\fotos\\pessoa."+idPessoa+"."+amostra+".jpg",faceCapturada);
+                                                    // Imprimi quantas fotos que foi tirada para maior controla
+                                                    System.out.println("Foto "+idPessoa+"."+amostra+" capturada\n");
+                                                    amostra++;
+                                                    fotosTirada++;
+                                                    sequencia_foto++;
+                                                    
+                                                }
                                             }
                                         }
                                         tirando_foto++;
                                     }
                                     
-                                    if(tirando_foto>9){
+                                    if(tirando_foto>4){
                                         tirando_foto=0;
                                     }
                                     
-                                    if(sequencia_foto==20){
-                                        sequencia_foto=1;
+                                    
+                                    
+                                    if(fotosTirada==20&&estagio_fotos==true){
+                                        Menu_loginController.setEstagio_reproducao_audio(2);
+                                        inicio_fotos=false;
+                                        estagio_fotos=false;
+                                    }
+                                    if(fotosTirada==24)
+                                        estagio_fotos=true;
+                                    
+                                    if(fotosTirada==40&&estagio_fotos==true){
+                                        Menu_loginController.setEstagio_reproducao_audio(3);
+                                        inicio_fotos=false;
+                                        estagio_fotos=false;
+                                    }
+                                    if(fotosTirada==44)
+                                        estagio_fotos=true;
+                                    
+                                    if(fotosTirada==60&&estagio_fotos==true){
+                                        Menu_loginController.setEstagio_reproducao_audio(4);
+                                        inicio_fotos=false;
+                                        estagio_fotos=false;
+                                    }
+                                    if(fotosTirada==64)
+                                        estagio_fotos=true;
+                                    
+                                    if(fotosTirada==80&&estagio_fotos==true){
+                                        Menu_loginController.setEstagio_reproducao_audio(5);
+                                        inicio_fotos=false;
+                                        estagio_fotos=false;
+                                    }
+                                    
+                                    if(fotosTirada==84)
+                                        estagio_fotos=true;
+                                    
+                                    if(fotosTirada==100&&estagio_fotos==true){
+                                        Menu_loginController.setEstagio_reproducao_audio(6);
+                                        inicio_fotos=false;
+                                        estagio_fotos=false;
                                     }
                                     //}
                                     //tecla = null;
@@ -229,6 +281,10 @@ public class CapturaImagens {
                 Treinamento.treinador();
             }
         }.start();
+    }
+    
+    public static void setIniciFotos(boolean set){
+        inicio_fotos=set;
     }
 
 }
