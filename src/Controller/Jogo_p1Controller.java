@@ -76,6 +76,9 @@ public class Jogo_p1Controller implements Initializable {
     // ## 2 - MAC
     // ## 3 - BD
             private ArrayList<Integer> disc_lecionada = new ArrayList<Integer>();
+            
+    //
+            private boolean isMasculino;
     
     // ## OBS: Todos os atributos para permissao serao inciados com 0
     // ####### FIM - Atributos para pertmissoes de perguntas
@@ -89,6 +92,7 @@ public class Jogo_p1Controller implements Initializable {
         lista_pessoas = ArquivoTxt.capturaTxt("dados_pessoas.txt");
         lista_perguntas = ListaPerguntas.retornaLista_New();
         embaralhar_pergunta();
+        k=0;
         
         set_pergunta();
         
@@ -96,7 +100,8 @@ public class Jogo_p1Controller implements Initializable {
         id_sim.setOnAction((ActionEvent event)->{
 
             resposta = 1;
-             check();
+            set_atributos_verificadores(id_pergunta.get(k), resposta);
+            check();
              k++;
             if(k < 39){
              set_pergunta();
@@ -106,7 +111,7 @@ public class Jogo_p1Controller implements Initializable {
         id_nao.setOnAction((ActionEvent event)->{
           
             resposta = 0 ;    
-            
+            set_atributos_verificadores(id_pergunta.get(k), resposta);
             check();
             k++;
             if(k < 39){
@@ -162,13 +167,19 @@ public class Jogo_p1Controller implements Initializable {
     public void check(){
         if(k < 39){
             
-            lista_pessoas=EliminaPessoas.getPredicaoPessoa(lista_pessoas, resposta, numero);
+            lista_pessoas=EliminaPessoas.getPredicaoPessoa_NEW(lista_pessoas, resposta, numero);
+            
+            if(lista_pessoas.size()==0){
+                lista_pessoas = ArquivoTxt.capturaTxt("dados_pessoas.txt");
+            }
  
             if(lista_pessoas.size()==1){
+                
                 Parent root;
                 try {
                     nome = lista_pessoas.get(0).getNome();
                     root = FXMLLoader.load(getClass().getResource("/Fxml/Final_Jogo.fxml"));
+           
                     cena_jogador(root,id_pane);
                     id_pane.getChildren().clear();
                 } catch (IOException ex) {
@@ -181,6 +192,7 @@ public class Jogo_p1Controller implements Initializable {
         
             Parent root;
             try {
+              
                 root = FXMLLoader.load(getClass().getResource("/Fxml/Final_Jogo_Unk.fxml"));
                 cena_jogador(root,id_pane);
                 id_pane.getChildren().clear();
@@ -191,15 +203,16 @@ public class Jogo_p1Controller implements Initializable {
     }
 
     public void limpar(){
-            k = 0 ;
-            calvo = 0;    
+ 
             id_pergunta.clear();
             numero = 0;
-            lista_pessoas.clear();
+ 
     }
     
     public void ini_atributos_verificadores(){
         calvo=0;
+        
+        isMasculino=true;
         
         periodo_feito=0;
         periodo.add(0,0);
@@ -235,6 +248,7 @@ public class Jogo_p1Controller implements Initializable {
     public void set_pergunta(){
         boolean permitido=false;
         while(permitido==false){
+            System.out.println("K DESGRACADO = "+k);
             numero = id_pergunta.get(k);
             permitido=permitir_pergunta(numero);
             if(permitido==false){
@@ -246,8 +260,126 @@ public class Jogo_p1Controller implements Initializable {
     }
     
     
-    public void set_atributos_verificadores(){
-        
+    public void set_atributos_verificadores(Integer id_pergunta, Integer resposta){
+        switch(id_pergunta){
+                case 0:
+                    if(resposta==1){
+                        periodo.add(0,1);
+                    }
+                    break;
+                case 1:
+                    if(resposta==1){
+                        periodo.add(1,1);
+                    }
+                    break;
+                case 2: 
+                    if(resposta==1){
+                        periodo.add(2,1);
+                    }
+                    break;
+                case 3:                
+                    if(resposta==0){
+                        isMasculino=false;
+                    }
+                    break;
+                case 4:
+                    break;
+                case 5:
+                    break;
+                case 6:  
+                    break;
+                case 7: 
+                    break;
+                case 8: 
+                    break;
+                case 9: 
+                    break;
+                case 10: 
+                    break;
+                case 11: 
+                   break;
+                case 12: 
+                    break;
+                case 13: 
+                    break;
+                case 14: 
+                    break;
+                case 15: 
+                    if(resposta==1){
+                        tom_pele=1;
+                    }
+                    break;
+                case 16: 
+                    if(resposta==1){
+                        tom_pele=1;
+                    }
+                    break;
+                case 17: 
+                    if(resposta==1){
+                        tom_olho.add(0,1);
+                    }
+                    break;
+                case 18: 
+                    if(resposta==1){
+                        tom_olho.add(1,1);
+                    }
+                    break;
+                case 19: 
+                    if(resposta==1){
+                        tom_olho.add(1,1);
+                    }
+                    break;
+                case 20:
+                    break;
+                case 21:
+                    break;
+                case 22:
+                    break;
+                case 23: 
+                    break;
+                case 24:
+                    break;
+                case 25:
+                    break;
+                case 26:
+                    break;
+                case 27: 
+                    break;
+                case 28:
+                    break;
+                case 29:
+                    break;
+                case 30: 
+                    break;
+                case 31: 
+                    if(resposta==1){
+                        disc_lecionada.add(0,1);
+                    }
+                    break;
+                case 32: 
+                    if(resposta==1){
+                        disc_lecionada.add(1,1);
+                    }
+                    break;
+                case 33: 
+                    if(resposta==1){
+                        disc_lecionada.add(2,1);
+                    }
+                    break;
+                case 34: 
+                    if(resposta==1){
+                        disc_lecionada.add(3,1);
+                    }
+                    break;
+                case 35: 
+                    break;
+                case 36: 
+                    break;
+                case 37: 
+                    break;
+                case 38: 
+                    
+        }
     }
     private boolean permitir_pergunta(Integer id_pergunta){
         switch(id_pergunta){
@@ -443,8 +575,13 @@ public class Jogo_p1Controller implements Initializable {
                     System.out.println("Pergunta 21 permitida!!\n");
                     return true;
                 case 22:
-                    System.out.println("Pergunta 22 permitida!!\n");
-                    return true;
+                    if(isMasculino){    
+                        System.out.println("Pergunta 22 permitida!!\n");
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 22 NAO permitida!!\n");
+                    }
+                    break;
                 case 23: 
                     System.out.println("Pergunta 23 permitida!!\n");
                     return true;
@@ -466,9 +603,9 @@ public class Jogo_p1Controller implements Initializable {
                 case 29:
                     if(lista_pessoas.size() < 4){
                         for(Pessoa p : lista_pessoas){
-                            String nome= ""+p.getNome().charAt(0)+p.getNome().charAt(1)+p.getNome().charAt(2)+p.getNome().charAt(3)+p.getNome().charAt(4)+p.getNome().charAt(5)+p.getNome().charAt(6);
+                            String nome= ""+p.getNome().charAt(0)+p.getNome().charAt(1)+p.getNome().charAt(2);
                             
-                            if(nome.equalsIgnoreCase("Douglas")){
+                            if(nome.equalsIgnoreCase("Dou")){
                                 System.out.println("Pergunta 29 permitida!!\n");
                                 return true;
                             }else{
@@ -484,8 +621,8 @@ public class Jogo_p1Controller implements Initializable {
                 case 30: 
                     if(lista_pessoas.size() < 4){
                         for(Pessoa p : lista_pessoas){
-                            String nome= ""+p.getNome().charAt(0)+p.getNome().charAt(1)+p.getNome().charAt(2)+p.getNome().charAt(3)+p.getNome().charAt(4)+p.getNome().charAt(5)+p.getNome().charAt(6);
-                            if(nome.equalsIgnoreCase("Douglas")){
+                            String nome= ""+p.getNome().charAt(0)+p.getNome().charAt(1)+p.getNome().charAt(2);
+                            if(nome.equalsIgnoreCase("Dou")){
                                 System.out.println("Pergunta 30 permitida!!\n");
                                 return true;
                             }else{

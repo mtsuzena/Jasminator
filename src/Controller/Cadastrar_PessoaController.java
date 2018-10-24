@@ -105,10 +105,6 @@ public class Cadastrar_PessoaController implements Initializable {
                     
                      pessoa.setGraduadoQuimica(true);
                      pessoa.seteDoExercito(true);
-                     pessoa.setLecionaAC(true);
-                     pessoa.setLecionaPOO(true);
-                     pessoa.setLecionaMAC(true);
-                     pessoa.setLecionaBD(true);
                      pessoa.setTrabalhaBrafer(true);
                      pessoa.setTrabalhaMecanica(true);
                      pessoa.setTrabalhaAviario(true);
