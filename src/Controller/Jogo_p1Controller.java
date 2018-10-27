@@ -106,7 +106,9 @@ public class Jogo_p1Controller implements Initializable {
              k++;
              check();
             if(k < 38){
-             set_pergunta();
+                boolean fim = set_pergunta();
+                if(fim)
+                    check();
             }
         });
         
@@ -119,7 +121,9 @@ public class Jogo_p1Controller implements Initializable {
             k++;
             check();
             if(k < 38){
-            set_pergunta();
+                boolean fim = set_pergunta();
+                if(fim)
+                    check();
             }
         });
        
@@ -181,20 +185,12 @@ public class Jogo_p1Controller implements Initializable {
     
     public void check(){
         
-        if(k == 38){
-        
-            Parent root;
-            try {
-              
-                root = FXMLLoader.load(getClass().getResource("/Fxml/Final_Jogo_Unk.fxml"));
-                cena_jogador(root,id_pane);
-                id_pane.getChildren().clear();
-            } catch (IOException ex) {
-                Logger.getLogger(Jogo_p1Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        if(k >38){
+            final_jogo();
+            
         }
         
-        if(k < 39){
+        if(k <= 39){
             
             lista_pessoas=EliminaPessoas.getPredicaoPessoa_NEW(lista_pessoas, resposta, numero);
             
@@ -218,6 +214,18 @@ public class Jogo_p1Controller implements Initializable {
         } 
         
              
+    }
+    
+    public void final_jogo(){
+        Parent root;
+            try {
+              
+                root = FXMLLoader.load(getClass().getResource("/Fxml/Final_Jogo_Unk.fxml"));
+                cena_jogador(root,id_pane);
+                id_pane.getChildren().clear();
+            } catch (IOException ex) {
+                Logger.getLogger(Jogo_p1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     public void limpar(){
@@ -263,15 +271,15 @@ public class Jogo_p1Controller implements Initializable {
         disc_lecionada.add(3,0);
     }
     
-    public void set_pergunta(){
+    public boolean set_pergunta(){
         boolean permitido=false;
         while(permitido==false){
             //if(k<39){    
                 //check();
                 System.out.println("K DESGRACADO = "+k);
-
+                
                 numero = id_pergunta.get(k);
-
+                
                 permitido=permitir_pergunta(numero);
                 if(permitido==false){
                     k++;
@@ -279,10 +287,14 @@ public class Jogo_p1Controller implements Initializable {
                     id_label.setText(lista_perguntas.get(numero));
                 }
                 
+                if(k>38)
+                    return true;
             //}else{
               // permitido=true;
            // }
+           
         }
+        return false; 
     }
     
     
