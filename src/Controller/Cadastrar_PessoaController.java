@@ -90,6 +90,7 @@ public class Cadastrar_PessoaController implements Initializable {
         cor_dos_olhos_combobox.setItems(lista_cor_olhos);
         tom_pele_combobox.setItems(lista_tom_pele);
         label_op_n_per_cor_cabelo.setVisible(false);
+        disciplinas_combobox.setVisible(false);
         
         
         id_salvar.setOnAction(new EventHandler<ActionEvent>() {
@@ -531,7 +532,7 @@ public class Cadastrar_PessoaController implements Initializable {
         }
         );
         
-           if(id_sim_5.isSelected() == true && id_nao_5.isSelected() == false){
+           //if(id_sim_5.isSelected() == true && id_nao_5.isSelected() == false){
            
             
             disciplinas_combobox.setOnAction(new EventHandler<ActionEvent> () {
@@ -562,7 +563,7 @@ public class Cadastrar_PessoaController implements Initializable {
             }
             
         });
-       }
+       //}
         
         
         
