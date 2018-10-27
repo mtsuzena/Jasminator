@@ -98,7 +98,7 @@ public class ArquivoTxt {
         List<Pessoa> lista_pessoas = new ArrayList<Pessoa>();
         int i=0;
         int index=0;
-        while(i<1100){
+        while(true){
             Pessoa pessoa = new Pessoa();
             try{  
                 pessoa.setNome(conteudo.split(";")[i]);

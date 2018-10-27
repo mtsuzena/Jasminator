@@ -669,7 +669,7 @@ public class Cadastrar_PessoaController implements Initializable {
             try{
              idade_check = Integer.parseInt(id_idade.getText());
              pessoa.setIdade(idade_check);
-                        if(pessoa.getIdade() > 20){
+                        if(pessoa.getIdade() >= 20){
                             pessoa.setMaior20(true);
                         }else{
                             pessoa.setMaior20(false);

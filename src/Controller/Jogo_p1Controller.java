@@ -100,10 +100,12 @@ public class Jogo_p1Controller implements Initializable {
         id_sim.setOnAction((ActionEvent event)->{
 
             resposta = 1;
+            
+            
             set_atributos_verificadores(id_pergunta.get(k), resposta);
-            check();
              k++;
-            if(k < 39){
+             check();
+            if(k < 38){
              set_pergunta();
             }
         });
@@ -111,14 +113,27 @@ public class Jogo_p1Controller implements Initializable {
         id_nao.setOnAction((ActionEvent event)->{
           
             resposta = 0 ;    
+            
+            
             set_atributos_verificadores(id_pergunta.get(k), resposta);
-            check();
             k++;
-            if(k < 39){
+            check();
+            if(k < 38){
             set_pergunta();
             }
         });
        
+        id_talvez.setOnAction((ActionEvent event)->{
+           
+            k++;
+            
+            if(k < 38){
+            set_pergunta();
+            }else{
+                check();
+            }
+        });
+        
         id_voltar.setOnAction((ActionEvent event)->{
             Parent root;
             try {
@@ -165,6 +180,20 @@ public class Jogo_p1Controller implements Initializable {
     }
     
     public void check(){
+        
+        if(k == 38){
+        
+            Parent root;
+            try {
+              
+                root = FXMLLoader.load(getClass().getResource("/Fxml/Final_Jogo_Unk.fxml"));
+                cena_jogador(root,id_pane);
+                id_pane.getChildren().clear();
+            } catch (IOException ex) {
+                Logger.getLogger(Jogo_p1Controller.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
         if(k < 39){
             
             lista_pessoas=EliminaPessoas.getPredicaoPessoa_NEW(lista_pessoas, resposta, numero);
@@ -188,18 +217,7 @@ public class Jogo_p1Controller implements Initializable {
             }
         } 
         
-        if(k == 38){
-        
-            Parent root;
-            try {
-              
-                root = FXMLLoader.load(getClass().getResource("/Fxml/Final_Jogo_Unk.fxml"));
-                cena_jogador(root,id_pane);
-                id_pane.getChildren().clear();
-            } catch (IOException ex) {
-                Logger.getLogger(Jogo_p1Controller.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }     
+             
     }
 
     public void limpar(){
@@ -248,14 +266,22 @@ public class Jogo_p1Controller implements Initializable {
     public void set_pergunta(){
         boolean permitido=false;
         while(permitido==false){
-            System.out.println("K DESGRACADO = "+k);
-            numero = id_pergunta.get(k);
-            permitido=permitir_pergunta(numero);
-            if(permitido==false){
-                k++;
-            }else{
-                id_label.setText(lista_perguntas.get(numero));
-            }
+            //if(k<39){    
+                //check();
+                System.out.println("K DESGRACADO = "+k);
+
+                numero = id_pergunta.get(k);
+
+                permitido=permitir_pergunta(numero);
+                if(permitido==false){
+                    k++;
+                }else{
+                    id_label.setText(lista_perguntas.get(numero));
+                }
+                
+            //}else{
+              // permitido=true;
+           // }
         }
     }
     
@@ -283,26 +309,71 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 4:
+                    if(resposta==1){
+                        calvo=1;
+                    }else{
+                        calvo=2;
+                    }
                     break;
                 case 5:
+                    if(resposta==1){
+                        estilo_cabelo.add(0,1);
+                        calvo=2;
+                    }
                     break;
-                case 6:  
+                case 6:
+                    if(resposta==1){
+                        calvo=2;
+                        estilo_cabelo.add(1,1);
+                    }
                     break;
                 case 7: 
+                    if(resposta==1){
+                        calvo=2;
+                        estilo_cabelo.add(2,1);
+                    }
                     break;
                 case 8: 
+                    if(resposta==1){
+                        calvo=2;
+                        tamanho_cabelo.add(0,1);
+                    }
                     break;
                 case 9: 
+                    if(resposta==1){
+                        calvo=2;
+                        tamanho_cabelo.add(1,1);
+                    }
                     break;
                 case 10: 
+                    if(resposta==1){
+                        calvo=2;
+                        tamanho_cabelo.add(2,1);
+                    }
                     break;
                 case 11: 
+                    if(resposta==1){
+                        calvo=2;
+                        cor_cabelo.add(0,1);
+                    }
                    break;
                 case 12: 
+                    if(resposta==1){
+                        calvo=2;
+                        cor_cabelo.add(1,1);
+                    }
                     break;
                 case 13: 
+                    if(resposta==1){
+                        calvo=2;
+                        cor_cabelo.add(2,1);
+                    }
                     break;
                 case 14: 
+                    if(resposta==1){
+                        calvo=2;
+                        cor_cabelo.add(3,1);
+                    }
                     break;
                 case 15: 
                     if(resposta==1){
@@ -414,10 +485,13 @@ public class Jogo_p1Controller implements Initializable {
                     System.out.println("Pergunta 3 permitida!!\n");
                     return true;
                 case 4:
-                    System.out.println("Pergunta 4 permitida!!\n");
-                    return true;
+                    if(calvo!=2){
+                        System.out.println("Pergunta 4 permitida!!\n");
+                        return true;
+                    }
+                    break;
                 case 5:
-                    if((calvo==2)&&(estilo_cabelo.get(1)==0||estilo_cabelo.get(1)==2)&&
+                    if((calvo!=1)&&(estilo_cabelo.get(1)==0||estilo_cabelo.get(1)==2)&&
                             (estilo_cabelo.get(2)==0||estilo_cabelo.get(2)==2)){
                         System.out.println("Pergunta 5 permitida!!\n");
                         return true;
@@ -427,7 +501,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 6:  
-                    if((calvo==2)&&(estilo_cabelo.get(0)==0||estilo_cabelo.get(0)==2)&&
+                    if((calvo!=1)&&(estilo_cabelo.get(0)==0||estilo_cabelo.get(0)==2)&&
                             (estilo_cabelo.get(2)==0||estilo_cabelo.get(2)==2)){
                         System.out.println("Pergunta 6 permitida!!\n");
                         return true;
@@ -437,7 +511,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 7: 
-                    if((calvo==2)&&(estilo_cabelo.get(1)==0||estilo_cabelo.get(1)==2)&&
+                    if((calvo!=1)&&(estilo_cabelo.get(1)==0||estilo_cabelo.get(1)==2)&&
                             (estilo_cabelo.get(0)==0||estilo_cabelo.get(0)==2)){
                         System.out.println("Pergunta 7 permitida!!\n");
                         return true;
@@ -447,7 +521,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 8: 
-                    if((calvo==2)&&(tamanho_cabelo.get(1)==0||tamanho_cabelo.get(1)==2)&&
+                    if((calvo!=1)&&(tamanho_cabelo.get(1)==0||tamanho_cabelo.get(1)==2)&&
                             (tamanho_cabelo.get(2)==0||tamanho_cabelo.get(2)==2)){
                         System.out.println("Pergunta 8 permitida!!\n");
                         return true;
@@ -457,8 +531,8 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 9: 
-                    if((calvo==2)&&(estilo_cabelo.get(0)==0||estilo_cabelo.get(0)==2)&&
-                            (estilo_cabelo.get(2)==0||estilo_cabelo.get(2)==2)){
+                    if((calvo!=1)&&(tamanho_cabelo.get(0)==0||tamanho_cabelo.get(0)==2)&&
+                            (tamanho_cabelo.get(2)==0||tamanho_cabelo.get(2)==2)){
                         System.out.println("Pergunta 9 permitida!!\n");
                         return true;
                     }else{
@@ -467,8 +541,8 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 10: 
-                    if((calvo==2)&&(estilo_cabelo.get(0)==0||estilo_cabelo.get(0)==2)&&
-                            (estilo_cabelo.get(1)==0||estilo_cabelo.get(1)==2)){
+                    if((calvo!=1)&&(tamanho_cabelo.get(0)==0||tamanho_cabelo.get(0)==2)&&
+                            (tamanho_cabelo.get(1)==0||tamanho_cabelo.get(1)==2)){
                         System.out.println("Pergunta 10 permitida!!\n");
                         return true;
                     }else{
@@ -477,7 +551,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 11: 
-                    if((calvo==2)&&(cor_cabelo.get(1)==0||cor_cabelo.get(1)==2)&&
+                    if((calvo!=1)&&(cor_cabelo.get(1)==0||cor_cabelo.get(1)==2)&&
                             (cor_cabelo.get(2)==0||cor_cabelo.get(2)==2)
                             &&(cor_cabelo.get(3)==0||cor_cabelo.get(3)==2)){
                         System.out.println("Pergunta 11 permitida!!\n");
@@ -488,7 +562,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 12: 
-                    if((calvo==2)&&(cor_cabelo.get(0)==0||cor_cabelo.get(0)==2)&&
+                    if((calvo!=1)&&(cor_cabelo.get(0)==0||cor_cabelo.get(0)==2)&&
                             (cor_cabelo.get(2)==0||cor_cabelo.get(2)==2)
                             &&(cor_cabelo.get(3)==0||cor_cabelo.get(3)==2)){
                         System.out.println("Pergunta 12 permitida!!\n");
@@ -499,7 +573,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 13: 
-                    if((calvo==2)&&(cor_cabelo.get(0)==0||cor_cabelo.get(0)==2)&&
+                    if((calvo!=1)&&(cor_cabelo.get(0)==0||cor_cabelo.get(0)==2)&&
                             (cor_cabelo.get(1)==0||cor_cabelo.get(1)==2)
                             &&(cor_cabelo.get(3)==0||cor_cabelo.get(3)==2)){
                         System.out.println("Pergunta 13 permitida!!\n");
@@ -510,7 +584,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 14: 
-                    if((calvo==2)&&(cor_cabelo.get(0)==0||cor_cabelo.get(0)==2)&&
+                    if((calvo!=1)&&(cor_cabelo.get(0)==0||cor_cabelo.get(0)==2)&&
                             (cor_cabelo.get(1)==0||cor_cabelo.get(1)==2)
                             &&(cor_cabelo.get(2)==0||cor_cabelo.get(2)==2)){
                         System.out.println("Pergunta 14 permitida!!\n");
