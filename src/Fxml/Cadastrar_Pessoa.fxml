@@ -54,11 +54,11 @@
             <JFXComboBox fx:id="tom_pele_combobox" layoutX="200.0" layoutY="45.0" prefHeight="18.0" prefWidth="195.0" GridPane.columnIndex="1" GridPane.rowIndex="8" /> 
          </children>
       </GridPane>
-      <JFXButton fx:id="id_salvar" layoutX="347.0" layoutY="485.0" prefHeight="49.0" prefWidth="95.0" text="Salvar">
+      <JFXButton fx:id="id_salvar" layoutX="528.0" layoutY="519.0" prefHeight="49.0" prefWidth="95.0" text="Salvar">
          <font>
             <Font size="21.0" />
          </font></JFXButton>
-      <GridPane layoutX="41.0" layoutY="228.0" prefHeight="247.0" prefWidth="380.0">
+      <GridPane layoutX="20.0" layoutY="205.0" prefHeight="270.0" prefWidth="401.0">
         <columnConstraints>
             <ColumnConstraints hgrow="SOMETIMES" maxWidth="142.0" minWidth="10.0" prefWidth="131.0" />
           <ColumnConstraints hgrow="SOMETIMES" maxWidth="106.0" minWidth="10.0" prefWidth="98.0" />
@@ -74,19 +74,21 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Alto" GridPane.rowIndex="2" />
             <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Barba" GridPane.rowIndex="3" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Professor" GridPane.rowIndex="4" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Professor" GridPane.rowIndex="9" />
             <JFXCheckBox fx:id="id_sim_2" prefHeight="17.0" prefWidth="73.0" text="Sim" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <JFXCheckBox fx:id="id_sim_3" prefHeight="17.0" prefWidth="73.0" text="Sim" GridPane.columnIndex="1" GridPane.rowIndex="2" />
             <JFXCheckBox fx:id="id_sim_4" prefHeight="17.0" prefWidth="73.0" text="Sim" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <JFXCheckBox fx:id="id_sim_5" prefHeight="17.0" prefWidth="73.0" text="Sim" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXCheckBox fx:id="id_sim_5" prefHeight="17.0" prefWidth="73.0" text="Sim" GridPane.columnIndex="1" GridPane.rowIndex="9" />
             <JFXCheckBox fx:id="id_nao_2" prefHeight="17.0" prefWidth="73.0" text="Não" GridPane.columnIndex="2" GridPane.rowIndex="1" />
             <JFXCheckBox fx:id="id_nao_3" prefHeight="17.0" prefWidth="73.0" text="Não" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <JFXCheckBox fx:id="id_nao_4" prefHeight="17.0" prefWidth="73.0" text="Não" GridPane.columnIndex="2" GridPane.rowIndex="3" />
-            <JFXCheckBox fx:id="id_nao_5" prefHeight="17.0" prefWidth="73.0" text="Não" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <JFXCheckBox fx:id="id_nao_5" prefHeight="17.0" prefWidth="73.0" text="Não" GridPane.columnIndex="2" GridPane.rowIndex="9" />
             <JFXCheckBox fx:id="id_sim_1" layoutX="105.0" layoutY="29.0" prefHeight="17.0" prefWidth="73.0" text="Masculino" GridPane.columnIndex="1" />
             <JFXCheckBox fx:id="id_nao_1" layoutX="200.0" layoutY="29.0" prefHeight="17.0" prefWidth="73.0" text="Feminino" GridPane.columnIndex="2" />
             <Text layoutX="10.0" layoutY="48.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo" />
@@ -100,14 +102,20 @@
             <Text layoutX="10.0" layoutY="124.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Piercing" GridPane.rowIndex="7" />
             <JFXCheckBox fx:id="id_sim_8" layoutX="141.0" layoutY="111.0" prefHeight="17.0" prefWidth="73.0" text="Sim" GridPane.columnIndex="1" GridPane.rowIndex="7" />
             <JFXCheckBox fx:id="id_nao_8" layoutX="239.0" layoutY="111.0" prefHeight="17.0" prefWidth="73.0" text="Não" GridPane.columnIndex="2" GridPane.rowIndex="7" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usa Oculos" GridPane.rowIndex="4" />
+            <JFXCheckBox fx:id="id_oculos_sim" text="Sim" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+            <JFXCheckBox fx:id="id_oculos_nao" text="Não" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+            <JFXCheckBox fx:id="id_chapeu_sim" text="Sim" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+            <JFXCheckBox fx:id="id_chapeu_nao" text="Não" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Usa Chapeu/Boné" GridPane.rowIndex="8" />
          </children>
       </GridPane>
-      <ImageView fx:id="id_gif" fitHeight="150.0" fitWidth="200.0" layoutX="467.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="id_gif" fitHeight="270.0" fitWidth="424.0" layoutX="374.0" layoutY="207.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../imagens/1.gif" />
+            <Image url="@../Gifs/gif-do-garoto-menino-dando-joinha.gif" />
          </image>
       </ImageView>
-      <Text fx:id="id_label_disciplinas" layoutX="44.0" layoutY="517.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disciplinas" />
-      <JFXComboBox fx:id="disciplinas_combobox" layoutX="147.0" layoutY="499.0" prefHeight="25.0" prefWidth="186.0" />
+      <Text fx:id="id_label_disciplinas" layoutX="20.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Disciplinas" />
+      <JFXComboBox fx:id="disciplinas_combobox" layoutX="144.0" layoutY="522.0" prefHeight="25.0" prefWidth="186.0" />
    </children>
 </AnchorPane>

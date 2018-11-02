@@ -202,7 +202,7 @@ public class Menu_loginController implements Initializable {
         System.out.println("KK EAE GERENTE DE PROJETO");
         setEstagio_reproducao_audio(0);
         reproduzir_audio(1800, "apresentacao_jasmine.m4a");
-        //reproduzir_audio(8500, "posicione_rosto_centro.m4a");
+        reproduzir_audio(8500, "posicione_rosto_centro.m4a");
         
         boolean verifica_estagio=true;
         

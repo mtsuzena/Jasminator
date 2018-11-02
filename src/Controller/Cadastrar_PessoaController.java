@@ -8,7 +8,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
-import java.io.File;
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
+
+
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -92,11 +94,14 @@ public class Cadastrar_PessoaController implements Initializable {
         label_op_n_per_cor_cabelo.setVisible(false);
         disciplinas_combobox.setVisible(false);
         
+        //System.out.println("INDEX DO COMBO: "+cor_cabelo_combobox.getVisibleRowCount());
+        
         
         id_salvar.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                  if(validacao()){
+                    id_gif.setVisible(true);
                     if(lista_pessoa != null){
                         if(lista_pessoa.size()!=0)
                             pessoa.setCodPessoa((lista_pessoa.get(lista_pessoa.size()-1).getCodPessoa()+1));
@@ -114,10 +119,11 @@ public class Cadastrar_PessoaController implements Initializable {
                     
                     ArquivoTxt.salvaTxt("dados_pessoas.txt", pessoa);
                     
-                    mensagem_salvar();
+                    //mensagem_salvar();
                     limpar_campos();
                     lista_pessoa = Capturar_pessoas();
-                    pessoa= new Pessoa(); 
+                    pessoa= new Pessoa();
+                    
                  }else{
                     id_gif.setVisible(true);
                     //Setar delay na mensagem 
@@ -532,6 +538,42 @@ public class Cadastrar_PessoaController implements Initializable {
         }
         );
         
+        id_oculos_sim.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+            id_oculos_nao.setSelected(false);
+                pessoa.setUsaOculos(true);
+            }
+        }
+                
+        );
+        id_oculos_nao.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                id_oculos_sim.setSelected(false);
+                pessoa.setUsaOculos(false);
+            }
+        }
+        );
+        
+        id_chapeu_sim.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                id_chapeu_nao.setSelected(false);
+                pessoa.setUsaChapeu(true);
+            }
+        }
+                
+        );
+        id_chapeu_nao.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                id_chapeu_sim.setSelected(false);
+                pessoa.setUsaChapeu(false);
+            }
+        }
+        );
+        
            //if(id_sim_5.isSelected() == true && id_nao_5.isSelected() == false){
            
             
@@ -641,6 +683,17 @@ public class Cadastrar_PessoaController implements Initializable {
     @FXML
     private JFXCheckBox id_nao_8;
     
+    @FXML
+    private JFXCheckBox id_oculos_nao;
+    
+    @FXML
+    private JFXCheckBox id_oculos_sim;
+    
+    @FXML
+    private JFXCheckBox id_chapeu_nao;
+    
+    @FXML
+    private JFXCheckBox id_chapeu_sim;
     
     public List<Pessoa> Capturar_pessoas(){
         List<Pessoa> lista_pessoa = new ArrayList();
@@ -747,6 +800,8 @@ public class Cadastrar_PessoaController implements Initializable {
         id_sim_6.setSelected(false);
         id_sim_7.setSelected(false);
         id_sim_8.setSelected(false);
+        id_chapeu_sim.setSelected(false);
+        id_oculos_sim.setSelected(false);
         
         id_nao_1.setSelected(false);
         id_nao_2.setSelected(false);
@@ -756,6 +811,18 @@ public class Cadastrar_PessoaController implements Initializable {
         id_nao_6.setSelected(false);
         id_nao_7.setSelected(false);
         id_nao_8.setSelected(false);
+        id_chapeu_nao.setSelected(false);
+        id_oculos_nao.setSelected(false);
+        
+        
+        label_op_n_per_cor_cabelo.setVisible(false);
+        cor_cabelo_combobox.setVisible(true);
+        cor_cabelo_combobox.getSelectionModel().clearSelection();
+        cor_dos_olhos_combobox.getSelectionModel().clearSelection();
+        estilo_cabelo_combobox.getSelectionModel().clearSelection();
+        disciplinas_combobox.getSelectionModel().clearSelection();
+        tom_pele_combobox.getSelectionModel().clearSelection();
+        periodo_combobox.getSelectionModel().clearSelection();
         
         
         

@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 
@@ -51,6 +52,9 @@ public class Menu_inicialController implements Initializable {
    
     @FXML
     private StackPane id_stackpane;
+    
+    @FXML
+    private ImageView layout_menu_inicial;
 
     @FXML
     private AnchorPane id_anchor;
@@ -79,6 +83,7 @@ public class Menu_inicialController implements Initializable {
        
        @FXML
     private void entrar_administrador() throws IOException {
+        layout_menu_inicial.setVisible(false);
         id_entrar.setVisible(false);
         id_jogar.setVisible(false);
         id_sairjogo.setVisible(false);

@@ -1,25 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="id_stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_inicialController">
    <children>
-      <AnchorPane fx:id="id_anchor" prefHeight="600.0" prefWidth="800.0">
+      <AnchorPane fx:id="id_anchor" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #0a0a0a;">
          <children>
-            <JFXButton fx:id="id_jogar" layoutX="349.0" layoutY="258.0" text="Jogar">
+            <ImageView fx:id="layout_menu_inicial" fitHeight="608.0" fitWidth="819.0" layoutX="12.0">
+               <image>
+                  <Image url="@../Gifs/menu_inicial_test.png" />
+               </image>
+            </ImageView>
+            <JFXButton fx:id="id_jogar" layoutX="267.0" layoutY="291.0" prefHeight="73.0" prefWidth="312.0" text=" ">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="id_entrar" layoutX="236.0" layoutY="329.0" text="Entrar como administrador">
+            <JFXButton fx:id="id_entrar" layoutX="135.0" layoutY="384.0" prefHeight="73.0" prefWidth="550.0" text=" ">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="id_sairjogo" layoutX="302.0" layoutY="427.0" prefHeight="60.0" prefWidth="185.0" text="Sair do jogo">
+            <JFXButton fx:id="id_sairjogo" layoutX="288.0" layoutY="479.0" prefHeight="67.0" prefWidth="287.0" text=" ">
                <font>
                   <Font size="24.0" />
                </font>

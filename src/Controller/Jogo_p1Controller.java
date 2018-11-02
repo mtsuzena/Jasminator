@@ -105,7 +105,7 @@ public class Jogo_p1Controller implements Initializable {
             set_atributos_verificadores(id_pergunta.get(k), resposta);
              k++;
              check();
-            if(k < 38){
+            if(k < 39){
                 boolean fim = set_pergunta();
                 if(fim)
                     check();
@@ -120,7 +120,7 @@ public class Jogo_p1Controller implements Initializable {
             set_atributos_verificadores(id_pergunta.get(k), resposta);
             k++;
             check();
-            if(k < 38){
+            if(k < 39){
                 boolean fim = set_pergunta();
                 if(fim)
                     check();
@@ -131,7 +131,7 @@ public class Jogo_p1Controller implements Initializable {
            
             k++;
             
-            if(k < 38){
+            if(k < 39){
             set_pergunta();
             }else{
                 check();
@@ -190,7 +190,7 @@ public class Jogo_p1Controller implements Initializable {
             
         }
         
-        if(k <= 39){
+        if(k < 39){
             
             lista_pessoas=EliminaPessoas.getPredicaoPessoa_NEW(lista_pessoas, resposta, numero);
             
