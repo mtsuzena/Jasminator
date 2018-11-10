@@ -1,26 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane id="AnchorPane" fx:id="id_pane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Final_JogoController">
    <children>
-      <JFXButton fx:id="id_jogar_nov" layoutX="35.0" layoutY="519.0" prefHeight="49.0" prefWidth="274.0" text=" ">
+      <ImageView fitHeight="610.0" fitWidth="811.0" layoutX="-4.0" layoutY="-6.0">
+         <image>
+            <Image url="@../Layout_telas/Final_jogo_achou.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="id_jogar_nov" layoutX="14.0" layoutY="521.0" prefHeight="69.0" prefWidth="223.0" text=" ">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="id_voltar" layoutX="507.0" layoutY="512.0" prefHeight="62.0" prefWidth="274.0" text=" ">
+      <JFXButton fx:id="id_voltar" layoutX="570.0" layoutY="525.0" prefHeight="62.0" prefWidth="223.0" text=" ">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <Text fx:id="id_label" layoutX="63.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="187.00000271201134">
+      <Text fx:id="id_label1" fill="WHITE" layoutX="222.0" layoutY="104.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A pessoa encontrada foi:  " textAlignment="JUSTIFY" wrappingWidth="376.00000271201134">
          <font>
-            <Font size="15.0" />
+            <Font name="My Font" size="33.0" />
          </font>
       </Text>
+      <Text fx:id="id_label" fill="WHITE" layoutX="222.0" layoutY="151.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="363.00000271201134">
+         <font>
+            <Font name="My Font" size="33.0" />
+         </font>
+      </Text>
+      <ImageView fx:id="img_pessoa_encontrada" fitHeight="260.0" fitWidth="376.0" layoutX="215.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

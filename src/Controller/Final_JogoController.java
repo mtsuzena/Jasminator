@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -23,12 +24,15 @@ public class Final_JogoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-       
+        Image imagem = new Image("/fotos_pessoas/RodrigoJunior2.jpg");
+        img_pessoa_encontrada.setImage(imagem);
+        
         id_label.setText(Jogo_p1Controller.nome);
          voltar();
          recomecar();
     }  
-    
+    @FXML
+    private ImageView img_pessoa_encontrada;
     
     @FXML
     private AnchorPane id_pane;
