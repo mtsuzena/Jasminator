@@ -10,24 +10,24 @@
 
 <AnchorPane id="AnchorPane" fx:id="id_anchor" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_loginController">
    <children>
-      <ImageView fitHeight="615.0" fitWidth="811.0" layoutX="-2.0" layoutY="-6.0">
+      <ImageView fitHeight="610.0" fitWidth="814.0" layoutX="-9.0" layoutY="-9.0">
          <image>
-            <Image url="@../Gifs/tela_login.png" />
+            <Image url="@../Layout_telas/Tela_login.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="id_textusuario" focusColor="TRANSPARENT" layoutX="266.0" layoutY="285.0" maxWidth="314.0" minWidth="181.0" prefHeight="39.0" prefWidth="275.0" unFocusColor="TRANSPARENT" />
-	  <JFXPasswordField fx:id="id_textsenha" focusColor="TRANSPARENT" layoutX="267.0" layoutY="324.0" maxWidth="294.0" minWidth="181.0" prefHeight="39.0" prefWidth="275.0" unFocusColor="#5c1b1b00" />
-      <JFXButton fx:id="id_entrar" layoutX="314.0" layoutY="379.0" prefHeight="45.0" prefWidth="175.0" text=" ">
+      <JFXTextField fx:id="id_textusuario" focusColor="TRANSPARENT" layoutX="261.0" layoutY="243.0" maxWidth="314.0" minWidth="181.0" prefHeight="38.0" prefWidth="275.0" unFocusColor="TRANSPARENT" />
+	  <JFXPasswordField fx:id="id_textsenha" focusColor="TRANSPARENT" layoutX="261.0" layoutY="285.0" maxWidth="294.0" minWidth="181.0" prefHeight="31.0" prefWidth="275.0" unFocusColor="#5c1b1b00" />
+      <JFXButton fx:id="id_entrar" layoutX="312.0" layoutY="349.0" prefHeight="45.0" prefWidth="175.0" text=" ">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
-	  <JFXButton fx:id="id_reconhecimento" layoutX="197.0" layoutY="476.0" prefHeight="38.0" prefWidth="404.0" text=" ">
+	  <JFXButton fx:id="id_reconhecimento" layoutX="201.0" layoutY="477.0" prefHeight="45.0" prefWidth="404.0" text=" ">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
-	  <JFXButton fx:id="id_reconhe_cads" layoutX="201.0" layoutY="534.0" prefHeight="39.0" prefWidth="404.0" text=" ">
+	  <JFXButton fx:id="id_reconhe_cads" layoutX="201.0" layoutY="536.0" prefHeight="45.0" prefWidth="404.0" text=" ">
          <font>
             <Font size="18.0" />
          </font>
@@ -36,6 +36,7 @@
          <font>
             <Font size="15.0" />
          </font>
-      </JFXButton> 
+      </JFXButton>
+      <JFXButton fx:id="btn_cadast_user" layoutX="199.0" layoutY="426.0" prefHeight="39.0" prefWidth="396.0" text=" " /> 
    </children>
 </AnchorPane>

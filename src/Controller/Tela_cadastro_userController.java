@@ -65,13 +65,13 @@ public class Tela_cadastro_userController implements Initializable {
         }
         );
         
-//        btn_cancelar.setOnAction(new EventHandler<ActionEvent>() {
-//            @Override
-//            public void handle(ActionEvent event) {
-//                voltar_tela();
-//            }
-//        }
-//        ); 
+        btn_cancelar.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                voltar_tela();
+            }
+        }
+        ); 
     }
     
     public void finalizar_cadastro(){

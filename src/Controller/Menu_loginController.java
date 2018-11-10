@@ -42,6 +42,10 @@ public class Menu_loginController implements Initializable {
     private Boolean cont = true;
     private String adm_cadastrado = ArquivoTxt.readAdm();
     private Reconhecedor recog=null;
+    
+    @FXML
+    private JFXButton btn_cadast_user;
+    
     private static int estagio_reproducao_audio;
    
     @Override
@@ -127,8 +131,7 @@ public class Menu_loginController implements Initializable {
     @FXML
     private JFXButton id_voltar;
     
-    @FXML
-    private JFXButton btn_cadast_user;
+    
      
     public void voltar_menu_principal()throws IOException {
         id_anchor.setVisible(false);
@@ -140,8 +143,7 @@ public class Menu_loginController implements Initializable {
         
         String usuario =  id_textusuario.getText();
         String senha =  id_textsenha.getText();
-        
-        ArquivoTxt.writeLogin("mateus", "321", "autenticacao_adm.txt");
+       
         ArrayList<String> login = ArquivoTxt.captura_login("autenticacao_adm.txt");
         
         if(((usuario.equals(login.get(1))) && (senha.equals(login.get(0))))){  

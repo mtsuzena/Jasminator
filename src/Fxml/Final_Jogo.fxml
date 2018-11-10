@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane id="AnchorPane" fx:id="id_pane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.Final_JogoController">
+<AnchorPane id="AnchorPane" fx:id="id_pane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Final_JogoController">
    <children>
-      <JFXButton fx:id="id_jogar_nov" layoutX="78.0" layoutY="327.0" prefHeight="42.0" prefWidth="187.0" text="Jogar novamente">
+      <JFXButton fx:id="id_jogar_nov" layoutX="35.0" layoutY="519.0" prefHeight="49.0" prefWidth="274.0" text=" ">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="id_voltar" layoutX="325.0" layoutY="331.0" prefHeight="34.0" prefWidth="176.0" text="Voltar ao menu">
+      <JFXButton fx:id="id_voltar" layoutX="507.0" layoutY="512.0" prefHeight="62.0" prefWidth="274.0" text=" ">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <ImageView fx:id="id_img" fitHeight="174.0" fitWidth="272.0" layoutX="72.0" layoutY="97.0" pickOnBounds="true" preserveRatio="true" />
       <Text fx:id="id_label" layoutX="63.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="187.00000271201134">
          <font>
             <Font size="15.0" />
