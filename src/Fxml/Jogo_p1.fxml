@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" fx:id="id_pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Jogo_p1Controller">
+<AnchorPane id="AnchorPane" fx:id="id_pane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Jogo_p1Controller">
    <children>
-      <JFXButton fx:id="id_sim" layoutX="275.0" layoutY="154.0" text="Sim">
+      <ImageView fitHeight="601.0" fitWidth="813.0" layoutX="-3.0">
+         <image>
+            <Image url="@../Layout_telas/Tela_jogo.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="id_sim" layoutX="569.0" layoutY="391.0" prefHeight="59.0" prefWidth="207.0" text=" ">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="id_nao" layoutX="274.0" layoutY="213.0" text="Não">
+      <JFXButton fx:id="id_nao" layoutX="570.0" layoutY="455.0" prefHeight="59.0" prefWidth="207.0" text=" ">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="id_talvez" layoutX="269.0" layoutY="278.0" text="Talvez">
+      <JFXButton fx:id="id_talvez" layoutX="571.0" layoutY="521.0" prefHeight="59.0" prefWidth="207.0" text=" ">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="id_voltar" layoutX="509.0" layoutY="352.0" text="Voltar" />
-      <Text fx:id="id_label" layoutX="91.0" layoutY="57.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="419.0">
+      <JFXButton fx:id="id_voltar" layoutX="9.0" layoutY="28.0" prefHeight="50.0" prefWidth="128.0" text=" " />
+      <Text fx:id="id_label" layoutX="368.0" layoutY="198.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="407.0">
          <font>
-            <Font size="15.0" />
+            <Font size="29.0" />
          </font>
       </Text>
+      <ImageView fitHeight="341.0" fitWidth="366.0" layoutX="-19.0" layoutY="258.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Layout_telas/Giff_IA_Jogo_Principal_variacoes.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

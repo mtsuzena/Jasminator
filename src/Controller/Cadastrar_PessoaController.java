@@ -37,7 +37,7 @@ import org.apache.commons.lang3.StringUtils;
 public class Cadastrar_PessoaController implements Initializable {
     private List<Pessoa> lista_pessoa = new ArrayList<>(); 
     Pessoa pessoa=null;  
-    private Integer idade_check;
+    
     @FXML
     private GridPane id_grid;
     @FXML
@@ -75,16 +75,29 @@ public class Cadastrar_PessoaController implements Initializable {
     ObservableList<String> lista_disciplinas = FXCollections.observableArrayList("Programação orientada a ódios",
             "Matemática aplicada a compieter", "Arquitetura de compiter","Banco de dados");
     
+    @FXML
+    private ImageView tela_cad_s_dis;
+
+    @FXML
+    private ImageView tela_cad_c_dis;
+    
+    @FXML
+    private JFXComboBox cmb_idade;
+    ObservableList<String> lista_idade = FXCollections.observableArrayList("Menor de 20 anos",
+            "20 anos ou mais");
     
     
     @Override
-    public void initialize(URL url, ResourceBundle rb) {    
-        id_gif.setVisible(false);
+    public void initialize(URL url, ResourceBundle rb) {
+        tela_cad_s_dis.setVisible(true);
+        tela_cad_c_dis.setVisible(false);
+        
         disciplinas_combobox.setVisible(false);
         id_label_disciplinas.setVisible(false);
         
         pessoa= new Pessoa(); 
         lista_pessoa = Capturar_pessoas();
+        cmb_idade.setItems(lista_idade);
         disciplinas_combobox.setItems(lista_disciplinas);
         periodo_combobox.setItems(list_periodos);
         estilo_cabelo_combobox.setItems(list_estilo_cabelo);
@@ -101,7 +114,7 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                  if(validacao()){
-                    id_gif.setVisible(true);
+     
                     if(lista_pessoa != null){
                         if(lista_pessoa.size()!=0)
                             pessoa.setCodPessoa((lista_pessoa.get(lista_pessoa.size()-1).getCodPessoa()+1));
@@ -125,7 +138,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa= new Pessoa();
                     
                  }else{
-                    id_gif.setVisible(true);
+                    
                     //Setar delay na mensagem 
                     Timeline timeline = new Timeline(new KeyFrame(
                     Duration.millis(5000),
@@ -149,6 +162,20 @@ public class Cadastrar_PessoaController implements Initializable {
         );
         
         System.out.println("ComboPeriodo: "+periodo_combobox.getValue());
+        
+        cmb_idade.setOnAction(new EventHandler<ActionEvent>(){  
+            @Override
+            public void handle(ActionEvent event) {
+                if(cmb_idade.getValue().equals("Menor de 20 anos")){
+                    pessoa.setIdade(null);
+                    pessoa.setMaior20(false);
+                }else if(cmb_idade.getValue().equals("20 anos ou mais")){
+                    pessoa.setIdade(null);
+                    pessoa.setMaior20(true);
+                }
+            }
+        });
+        
         
         periodo_combobox.setOnAction(new EventHandler<ActionEvent>(){
             
@@ -463,7 +490,11 @@ public class Cadastrar_PessoaController implements Initializable {
             if(id_sim_5.isSelected()){
                 disciplinas_combobox.setVisible(true);
                 id_label_disciplinas.setVisible(true);
+                tela_cad_s_dis.setVisible(false);
+                tela_cad_c_dis.setVisible(true);
             }else{
+                tela_cad_s_dis.setVisible(true);
+                tela_cad_c_dis.setVisible(false);
                 disciplinas_combobox.setVisible(false);
                 id_label_disciplinas.setVisible(false);
             
@@ -662,14 +693,11 @@ public class Cadastrar_PessoaController implements Initializable {
     @FXML
     private JFXTextField id_nome;
     
-    @FXML
-    private JFXTextField id_idade; 
     
     @FXML
     private JFXButton id_voltar;
     
-    @FXML
-    private ImageView id_gif;
+   
    
     @FXML
     private JFXCheckBox id_sim_7;
@@ -695,6 +723,8 @@ public class Cadastrar_PessoaController implements Initializable {
     @FXML
     private JFXCheckBox id_chapeu_sim;
     
+    
+    
     public List<Pessoa> Capturar_pessoas(){
         List<Pessoa> lista_pessoa = new ArrayList();
         lista_pessoa = ArquivoTxt.capturaTxt("dados_pessoas.txt");
@@ -704,34 +734,19 @@ public class Cadastrar_PessoaController implements Initializable {
     public Boolean validacao(){
        
         Boolean nome = StringUtils.isBlank(id_nome.getText());
-        Boolean idade = StringUtils.isBlank(id_idade.getText());
+        
         Boolean flag = true;
         
         if(nome == true){
                 AnimacaoCampos.vibrar(id_nome);
                 flag = false;
         }
-        if(idade == true){
-            AnimacaoCampos.vibrar(id_idade);
-            flag = false;
-        }
+        
         if(nome == false) {
             pessoa.setNome(id_nome.getText());
         }
         
-       if(idade == false){
-            try{
-             idade_check = Integer.parseInt(id_idade.getText());
-             pessoa.setIdade(idade_check);
-                        if(pessoa.getIdade() >= 20){
-                            pessoa.setMaior20(true);
-                        }else{
-                            pessoa.setMaior20(false);
-                         }   
-            }catch(NumberFormatException e){
-               flag = false;    
-            }
-       }     
+          
         if(id_sim_1.isSelected() == false && id_nao_1.isSelected() == false){
                   AnimacaoCampos.vibrar(id_sim_1);
                   AnimacaoCampos.vibrar(id_nao_1);  
@@ -790,7 +805,6 @@ public class Cadastrar_PessoaController implements Initializable {
     
     public void limpar_campos(){
         id_nome.clear();
-        id_idade.clear();
         
         id_sim_1.setSelected(false);
         id_sim_2.setSelected(false);

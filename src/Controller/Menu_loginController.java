@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -57,6 +58,14 @@ public class Menu_loginController implements Initializable {
         id_entrar.setOnAction((ActionEvent event)->{
             entrar_usuario_senha();
         });
+        
+        btn_cadast_user.setOnAction((ActionEvent event)->{
+            try {
+                GerenciarCadastros("/Fxml/Tela_cadastro_user.fxml");
+            } catch (Exception ex) {
+                Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
       
         id_textusuario.setOnKeyPressed(k ->{
               final KeyCombination ENTER = new KeyCodeCombination(KeyCode.ENTER);
@@ -94,7 +103,8 @@ public class Menu_loginController implements Initializable {
             }
         });
       
-    }    
+    }
+    
     
     @FXML
     private AnchorPane id_anchor;
@@ -116,6 +126,9 @@ public class Menu_loginController implements Initializable {
 
     @FXML
     private JFXButton id_voltar;
+    
+    @FXML
+    private JFXButton btn_cadast_user;
      
     public void voltar_menu_principal()throws IOException {
         id_anchor.setVisible(false);
@@ -127,11 +140,15 @@ public class Menu_loginController implements Initializable {
         
         String usuario =  id_textusuario.getText();
         String senha =  id_textsenha.getText();
-        if(((usuario.equals("admin")) && (senha.equals("123")))){  
+        
+        ArquivoTxt.writeLogin("mateus", "321", "autenticacao_adm.txt");
+        ArrayList<String> login = ArquivoTxt.captura_login("autenticacao_adm.txt");
+        
+        if(((usuario.equals(login.get(1))) && (senha.equals(login.get(0))))){  
             id_textusuario.setText("");
             id_textsenha.setText("");
             try {
-                GerenciarCadastros();
+                GerenciarCadastros("/Fxml/Gerenciar_Dados.fxml");
             } catch (Exception ex) {
                 Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -150,7 +167,7 @@ public class Menu_loginController implements Initializable {
         
         if (recog.reconhece()){
                try {
-                GerenciarCadastros();
+                GerenciarCadastros("/Fxml/Gerenciar_Dados.fxml");
                } catch (Exception ex) {
                 Logger.getLogger(Menu_loginController.class.getName()).log(Level.SEVERE, null, ex);
                }
@@ -161,12 +178,12 @@ public class Menu_loginController implements Initializable {
         
     }
     
-     public void GerenciarCadastros() throws Exception{
+     public void GerenciarCadastros(String caminho) throws Exception{
 //        GerenciarDados gerenciar = new GerenciarDados();
 //        finalizar_stage();
 //        gerenciar.start(new Stage());
        id_anchor.setVisible(false);
-       Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Gerenciar_Dados.fxml"));
+       Parent root = FXMLLoader.load(getClass().getResource(caminho));
        TrocarCenas.trocarcena_direita(root, id_entrar, id_anchor);
        
     }

@@ -221,6 +221,22 @@ public class ArquivoTxt {
         return lista_pessoas;
     }
     
+    public static ArrayList<String> captura_login(String caminho){
+        ArrayList<String> login = new ArrayList<String>();
+        
+        String conteudo = read(caminho);
+        int i=0;
+        while(true){
+            try{ 
+                login.add(0,conteudo.split(";")[i]); // usuario
+                i+=1;
+                login.add(1,conteudo.split(";")[i]); // senha
+            }catch(ArrayIndexOutOfBoundsException e){
+                break;
+            }
+        }
+        return login;
+    }
     
     // Le todo o conteudo do txt e armazena  na String conteudo. A String "conteudo" será tratada no metodo capturaTxt 
     private static String read(String caminho){
@@ -355,7 +371,19 @@ public class ArquivoTxt {
     }
     
     
-    
+    public static boolean writeLogin(String user, String password, String dir){
+        try{
+            FileWriter arq = new FileWriter(dir);
+            PrintWriter gravarArq = new PrintWriter(arq);
+            gravarArq.println(user+";");
+            gravarArq.println(password+";");
+            gravarArq.close();
+            return true;
+        } catch(IOException e){
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
     
     
     
