@@ -24,6 +24,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.media.AudioClip;
 import javafx.scene.text.Text;
 
 
@@ -32,6 +33,7 @@ public class Jogo_p1Controller implements Initializable {
     ArrayList<Integer> id_pergunta_NaoPermitidas = new ArrayList<>();
     ArrayList<String> lista_perguntas = new ArrayList<>();
     List<Pessoa> lista_pessoas = new ArrayList<>();
+    ArrayList<String> lista_sons = ListaPerguntas.retornaLista_sons();
     Integer resposta ;
     Integer k;
     Integer numero;
@@ -272,6 +274,11 @@ public class Jogo_p1Controller implements Initializable {
     }
     
     public boolean set_pergunta(){
+        int index=0;
+        for(Pessoa pessoa : lista_pessoas){
+            System.out.println(index+" - Nome: "+pessoa.getNome());
+            index++;
+        }
         boolean permitido=false;
         while(permitido==false){
             //if(k<39){    
@@ -285,6 +292,7 @@ public class Jogo_p1Controller implements Initializable {
                     k++;
                 }else{
                     id_label.setText(lista_perguntas.get(numero));
+                    reproduzir_audio(0, lista_sons.get(5));  
                 }
                 
                 if(k>38)
@@ -295,6 +303,14 @@ public class Jogo_p1Controller implements Initializable {
            
         }
         return false; 
+    }
+    
+    
+    public void reproduzir_audio(Integer time,String musicFile){
+        musicFile = getClass().getResource("/sons/"+musicFile).toString();
+        AudioClip clip = new AudioClip(musicFile);
+        try { Thread.sleep (time); } catch (InterruptedException ex) {}
+        clip.play();
     }
     
     
@@ -819,23 +835,23 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 38: 
-                    if(lista_pessoas.size() < 4){
-                        for(Pessoa p : lista_pessoas){
-                            String nome= ""+p.getNome().charAt(0)+p.getNome().charAt(1)+p.getNome().charAt(2)+p.getNome().charAt(3)+p.getNome().charAt(4)+p.getNome().charAt(5);
-                            if(nome.equalsIgnoreCase("Carlos")){
+//                    if(lista_pessoas.size() < 4){
+//                        for(Pessoa p : lista_pessoas){
+//                            String nome= ""+p.getNome().charAt(0)+p.getNome().charAt(1)+p.getNome().charAt(2)+p.getNome().charAt(3)+p.getNome().charAt(4)+p.getNome().charAt(5);
+//                            if(nome.equalsIgnoreCase("Carlos")){
                                 System.out.println("Pergunta 38 permitida!!\n");
                                 return true;
-                            }
-                            else{
-                                System.out.println("Pergunta 38 nao permitida!!\n");
-                                id_pergunta_NaoPermitidas.add(38); 
-                            }
-                        }
-                    }else{
-                        System.out.println("Pergunta 38 nao permitida!!\n");
-                        id_pergunta_NaoPermitidas.add(38);  
-                    }
-                    break;
+//                            }
+//                            else{
+//                                System.out.println("Pergunta 38 nao permitida!!\n");
+//                                id_pergunta_NaoPermitidas.add(38); 
+//                            }
+//                        }
+//                    }else{
+//                        System.out.println("Pergunta 38 nao permitida!!\n");
+//                        id_pergunta_NaoPermitidas.add(38);  
+//                    }
+//                    break;
                     
         }
         return false;

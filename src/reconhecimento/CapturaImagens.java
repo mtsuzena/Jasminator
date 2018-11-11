@@ -52,7 +52,6 @@ public class CapturaImagens {
                 // nosso caso é a web cam... se tivesse duas camera no pc teria a 0 e 1 
                 OpenCVFrameGrabber camera = new OpenCVFrameGrabber(0);
 
-                String[] pessoas = {"", "Mateus", "Mateus"};
 
                 try {
                     // inicia a captura das imagens pela web cam

@@ -72,8 +72,8 @@ public class Cadastrar_PessoaController implements Initializable {
     
     @FXML
     private JFXComboBox disciplinas_combobox;
-    ObservableList<String> lista_disciplinas = FXCollections.observableArrayList("Programação orientada a ódios",
-            "Matemática aplicada a compieter", "Arquitetura de compiter","Banco de dados");
+    ObservableList<String> lista_disciplinas = FXCollections.observableArrayList("Programação orientada a objetos",
+            "Matemática aplicada a computação", "Arquitetura de computadores","Banco de dados");
     
     @FXML
     private ImageView tela_cad_s_dis;
@@ -167,7 +167,7 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if(cmb_idade.getValue().equals("Menor de 20 anos")){
-                    pessoa.setIdade(null);
+                    pessoa.setIdade(0);
                     pessoa.setMaior20(false);
                 }else if(cmb_idade.getValue().equals("20 anos ou mais")){
                     pessoa.setIdade(null);
