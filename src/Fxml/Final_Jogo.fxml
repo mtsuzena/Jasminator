@@ -35,5 +35,10 @@
          </font>
       </Text>
       <ImageView fx:id="img_pessoa_encontrada" fitHeight="260.0" fitWidth="376.0" layoutX="215.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="130.0" fitWidth="165.0" layoutX="339.0" layoutY="467.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Layout_telas/Giff_IA_Jogo_Principal_variacoes.gif" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

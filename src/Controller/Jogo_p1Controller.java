@@ -37,6 +37,7 @@ public class Jogo_p1Controller implements Initializable {
     Integer resposta ;
     Integer k;
     Integer numero;
+    private boolean reproduzir_audio;
     
     // ####### INICIO - Atributos para pertmissoes de perguntas
     // ## 0 - Pergunta nao foi feita
@@ -81,6 +82,9 @@ public class Jogo_p1Controller implements Initializable {
             
     //
             private boolean isMasculino;
+            private int isProfessor; // 0 - neutro 0--> pode fazer pergunta de aluno e prof
+                                     // 1 - nao pode fazer pergunta de aluno
+                                     // 2 - nao pode fazer perguntar de prof
     
     // ## OBS: Todos os atributos para permissao serao inciados com 0
     // ####### FIM - Atributos para pertmissoes de perguntas
@@ -95,6 +99,7 @@ public class Jogo_p1Controller implements Initializable {
         lista_perguntas = ListaPerguntas.retornaLista_New();
         embaralhar_pergunta();
         k=0;
+        reproduzir_audio=true;
         
         set_pergunta();
         
@@ -189,7 +194,7 @@ public class Jogo_p1Controller implements Initializable {
         
         if(k >38){
             final_jogo();
-            
+            reproduzir_audio=false;
         }
         
         if(k < 39){
@@ -201,7 +206,7 @@ public class Jogo_p1Controller implements Initializable {
             }
  
             if(lista_pessoas.size()==1){
-                
+                reproduzir_audio=false;
                 Parent root;
                 try {
                     nome = lista_pessoas.get(0).getNome();
@@ -240,6 +245,7 @@ public class Jogo_p1Controller implements Initializable {
     public void ini_atributos_verificadores(){
         calvo=0;
         
+        isProfessor=0;
         isMasculino=true;
         
         periodo_feito=0;
@@ -292,7 +298,8 @@ public class Jogo_p1Controller implements Initializable {
                     k++;
                 }else{
                     id_label.setText(lista_perguntas.get(numero));
-                    reproduzir_audio(0, lista_sons.get(5));  
+                    if(reproduzir_audio)
+                        reproduzir_audio(0, lista_sons.get(5));  
                 }
                 
                 if(k>38)
@@ -319,16 +326,19 @@ public class Jogo_p1Controller implements Initializable {
                 case 0:
                     if(resposta==1){
                         periodo.add(0,1);
+                        isProfessor=2;
                     }
                     break;
                 case 1:
                     if(resposta==1){
                         periodo.add(1,1);
+                        isProfessor=2;
                     }
                     break;
                 case 2: 
                     if(resposta==1){
                         periodo.add(2,1);
+                        isProfessor=2;
                     }
                     break;
                 case 3:                
@@ -439,6 +449,9 @@ public class Jogo_p1Controller implements Initializable {
                 case 24:
                     break;
                 case 25:
+                    if(resposta==1){
+                        isProfessor=1;
+                    }
                     break;
                 case 26:
                     break;
@@ -453,20 +466,24 @@ public class Jogo_p1Controller implements Initializable {
                 case 31: 
                     if(resposta==1){
                         disc_lecionada.add(0,1);
+                        isProfessor=1;
                     }
                     break;
                 case 32: 
                     if(resposta==1){
+                        isProfessor=1;
                         disc_lecionada.add(1,1);
                     }
                     break;
                 case 33: 
                     if(resposta==1){
+                        isProfessor=1;
                         disc_lecionada.add(2,1);
                     }
                     break;
                 case 34: 
                     if(resposta==1){
+                        isProfessor=1;
                         disc_lecionada.add(3,1);
                     }
                     break;
@@ -483,29 +500,32 @@ public class Jogo_p1Controller implements Initializable {
     private boolean permitir_pergunta(Integer id_pergunta){
         switch(id_pergunta){
                 case 0:
-                    if(((periodo.get(1)==0)||(periodo.get(1)==2))&&((periodo.get(2)==0)||(periodo.get(2)==2))){
+                    if(isProfessor!=1&&((periodo.get(1)==0)||(periodo.get(1)==2))&&((periodo.get(2)==0)||(periodo.get(2)==2))){
                         System.out.println("Pergunta 0 permitida!!\n");
                         return true;
                     }else{
-                        System.out.println("Pergunta 0 nao permitida!!\n");
+                        System.out.println("Pergunta 0 nao permitida!!"+"isProfessor: "+isProfessor+"\n");
+                        System.out.println("isProfessor: "+isProfessor);
                         id_pergunta_NaoPermitidas.add(0);
                     }
                     break;
                 case 1:
-                    if(((periodo.get(0)==0)||(periodo.get(0)==2))&&((periodo.get(2)==0)||(periodo.get(2)==2))){
+                    if(isProfessor!=1&&((periodo.get(0)==0)||(periodo.get(0)==2))&&((periodo.get(2)==0)||(periodo.get(2)==2))){
                         System.out.println("Pergunta 1 permitida!!\n");
                         return true;
                     }else{
-                        System.out.println("Pergunta 1 nao permitida!!\n");
+                        System.out.println("Pergunta 1 nao permitida!!"+"isProfessor: "+isProfessor+"\n");
+                       
                         id_pergunta_NaoPermitidas.add(1);
                     }
                     break;
                 case 2: 
-                    if((periodo.get(0)==0||periodo.get(0)==2)&&(periodo.get(1)==0||periodo.get(1)==2)){
+                    if(isProfessor!=1&&(periodo.get(0)==0||periodo.get(0)==2)&&(periodo.get(1)==0||periodo.get(1)==2)){
                         System.out.println("Pergunta 2 permitida!!\n");
                         return true;
                     }else{
-                        System.out.println("Pergunta 2 nao permitida!!\n");
+                        System.out.println("Pergunta 2 nao permitida!!"+"isProfessor: "+isProfessor+"\n");
+                       
                         id_pergunta_NaoPermitidas.add(2);
                     }
                     break;
@@ -688,11 +708,20 @@ public class Jogo_p1Controller implements Initializable {
                     System.out.println("Pergunta 23 permitida!!\n");
                     return true;
                 case 24:
-                    System.out.println("Pergunta 24 permitida!!\n");
-                    return true;
+                    if(isProfessor!=2){    
+                        System.out.println("Pergunta 24 permitida!!\n");
+                        System.out.println("isProfessor: "+isProfessor);
+                        return true;
+                    }
+                    break;
                 case 25:
-                    System.out.println("Pergunta 25 permitida!!\n");
-                    return true;
+                    if(isProfessor!=2){
+                        System.out.println("Pergunta 25 permitida!!\n");
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 25 NAO permitida!!  isProfessor: "+isProfessor+"\n");
+                    }
+                    break;
                 case 26:
                     System.out.println("Pergunta 26 permitida!!\n");
                     return true;
@@ -738,7 +767,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 31: 
-                    if((disc_lecionada.get(1)==0||disc_lecionada.get(1)==2)&&
+                    if(isProfessor!=2&&(disc_lecionada.get(1)==0||disc_lecionada.get(1)==2)&&
                             (disc_lecionada.get(2)==0||disc_lecionada.get(2)==2)&&
                             (disc_lecionada.get(3)==0||disc_lecionada.get(3)==2)){
                         System.out.println("Pergunta 31 permitida!!\n");
@@ -749,7 +778,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 32: 
-                    if((disc_lecionada.get(0)==0||disc_lecionada.get(0)==2)&&
+                    if(isProfessor!=2&&(disc_lecionada.get(0)==0||disc_lecionada.get(0)==2)&&
                             (disc_lecionada.get(2)==0||disc_lecionada.get(2)==2)&&
                             (disc_lecionada.get(3)==0||disc_lecionada.get(3)==2)){
                         System.out.println("Pergunta 32 permitida!!\n");
@@ -760,7 +789,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 33: 
-                    if((disc_lecionada.get(0)==0||disc_lecionada.get(0)==2)&&
+                    if(isProfessor!=2&&(disc_lecionada.get(0)==0||disc_lecionada.get(0)==2)&&
                             (disc_lecionada.get(1)==0||disc_lecionada.get(1)==2)&&
                             (disc_lecionada.get(3)==0||disc_lecionada.get(3)==2)){
                         System.out.println("Pergunta 33 permitida!!\n");
@@ -771,7 +800,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 34: 
-                    if((disc_lecionada.get(0)==0||disc_lecionada.get(0)==2)&&
+                    if(isProfessor!=2&&(disc_lecionada.get(0)==0||disc_lecionada.get(0)==2)&&
                             (disc_lecionada.get(1)==0||disc_lecionada.get(1)==2)&&
                             (disc_lecionada.get(2)==0||disc_lecionada.get(2)==2)){
                         System.out.println("Pergunta 34 permitida!!\n");
