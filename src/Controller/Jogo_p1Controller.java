@@ -85,6 +85,7 @@ public class Jogo_p1Controller implements Initializable {
             private int isProfessor; // 0 - neutro 0--> pode fazer pergunta de aluno e prof
                                      // 1 - nao pode fazer pergunta de aluno
                                      // 2 - nao pode fazer perguntar de prof
+            private boolean isLeciona;
     
     // ## OBS: Todos os atributos para permissao serao inciados com 0
     // ####### FIM - Atributos para pertmissoes de perguntas
@@ -245,6 +246,7 @@ public class Jogo_p1Controller implements Initializable {
     public void ini_atributos_verificadores(){
         calvo=0;
         
+        isLeciona=false;
         isProfessor=0;
         isMasculino=true;
         
@@ -435,7 +437,7 @@ public class Jogo_p1Controller implements Initializable {
                     break;
                 case 19: 
                     if(resposta==1){
-                        tom_olho.add(1,1);
+                        tom_olho.add(2,1);
                     }
                     break;
                 case 20:
@@ -467,24 +469,28 @@ public class Jogo_p1Controller implements Initializable {
                     if(resposta==1){
                         disc_lecionada.add(0,1);
                         isProfessor=1;
+                        isLeciona=true;
                     }
                     break;
                 case 32: 
                     if(resposta==1){
                         isProfessor=1;
                         disc_lecionada.add(1,1);
+                        isLeciona=true;
                     }
                     break;
                 case 33: 
                     if(resposta==1){
                         isProfessor=1;
                         disc_lecionada.add(2,1);
+                        isLeciona=true;
                     }
                     break;
                 case 34: 
                     if(resposta==1){
                         isProfessor=1;
                         disc_lecionada.add(3,1);
+                        isLeciona=true;
                     }
                     break;
                 case 35: 
@@ -715,7 +721,7 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 25:
-                    if(isProfessor!=2){
+                    if(isProfessor!=2&&isLeciona==false){
                         System.out.println("Pergunta 25 permitida!!\n");
                         return true;
                     }else{
