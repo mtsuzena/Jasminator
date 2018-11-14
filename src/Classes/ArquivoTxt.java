@@ -291,7 +291,7 @@ public class ArquivoTxt {
         }
     }
     
-    private static boolean Write(String caminho, List<Pessoa> lista_pessoas){
+    public static boolean Write(String caminho, List<Pessoa> lista_pessoas){
         try{
             FileWriter arq = new FileWriter(caminho);
             PrintWriter gravarArq = new PrintWriter(arq);

@@ -24,6 +24,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 
 public class Gerenciar_DadosController implements Initializable {
@@ -38,6 +40,10 @@ public class Gerenciar_DadosController implements Initializable {
                voltar_login();
         });
         
+        btn_alterar.setOnAction((ActionEvent event)->{
+            alterar();
+        });
+        
         id_cadastrar.setOnAction((ActionEvent event )->{
             try {
                 cadastrar();
@@ -46,8 +52,12 @@ public class Gerenciar_DadosController implements Initializable {
             }
         });
         
+//        tabela.getSelectionModel().selectedItemProperty().addListener((obsPerson,oldValue, newValue)-> {
+//            Tela_de_alterar_pessoasController.carregar_dados(selecionar_item(newValue));
+//        });
+        
         tabela.getSelectionModel().selectedItemProperty().addListener((obsPerson,oldValue, newValue)-> {
-            selecionar_item(newValue);
+            selecionar_item_2(newValue);
         });
                 
         id_remover.setOnAction(new EventHandler<ActionEvent>() {
@@ -71,8 +81,11 @@ public class Gerenciar_DadosController implements Initializable {
     
     @FXML
     private JFXButton id_remover;    
-     @FXML
+    @FXML
     private JFXButton id_ok;
+     
+    @FXML
+    private JFXButton btn_alterar;
       
     @FXML
     private JFXButton id_cadastrar;
@@ -106,6 +119,21 @@ public class Gerenciar_DadosController implements Initializable {
         
     }
     
+    public void alterar(){
+        try{
+            PessoaTela pessoa = tabela.getSelectionModel().getSelectedItem(); 
+            Tela_de_alterar_pessoasController.cod = pessoa.getCod();
+            Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Tela_de_alterar_pessoas.fxml"));
+            TrocarCenas.trocarcena_baixo(root,btn_alterar, id_anchor);
+        }catch(Exception e){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Selecione alguém por favor caraiooo!");
+            alert.setTitle(":(");
+            alert.show();
+        }
+        
+    }
+    
     public void cadastrar() throws IOException{
 //       List<Pessoa> p2 = new ArrayList<>();
 //       p2 = ArquivoTxt.capturaTxt("dados_pessoas.txt");
@@ -114,7 +142,6 @@ public class Gerenciar_DadosController implements Initializable {
         TrocarCenas.trocarcena_baixo(root, id_cadastrar, id_anchor);
     }
    
-    
     
     public void excluirCadastro(){
       
@@ -125,18 +152,29 @@ public class Gerenciar_DadosController implements Initializable {
             recarregar();
             carregarDados();
         }else{
+            Image image = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Emojione_1F62D.svg/64px-Emojione_1F62D.svg.png");
+            ImageView imageView = new ImageView(image);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Não há ninguém cadastrado!");
+            alert.setHeaderText("Seleciona ai ku!");
             alert.setTitle(":(");
-            alert.show();
+            alert.setGraphic(imageView);
+            alert.showAndWait();
         }
     }
     
-    public void selecionar_item(PessoaTela pessoa){
+//    public Integer selecionar_item(PessoaTela pessoa){
+//
+//         return pessoa.getCod();
+//    }
+    
+    public void selecionar_item_2(PessoaTela pessoa){
        if(pessoa != null){   
         System.out.println("kk eae ");
        }
     }
+
+    
+    
     
     public void recarregar(){
         tabela.getItems().clear();

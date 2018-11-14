@@ -14,7 +14,7 @@
         </columns>
       </TableView>
       <JFXButton fx:id="id_cadastrar" layoutX="142.0" layoutY="546.0" prefHeight="60.0" prefWidth="121.0" text="Cadastrar" />
-      <JFXButton layoutX="263.0" layoutY="546.0" prefHeight="60.0" prefWidth="111.0" text="Alterar" />
+      <JFXButton fx:id="btn_alterar" layoutX="263.0" layoutY="546.0" prefHeight="60.0" prefWidth="111.0" text="Alterar" />
       <JFXButton fx:id="id_remover" layoutX="374.0" layoutY="546.0" prefHeight="60.0" prefWidth="111.0" text="Remover" />
       <JFXButton fx:id="id_voltar" layoutX="500.0" layoutY="546.0" prefHeight="60.0" prefWidth="93.0" text="Voltar" />
    </children>

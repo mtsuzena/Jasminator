@@ -724,6 +724,12 @@ public class Cadastrar_PessoaController implements Initializable {
     private JFXCheckBox id_chapeu_sim;
     
     
+    public void checks_box(){
+        
+    }
+    
+    
+   
     
     public List<Pessoa> Capturar_pessoas(){
         List<Pessoa> lista_pessoa = new ArrayList();
@@ -778,7 +784,40 @@ public class Cadastrar_PessoaController implements Initializable {
                   flag = false;
        
         }
-              
+        
+        if(periodo_combobox.getSelectionModel().getSelectedItem()==null){
+            System.out.println("SELECIONAR CAMPO PERIODO");
+            flag = false;
+        }
+        if(estilo_cabelo_combobox.getSelectionModel().getSelectedItem()==null){
+            System.out.println("SELECIONAR CAMPO ESTILO CABELO");
+            flag = false;
+        }
+        if(cor_cabelo_combobox.getSelectionModel().getSelectedItem()==null){
+            System.out.println("SELECIONAR CAMPO COR CABELO");
+            flag = false;
+        }
+        if(cor_dos_olhos_combobox.getSelectionModel().getSelectedItem()==null){
+            System.out.println("SELECIONAR CAMPO COR OLHOS");
+            flag = false;
+        }
+        if(tom_pele_combobox.getSelectionModel().getSelectedItem()==null){
+            System.out.println("SELECIONAR CAMPO TOM PELE");
+            flag = false;
+        }
+        if(disciplinas_combobox.getSelectionModel().getSelectedItem() == null && id_sim_5.isSelected()){
+            System.out.println("SELECIONAR CAMPO A DISCIPLINA!");
+            flag = false;
+        }
+        
+               cor_cabelo_combobox.setVisible(true);
+        cor_cabelo_combobox.getSelectionModel().clearSelection();
+        cor_dos_olhos_combobox.getSelectionModel().clearSelection();
+        estilo_cabelo_combobox.getSelectionModel().clearSelection();
+        disciplinas_combobox.getSelectionModel().clearSelection();
+        tom_pele_combobox.getSelectionModel().clearSelection();
+        periodo_combobox.getSelectionModel().clearSelection();
+        
         if(flag){
             return true;
         }else{  
