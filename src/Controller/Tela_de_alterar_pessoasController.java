@@ -131,11 +131,7 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
                     checkb_nao_barba.setSelected(true);
                 }
 
-                if (lista_pessoas.get(i).isAlto()) {
-                    checkb_sim_alto.setSelected(true);
-                } else {
-                    checkb_nao_alto.setSelected(true);
-                }
+               
 
                 if (lista_pessoas.get(i).isUsaRoupaSocial()) {
                     checkb_sim_roupasocial.setSelected(true);
@@ -208,11 +204,11 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
                     cmb_cor_olhos.getSelectionModel().select(2);
                 }
 
-                if (lista_pessoas.get(i).isTomPeleEscura()) {
-                    cmb_tom_pele.getSelectionModel().select(0);
-                } else if (lista_pessoas.get(i).isTomPeleClaro()) {
-                    cmb_tom_pele.getSelectionModel().select(1);
-                }
+//                if (lista_pessoas.get(i).isTomPeleEscura()) {
+//                    cmb_tom_pele.getSelectionModel().select(0);
+//                } else if (lista_pessoas.get(i).isTomPeleClaro()) {
+//                    cmb_tom_pele.getSelectionModel().select(1);
+//                }
 
             }
         }
@@ -271,7 +267,7 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
             @Override
             public void handle(ActionEvent event) {
                 checkb_nao_alto.setSelected(false);
-                lista_pessoas.get(cod2).setAlto(true);
+//                lista_pessoas.get(cod2).setAlto(true);
             }
         });
 
@@ -279,7 +275,7 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
             @Override
             public void handle(ActionEvent event) {
                 checkb_sim_alto.setSelected(false);
-                lista_pessoas.get(cod2).setAlto(false);
+//                lista_pessoas.get(cod2).setAlto(false);
             }
         }
         );
@@ -649,13 +645,13 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
             public void handle(ActionEvent event) {
                 if (cmb_tom_pele.getValue().equals("Escura")) {
 
-                    lista_pessoas.get(cod2).setTomPeleClaro(false);
-                    lista_pessoas.get(cod2).setTomPeleEscura(true);
+//                    lista_pessoas.get(cod2).setTomPeleClaro(false);
+//                    lista_pessoas.get(cod2).setTomPeleEscura(true);
 
                 } else if (cmb_tom_pele.getValue().equals("Claro")) {
 
-                    lista_pessoas.get(cod2).setTomPeleClaro(true);
-                    lista_pessoas.get(cod2).setTomPeleEscura(true);
+//                    lista_pessoas.get(cod2).setTomPeleClaro(true);
+//                    lista_pessoas.get(cod2).setTomPeleEscura(true);
 
                 }
             }

@@ -9,12 +9,15 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
+import java.io.IOException;
 
 
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
@@ -68,29 +71,32 @@ public class Cadastrar_PessoaController implements Initializable {
     
     @FXML
     private JFXComboBox tom_pele_combobox;
-    ObservableList<String> lista_tom_pele = FXCollections.observableArrayList("Escura","Claro");
+    ObservableList<String> lista_tom_pele = FXCollections.observableArrayList("Branca","Pardo","Negro");
+    
     
     @FXML
     private JFXComboBox disciplinas_combobox;
     ObservableList<String> lista_disciplinas = FXCollections.observableArrayList("Programação orientada a objetos",
-            "Matemática aplicada a computação", "Arquitetura de computadores","Banco de dados");
+            "Matemática aplicada a computação", "Arquitetura de computadores","Banco de dados","Não listado");
     
-    @FXML
-    private ImageView tela_cad_s_dis;
-
-    @FXML
-    private ImageView tela_cad_c_dis;
+    
     
     @FXML
     private JFXComboBox cmb_idade;
     ObservableList<String> lista_idade = FXCollections.observableArrayList("Menor de 20 anos",
             "20 anos ou mais");
     
+    //Cmb altura implement
+     @FXML
+    private JFXComboBox cmb_alturas;
+    ObservableList<String> lista_alturas = FXCollections.observableArrayList("Entre 1.50 e 1.69",
+            "Entre 1.70 e 1.79","Entre 1.80 e 1.90");
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        tela_cad_s_dis.setVisible(true);
-        tela_cad_c_dis.setVisible(false);
+        
         
         disciplinas_combobox.setVisible(false);
         id_label_disciplinas.setVisible(false);
@@ -98,6 +104,7 @@ public class Cadastrar_PessoaController implements Initializable {
         pessoa= new Pessoa(); 
         lista_pessoa = Capturar_pessoas();
         cmb_idade.setItems(lista_idade);
+        cmb_alturas.setItems(lista_alturas);
         disciplinas_combobox.setItems(lista_disciplinas);
         periodo_combobox.setItems(list_periodos);
         estilo_cabelo_combobox.setItems(list_estilo_cabelo);
@@ -136,7 +143,14 @@ public class Cadastrar_PessoaController implements Initializable {
                     limpar_campos();
                     lista_pessoa = Capturar_pessoas();
                     pessoa= new Pessoa();
-                    
+                    Parent root;
+                     try {
+                         root = FXMLLoader.load(getClass().getResource("/Fxml/Gerenciar_Dados.fxml"));
+                          TrocarCenas.trocarcena_direita(root, id_voltar, id_pane); 
+                     } catch (IOException ex) {
+                         Logger.getLogger(Cadastrar_PessoaController.class.getName()).log(Level.SEVERE, null, ex);
+                     }
+                   
                  }else{
                     
                     //Setar delay na mensagem 
@@ -152,8 +166,11 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event){
                try{
+                  
                 Parent root = FXMLLoader.load(getClass().getResource("/Fxml/Gerenciar_Dados.fxml"));
                 TrocarCenas.trocarcena_direita(root, id_voltar, id_pane); 
+               
+                id_pane.getChildren().clear();
                }catch(Exception e){
                    e.printStackTrace();
                }
@@ -172,6 +189,20 @@ public class Cadastrar_PessoaController implements Initializable {
                 }else if(cmb_idade.getValue().equals("20 anos ou mais")){
                     pessoa.setIdade(null);
                     pessoa.setMaior20(true);
+                }
+            }
+        });
+        
+        
+         cmb_alturas.setOnAction(new EventHandler<ActionEvent>(){  
+            @Override
+            public void handle(ActionEvent event) {
+                if(cmb_alturas.getValue().equals("Entre 1.50 e 1.69")){
+                    System.out.println("Entre 1.50 e 1.69 selecionado");
+                }else if(cmb_alturas.getValue().equals("Entre 1.70 e 1.79")){
+                    System.out.println("Entre 1.70 e 1.79 selecionado");
+                }else if(cmb_alturas.getValue().equals("Entre 1.80 e 1.90")){
+                    System.out.println("Entre 1.80 e 1.90 selecionado");
                 }
             }
         });
@@ -334,6 +365,7 @@ public class Cadastrar_PessoaController implements Initializable {
         
         System.out.println("ComboCorCabelo: "+cor_cabelo_combobox.getValue());
         cor_cabelo_combobox.setOnAction(new EventHandler<ActionEvent>(){
+            
             @Override
             public void handle(ActionEvent event) {
                 if(cor_cabelo_combobox.getValue().equals("Loiro")){
@@ -388,17 +420,21 @@ public class Cadastrar_PessoaController implements Initializable {
         tom_pele_combobox.setOnAction(new EventHandler<ActionEvent> () {
             @Override
             public void handle(ActionEvent event) {
-               if(tom_pele_combobox.getValue().equals("Escura")){
+               if(tom_pele_combobox.getValue().equals("Branca")){
                    
                    pessoa.setTomPeleClaro(false);
                    pessoa.setTomPeleEscura(true);
                    
                    
-               }else if(tom_pele_combobox.getValue().equals("Claro")){
+               }else if(tom_pele_combobox.getValue().equals("Pardo")){
                   
                    pessoa.setTomPeleClaro(true);
                    pessoa.setTomPeleEscura(false);
                    
+               }
+               else if(tom_pele_combobox.getValue().equals("Negro")){
+                   System.out.println("PAU NO CU DESTE PROJETO DOCARAIO");
+                   //MECHI AUQI
                }
             }
         });
@@ -407,7 +443,7 @@ public class Cadastrar_PessoaController implements Initializable {
      
          
        
-      //Pergunta 1
+      //Pergunta 1 - CHECKBOX SEXO
         id_sim_1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -425,7 +461,7 @@ public class Cadastrar_PessoaController implements Initializable {
         }
         );
         
-       //Pergunta 2
+       //Pergunta 2 = CHECK BOX USA ROUPA SOCIAL
        id_sim_2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -445,7 +481,8 @@ public class Cadastrar_PessoaController implements Initializable {
             }
         }
         );
-        //Pergunta 3
+        
+        //Pergunta 3 = ALTO CHECKBOX - MAS VAI SAIR FORA 
         id_sim_3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -463,7 +500,8 @@ public class Cadastrar_PessoaController implements Initializable {
             }
         }
         );
-        //Pergunta 4
+        
+        //Pergunta 4 - CHECKBOX USA BARBA
         id_sim_4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -481,7 +519,8 @@ public class Cadastrar_PessoaController implements Initializable {
             }
         }
         );
-        //Pergunta 5
+        
+        //Pergunta 5 - CHECK BOX PROFESSOR
         id_sim_5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -490,11 +529,9 @@ public class Cadastrar_PessoaController implements Initializable {
             if(id_sim_5.isSelected()){
                 disciplinas_combobox.setVisible(true);
                 id_label_disciplinas.setVisible(true);
-                tela_cad_s_dis.setVisible(false);
-                tela_cad_c_dis.setVisible(true);
+                
             }else{
-                tela_cad_s_dis.setVisible(true);
-                tela_cad_c_dis.setVisible(false);
+             
                 disciplinas_combobox.setVisible(false);
                 id_label_disciplinas.setVisible(false);
             
@@ -508,16 +545,19 @@ public class Cadastrar_PessoaController implements Initializable {
             public void handle(ActionEvent event) {
             id_sim_5.setSelected(false);
             pessoa.setProfessor(false);
-            
+             disciplinas_combobox.setVisible(false);
+                id_label_disciplinas.setVisible(false);
             }
         }
         );
-        //Pergunta 6
+        
+        
+        //Pergunta 6 - JOGA LOL CHECKBOX
         id_sim_6.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
             id_nao_6.setSelected(false);
-                pessoa.setMasculino(true);
+                //pessoa.setMasculino(true);  WTFFFFFFFFFFFFFFFF MANO GERENTE DE PROJETO TA MUITO INFELIZ 
                 pessoa.setJogaLOL(true);
             }
         }
@@ -531,7 +571,8 @@ public class Cadastrar_PessoaController implements Initializable {
             }
         }
         );
-        //Pergunto 7
+        
+        //Pergunta 7 - JOGA CS GO CHECKBOX
         id_sim_7.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -551,6 +592,7 @@ public class Cadastrar_PessoaController implements Initializable {
         }
         );
         
+        //CHECKBOX - TEM PIERCING?
          id_sim_8.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -605,6 +647,49 @@ public class Cadastrar_PessoaController implements Initializable {
         }
         );
         
+        checkb_sim_depedencia.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                checkb_nao_depedencia.setSelected(false);
+            }
+        }
+        );
+        checkb_nao_depedencia.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                checkb_sim_depedencia.setSelected(false);
+            }
+        }
+        );
+        
+        checkb_sim_aparelho.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               checkb_nao_aparelho.setSelected(false);
+            }
+        }
+        );
+        checkb_nao_aparelho.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               checkb_sim_aparelho.setSelected(false);
+            }
+        }
+        );
+        checkb_sim_tatuagem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               checkb_nao_tatuagem.setSelected(false);
+            }
+        }
+        );
+        checkb_nao_tatuagem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+               checkb_sim_tatuagem.setSelected(false);
+            }
+        }
+        );
            //if(id_sim_5.isSelected() == true && id_nao_5.isSelected() == false){
            
             
@@ -612,12 +697,12 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
             
-                    if(disciplinas_combobox.getValue().equals("Programação orientada a ódios")){
+                    if(disciplinas_combobox.getValue().equals("Programação orientada a objetos")){
                         pessoa.setLecionaPOO(true);
                         pessoa.setLecionaAC(false);
                         pessoa.setLecionaBD(false);
                         pessoa.setLecionaMAC(false);
-                    }else if(disciplinas_combobox.getValue().equals("Matemática aplicada a compieter")){
+                    }else if(disciplinas_combobox.getValue().equals("Matemática aplicada a computação")){
                         pessoa.setLecionaPOO(false);
                         pessoa.setLecionaAC(false);
                         pessoa.setLecionaBD(false);
@@ -627,12 +712,18 @@ public class Cadastrar_PessoaController implements Initializable {
                         pessoa.setLecionaAC(false);
                         pessoa.setLecionaBD(true);
                         pessoa.setLecionaMAC(false);
-                    }else if(disciplinas_combobox.getValue().equals("Arquitetura de compiter")){
+                    }else if(disciplinas_combobox.getValue().equals("Arquitetura de computadores")){
                         pessoa.setLecionaPOO(false);
                         pessoa.setLecionaAC(true);
                         pessoa.setLecionaBD(false);
                         pessoa.setLecionaMAC(false);
                     }   
+                    else if(disciplinas_combobox.getValue().equals("Não listado")){
+                        System.out.println("Selecionado outras");
+                        //MECHI AQUI
+                    }
+            
+            
             }
             
         });
@@ -644,21 +735,29 @@ public class Cadastrar_PessoaController implements Initializable {
       
     }
 
-    @FXML
-    private Text id_label_disciplinas;
-
-    
-    @FXML
+  @FXML
     private AnchorPane id_pane;
-    
+
+    @FXML
+    private JFXButton id_voltar;
+
     @FXML
     private JFXButton id_salvar;
 
     @FXML
-    private JFXCheckBox id_nao_1;
+    private Text id_label_disciplinas;
+
+      @FXML
+    private JFXCheckBox id_sim_3;
 
     @FXML
+    private JFXCheckBox id_nao_3;
+    
+    @FXML
     private JFXCheckBox id_sim_1;
+
+    @FXML
+    private JFXCheckBox id_nao_1;
 
     @FXML
     private JFXCheckBox id_sim_2;
@@ -667,66 +766,72 @@ public class Cadastrar_PessoaController implements Initializable {
     private JFXCheckBox id_nao_2;
 
     @FXML
-    private JFXCheckBox id_sim_3;
-
-    @FXML
-    private JFXCheckBox id_nao_3;
-
-    @FXML
     private JFXCheckBox id_sim_4;
 
     @FXML
     private JFXCheckBox id_nao_4;
 
     @FXML
-    private JFXCheckBox id_sim_5;
+    private JFXCheckBox id_oculos_sim;
 
     @FXML
-    private JFXCheckBox id_nao_5;
-    
+    private JFXCheckBox id_oculos_nao;
+
     @FXML
     private JFXCheckBox id_sim_6;
 
     @FXML
     private JFXCheckBox id_nao_6;
-        
-    @FXML
-    private JFXTextField id_nome;
-    
-    
-    @FXML
-    private JFXButton id_voltar;
-    
-   
-   
+
     @FXML
     private JFXCheckBox id_sim_7;
 
     @FXML
     private JFXCheckBox id_nao_7;
-     
+
     @FXML
     private JFXCheckBox id_sim_8;
 
     @FXML
     private JFXCheckBox id_nao_8;
-    
-    @FXML
-    private JFXCheckBox id_oculos_nao;
-    
-    @FXML
-    private JFXCheckBox id_oculos_sim;
-    
-    @FXML
-    private JFXCheckBox id_chapeu_nao;
-    
+
     @FXML
     private JFXCheckBox id_chapeu_sim;
+
+    @FXML
+    private JFXCheckBox id_chapeu_nao;
+
+    @FXML
+    private JFXCheckBox id_sim_5;
+
+    @FXML
+    private JFXCheckBox id_nao_5;
+
+    @FXML
+    private JFXTextField id_nome;
+
+
+
+    @FXML
+    private JFXCheckBox checkb_sim_depedencia;
+
+    @FXML
+    private JFXCheckBox checkb_nao_depedencia;
+
+    @FXML
+    private JFXCheckBox checkb_sim_aparelho;
+
+    @FXML
+    private JFXCheckBox checkb_nao_aparelho;
+
+    @FXML
+    private JFXCheckBox checkb_sim_tatuagem;
+
+    @FXML
+    private JFXCheckBox checkb_nao_tatuagem;
     
     
-    public void checks_box(){
-        
-    }
+    
     
     
    
@@ -810,13 +915,7 @@ public class Cadastrar_PessoaController implements Initializable {
             flag = false;
         }
         
-               cor_cabelo_combobox.setVisible(true);
-        cor_cabelo_combobox.getSelectionModel().clearSelection();
-        cor_dos_olhos_combobox.getSelectionModel().clearSelection();
-        estilo_cabelo_combobox.getSelectionModel().clearSelection();
-        disciplinas_combobox.getSelectionModel().clearSelection();
-        tom_pele_combobox.getSelectionModel().clearSelection();
-        periodo_combobox.getSelectionModel().clearSelection();
+              
         
         if(flag){
             return true;
@@ -866,17 +965,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_nao_8.setSelected(false);
         id_chapeu_nao.setSelected(false);
         id_oculos_nao.setSelected(false);
-        
-        
-        label_op_n_per_cor_cabelo.setVisible(false);
-        cor_cabelo_combobox.setVisible(true);
-        cor_cabelo_combobox.getSelectionModel().clearSelection();
-        cor_dos_olhos_combobox.getSelectionModel().clearSelection();
-        estilo_cabelo_combobox.getSelectionModel().clearSelection();
-        disciplinas_combobox.getSelectionModel().clearSelection();
-        tom_pele_combobox.getSelectionModel().clearSelection();
-        periodo_combobox.getSelectionModel().clearSelection();
-        
+     
         
         
     }
