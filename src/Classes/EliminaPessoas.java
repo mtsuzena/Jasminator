@@ -1231,6 +1231,23 @@ public class EliminaPessoas {
                         } 
                     }
                     break;
+                case 62: 
+                    if(resp==0){
+                        for (int cont = 0; cont < lista_pessoas.size(); cont++){
+                           if(lista_pessoas.get(cont).isTrabalhaART()== true){
+                                lista_pessoas.remove(cont);
+                                cont=cont-1;
+                            } 
+                        }
+                    }else{
+                        for (int cont = 0; cont < lista_pessoas.size(); cont++){
+                           if(lista_pessoas.get(cont).isTrabalhaART()!= true){
+                                lista_pessoas.remove(cont);
+                                cont=cont-1;
+                            } 
+                        } 
+                    }
+                    break;
                     
         }
         

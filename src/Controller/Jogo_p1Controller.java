@@ -21,8 +21,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.media.AudioClip;
 import javafx.scene.text.Text;
@@ -88,6 +86,9 @@ public class Jogo_p1Controller implements Initializable {
             private boolean isLeciona;
             
             private boolean permitir_jogo;
+            private boolean permitir_trabalha;
+            private boolean permitir_altura;
+            private boolean permitir_curso;
     
     // ## OBS: Todos os atributos para permissao serao inciados com 0
     // ####### FIM - Atributos para pertmissoes de perguntas
@@ -115,7 +116,7 @@ public class Jogo_p1Controller implements Initializable {
             set_atributos_verificadores(id_pergunta.get(k), resposta);
              k++;
              check();
-            if(k < 62){
+            if(k < 63){
                 boolean fim = set_pergunta();
                 if(fim)
                     check();
@@ -130,7 +131,7 @@ public class Jogo_p1Controller implements Initializable {
             set_atributos_verificadores(id_pergunta.get(k), resposta);
             k++;
             check();
-            if(k < 62){
+            if(k < 63){
                 boolean fim = set_pergunta();
                 if(fim)
                     check();
@@ -141,7 +142,7 @@ public class Jogo_p1Controller implements Initializable {
            
             k++;
             
-            if(k < 62){
+            if(k < 63){
             set_pergunta();
             }else{
                 check();
@@ -186,7 +187,7 @@ public class Jogo_p1Controller implements Initializable {
     }
 
     public void embaralhar_pergunta(){
-        for(Integer j=0 ; j<62 ; j++)
+        for(Integer j=0 ; j<63 ; j++)
             id_pergunta.add(j);
         
         Collections.shuffle(id_pergunta);
@@ -195,12 +196,12 @@ public class Jogo_p1Controller implements Initializable {
     
     public void check(){
         
-        if(k >61){
+        if(k >62){
             final_jogo();
             reproduzir_audio=false;
         }
         
-        if(k < 62){
+        if(k < 63){
             
             lista_pessoas=EliminaPessoas.getPredicaoPessoa_NEW(lista_pessoas, resposta, numero);
             
@@ -248,6 +249,9 @@ public class Jogo_p1Controller implements Initializable {
     public void ini_atributos_verificadores(){
         calvo=0;
         
+        permitir_curso=true;
+        permitir_altura=true;
+        permitir_trabalha=true;
         permitir_jogo=true;
         
         isLeciona=false;
@@ -504,44 +508,95 @@ public class Jogo_p1Controller implements Initializable {
                     }
                     break;
                 case 35: 
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
                 case 36: 
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
                 case 37: 
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
                 case 38: 
                     break;
                 case 39: 
+                    if(resposta==1){
+                        tom_pele=1;
+                    }
                     break;
                 case 40: 
                     break;
                 case 41: 
                     break;
-                case 42: 
+                case 42:
+                    if(resposta==1){
+                        permitir_altura=false;
+                    }
                     break;
                 case 43: 
+                    if(resposta==1){
+                        permitir_altura=false;
+                    }
                     break;
                 case 44: 
+                    if(resposta==1){
+                        permitir_altura=false;
+                    }
                     break;
-                case 45: 
+                case 45:
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
-                case 46: 
+                case 46:
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
-                case 47: 
+                case 47:
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
-                case 48: 
+                case 48:
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
                 case 49: 
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
-                case 50: 
+                case 50:
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
-                case 51: 
+                case 51:
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
-                case 52: 
+                case 52:
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
-                case 53: 
+                case 53:
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
-                case 54: 
+                case 54:
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
                     break;
                 case 55: 
                     if(resposta==1){
@@ -564,11 +619,22 @@ public class Jogo_p1Controller implements Initializable {
                     }    
                     break;
                 case 59: 
+                    if(resposta==1){
+                        permitir_curso=false;
+                    }    
                     break;
                 case 60: 
+                    if(resposta==1){
+                        permitir_curso=false;
+                    }    
                     break;
                 case 61: 
-                    break;          
+                    break;
+                case 62: 
+                    if(resposta==1){
+                        permitir_trabalha=false;
+                    }
+                    break;
                     
         }
     }
@@ -803,12 +869,16 @@ public class Jogo_p1Controller implements Initializable {
                     if(permitir_jogo){
                         System.out.println("Pergunta 27 permitida!!\n");
                         return true;
+                    }else{
+                        System.out.println("Pergunta 27 nao permitida!!\n");
                     }
                     break;
                 case 28:
                     if(permitir_jogo){
                         System.out.println("Pergunta 28 permitida!!\n");
                         return true;
+                    }else{
+                        System.out.println("Pergunta 28 nao permitida!!\n");
                     }
                     break;
                 case 29:
@@ -820,13 +890,9 @@ public class Jogo_p1Controller implements Initializable {
                                 System.out.println("Pergunta 29 permitida!!\n");
                                 return true;
                             }else{
-                                System.out.println("Pergunta 35 nao permitida!!\n");
-                                id_pergunta_NaoPermitidas.add(35); 
+                                System.out.println("Pergunta 29 nao permitida!!\n");
                             }
                         }
-                    }else{
-                        System.out.println("Pergunta 29 nao permitida!!\n");
-                        id_pergunta_NaoPermitidas.add(29);  
                     }
                     break;
                 case 30: 
@@ -837,13 +903,9 @@ public class Jogo_p1Controller implements Initializable {
                                 System.out.println("Pergunta 30 permitida!!\n");
                                 return true;
                             }else{
-                                System.out.println("Pergunta 35 nao permitida!!\n");
-                                id_pergunta_NaoPermitidas.add(35); 
+                                System.out.println("Pergunta 30 nao permitida!!\n");
                             }
                         }
-                    }else{
-                        System.out.println("Pergunta 30 nao permitida!!\n");
-                        id_pergunta_NaoPermitidas.add(30);  
                     }
                     break;
                 case 31: 
@@ -854,7 +916,6 @@ public class Jogo_p1Controller implements Initializable {
                         return true;
                     }else{
                         System.out.println("Pergunta 31 nao permitida!!\n");
-                        id_pergunta_NaoPermitidas.add(31);
                     }
                     break;
                 case 32: 
@@ -865,7 +926,6 @@ public class Jogo_p1Controller implements Initializable {
                         return true;
                     }else{
                         System.out.println("Pergunta 32 nao permitida!!\n");
-                        id_pergunta_NaoPermitidas.add(32);
                     }
                     break;
                 case 33: 
@@ -876,7 +936,6 @@ public class Jogo_p1Controller implements Initializable {
                         return true;
                     }else{
                         System.out.println("Pergunta 33 nao permitida!!\n");
-                        id_pergunta_NaoPermitidas.add(33);
                     }
                     break;
                 case 34: 
@@ -887,18 +946,32 @@ public class Jogo_p1Controller implements Initializable {
                         return true;
                     }else{
                         System.out.println("Pergunta 34 nao permitida!!\n");
-                        id_pergunta_NaoPermitidas.add(34);
                     }
                     break;
                 case 35: 
-                    System.out.println("Pergunta 35 permitida!!\n");          
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 35 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 35 nao permitida!!\n");
+                    }
+                    break;
                 case 36: 
-                    System.out.println("Pergunta 36 permitida!!\n");          
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 36 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 36 nao permitida!!\n");
+                    }
+                    break;
                 case 37: 
-                    System.out.println("Pergunta 37 permitida!!\n");          
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 37 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 37 nao permitida!!\n");
+                    }
+                    break;
                 case 38: 
 //                    if(lista_pessoas.size() < 4){
 //                        for(Pessoa p : lista_pessoas){
@@ -918,67 +991,179 @@ public class Jogo_p1Controller implements Initializable {
 //                    }
 //                    break;
                 case 39: 
-                    return true;
+                    if(tom_pele==0){
+                        System.out.println("Pergunta 39 permitida!!\n");
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 39 nao permitida!!\n");
+                    }
+                    break;
                 case 40: 
                     return true;
                 case 41: 
                     return true;
                 case 42: 
-                    return true;
+                    if(permitir_altura){
+                        System.out.println("Pergunta 42 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 42 nao permitida!!\n");
+                    }
+                    break;
                 case 43: 
-                    return true;
+                    if(permitir_altura){
+                        System.out.println("Pergunta 43 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 43 nao permitida!!\n");
+                    }
+                    break;
                 case 44: 
-                    return true;
+                    if(permitir_altura){
+                        System.out.println("Pergunta 44 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 44 nao permitida!!\n");
+                    }
+                    break;
                 case 45: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 45 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 45 nao permitida!!\n");
+                    }
+                    break;
                 case 46: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 46 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 46 nao permitida!!\n");
+                    }
+                    break;
                 case 47: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 47 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 47 nao permitida!!\n");
+                    }
+                    break;
                 case 48: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 48 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 48 nao permitida!!\n");
+                    }
+                    break;
                 case 49: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 49 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 49 nao permitida!!\n");
+                    }
+                    break;
                 case 50: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 50 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 50 nao permitida!!\n");
+                    }
+                    break;
                 case 51: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 51 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 51 nao permitida!!\n");
+                    }
+                    break;
                 case 52: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 52 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 52 nao permitida!!\n");
+                    }
+                    break;
                 case 53: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 53 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 53 nao permitida!!\n");
+                    }
+                    break;
                 case 54: 
-                    return true;
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 54 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 54 nao permitida!!\n");
+                    }
+                    break;
                 case 55: 
                     if(permitir_jogo){
                         System.out.println("Pergunta 55 permitida!!\n");
                         return true;
+                    }else{
+                        System.out.println("Pergunta 55 nao permitida!!\n");
                     }
                     break;
                 case 56: 
                     if(permitir_jogo){
                         System.out.println("Pergunta 56 permitida!!\n");
                         return true;
+                    }else{
+                        System.out.println("Pergunta 56 nao permitida!!\n");
                     }
                     break;
                 case 57: 
                     if(permitir_jogo){
                         System.out.println("Pergunta 57 permitida!!\n");
                         return true;
+                    }else{
+                        System.out.println("Pergunta 57 nao permitida!!\n");
                     }
                     break;
                 case 58: 
                     if(permitir_jogo){
                         System.out.println("Pergunta 58 permitida!!\n");
                         return true;
+                    }else{
+                        System.out.println("Pergunta 58 nao permitida!!\n");
                     }
                     break;
                 case 59: 
-                    return true;
+                    if(permitir_curso){
+                        System.out.println("Pergunta 59 permitida!!\n");
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 59 nao permitida!!\n");
+                    }
+                    break;
                 case 60: 
-                    return true;
+                    if(permitir_curso){
+                        System.out.println("Pergunta 60 permitida!!\n");
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 60 nao permitida!!\n");
+                    }
+                    break;
                 case 61: 
                     return true;
+                case 62:
+                    if(permitir_trabalha){
+                        System.out.println("Pergunta 62 permitida!!\n");          
+                        return true;
+                    }else{
+                        System.out.println("Pergunta 62 nao permitida!!\n");
+                    }
+                    break;
                     
         }
         return false;

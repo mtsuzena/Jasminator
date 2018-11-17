@@ -84,9 +84,9 @@ public class ListaPerguntas {
     public static ArrayList retornaLista_New(){
         List<String> lista_perguntaPadrao = new ArrayList<String>();
         
-        lista_perguntaPadrao.add(0,"A pessoa é do primeiro periodo de ADS/SI?");
-        lista_perguntaPadrao.add(1,"A pessoa é do segundo periodo de Ands/SI?");
-        lista_perguntaPadrao.add(2,"A pessoa é do terceiro periodo de Ands/SI?");
+        lista_perguntaPadrao.add(0,"A pessoa esta no primeiro periodo?");
+        lista_perguntaPadrao.add(1,"A pessoa esta no segundo periodo?");
+        lista_perguntaPadrao.add(2,"A pessoa esta no terceiro periodo?");
         lista_perguntaPadrao.add(3,"A pessoa é do sexo masculino?");
         
         // Perguntas sobre cabelo
@@ -103,8 +103,8 @@ public class ListaPerguntas {
         lista_perguntaPadrao.add(14,"A pessoa tem cabelo da cor avermelhado?");
         
         //Tom da pele
-        lista_perguntaPadrao.add(15,"A pessoa tem tom de pele claro?");
-        lista_perguntaPadrao.add(16,"A pessoa tem tom de pele escuro?");
+        lista_perguntaPadrao.add(15,"A pessoa é branca?");
+        lista_perguntaPadrao.add(16,"A pessoa é negra?");
         
         //Tom olhos
         lista_perguntaPadrao.add(17,"A pessoa tem o tom dos olhos verde?");
@@ -136,7 +136,7 @@ public class ListaPerguntas {
         lista_perguntaPadrao.add(37,"A pessoa trabalha na Brafer?");
         lista_perguntaPadrao.add(38,"A pessoa tem piercing?");
         // novas perguntas
-        lista_perguntaPadrao.add(39,"Tom pele pardo?");
+        lista_perguntaPadrao.add(39,"A pessoa e parda?");
         lista_perguntaPadrao.add(40,"Tatuado?");
         lista_perguntaPadrao.add(41,"Faz dependencia");
         lista_perguntaPadrao.add(42,"Altura ate 1.69");
@@ -159,6 +159,7 @@ public class ListaPerguntas {
         lista_perguntaPadrao.add(59,"cursa SI");
         lista_perguntaPadrao.add(60,"cursa ADS");
         lista_perguntaPadrao.add(61,"usa aparelho");
+        lista_perguntaPadrao.add(62,"Trabalha Alta Rail Technology");
            
         
         return (ArrayList) lista_perguntaPadrao;
