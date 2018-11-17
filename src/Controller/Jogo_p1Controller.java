@@ -94,6 +94,7 @@ public class Jogo_p1Controller implements Initializable {
     // ####### FIM - Atributos para pertmissoes de perguntas
     
     public static String nome;
+    public static String img_caminho;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -214,6 +215,7 @@ public class Jogo_p1Controller implements Initializable {
                 Parent root;
                 try {
                     nome = lista_pessoas.get(0).getNome();
+                    img_caminho = lista_pessoas.get(0).getCaminho_imagem();
                     root = FXMLLoader.load(getClass().getResource("/Fxml/Final_Jogo.fxml"));
            
                     cena_jogador(root,id_pane);

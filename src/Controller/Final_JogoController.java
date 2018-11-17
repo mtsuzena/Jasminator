@@ -25,7 +25,7 @@ public class Final_JogoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image imagem = new Image("/fotos_pessoas/RodrigoJunior2.jpg");
+        Image imagem = new Image(Jogo_p1Controller.img_caminho);
         
         img_pessoa_encontrada.setImage(imagem);
         
@@ -37,8 +37,8 @@ public class Final_JogoController implements Initializable {
         
         
         id_label.setText(Jogo_p1Controller.nome);
-         voltar();
-         recomecar();
+        voltar();
+        recomecar();
     } 
     
 //    @FXML
