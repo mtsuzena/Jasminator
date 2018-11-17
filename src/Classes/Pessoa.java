@@ -92,6 +92,8 @@ public class Pessoa {
         private boolean cursoSI;
         private boolean cursoADS;
         
+        private boolean usaAparelho;
+        
 	
 
     public Integer getCodPessoa(){
@@ -789,5 +791,19 @@ public class Pessoa {
      */
     public void setCursoADS(boolean cursoADS) {
         this.cursoADS = cursoADS;
+    }
+
+    /**
+     * @return the usaAparelho
+     */
+    public boolean isUsaAparelho() {
+        return usaAparelho;
+    }
+
+    /**
+     * @param usaAparelho the usaAparelho to set
+     */
+    public void setUsaAparelho(boolean usaAparelho) {
+        this.usaAparelho = usaAparelho;
     }
 }

@@ -272,6 +272,9 @@ public class ArquivoTxt {
                 pessoa.setCursoADS(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
                 
+                pessoa.setUsaAparelho(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
                 lista_pessoas.add(index,pessoa);
                 index+=1;
                 
@@ -465,7 +468,9 @@ public class ArquivoTxt {
                 
                 gravarArq.println(lista_pessoas.get(i).isCursoSI()+";");
                 
-                gravarArq.println(lista_pessoas.get(i).isCursoADS()+";\r\n");
+                gravarArq.println(lista_pessoas.get(i).isCursoADS()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isUsaAparelho()+";\r\n");
                 
             }
             gravarArq.close();

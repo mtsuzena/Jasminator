@@ -158,7 +158,7 @@ public class ListaPerguntas {
         lista_perguntaPadrao.add(58,"joga pubg");
         lista_perguntaPadrao.add(59,"cursa SI");
         lista_perguntaPadrao.add(60,"cursa ADS");
-        
+        lista_perguntaPadrao.add(61,"usa aparelho");
            
         
         return (ArrayList) lista_perguntaPadrao;
