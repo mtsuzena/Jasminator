@@ -135,7 +135,29 @@ public class ListaPerguntas {
         lista_perguntaPadrao.add(36,"A pessoa trabalha em uma mecanica?");
         lista_perguntaPadrao.add(37,"A pessoa trabalha na Brafer?");
         lista_perguntaPadrao.add(38,"A pessoa tem piercing?");
-        
+        // novas perguntas
+        lista_perguntaPadrao.add(39,"Tom pele pardo?");
+        lista_perguntaPadrao.add(40,"Tatuado?");
+        lista_perguntaPadrao.add(41,"Faz dependencia");
+        lista_perguntaPadrao.add(42,"Altura ate 1.69");
+        lista_perguntaPadrao.add(43,"Altura ate 1.79");
+        lista_perguntaPadrao.add(44,"Altura ate 1.90");
+        lista_perguntaPadrao.add(45,"Trabalha banco brasil");
+        lista_perguntaPadrao.add(46,"Trabalha delta cable");
+        lista_perguntaPadrao.add(47,"Trabalha mundo cell");
+        lista_perguntaPadrao.add(48,"Trabalha renault");
+        lista_perguntaPadrao.add(49,"Trabalha refrio");
+        lista_perguntaPadrao.add(50,"Trabalha prefeit lapa");
+        lista_perguntaPadrao.add(51,"Trabalha gelopar");
+        lista_perguntaPadrao.add(52,"Trabalha na empresa abra");
+        lista_perguntaPadrao.add(53,"Trabalha prefeit araucity");
+        lista_perguntaPadrao.add(54,"Trabalha camera araucaria");
+        lista_perguntaPadrao.add(55,"jogada foritinite");
+        lista_perguntaPadrao.add(56,"joga fifa");
+        lista_perguntaPadrao.add(57,"joga overwatch");
+        lista_perguntaPadrao.add(58,"joga pubg");
+        lista_perguntaPadrao.add(59,"cursa SI");
+        lista_perguntaPadrao.add(60,"cursa ADS");
         
            
         

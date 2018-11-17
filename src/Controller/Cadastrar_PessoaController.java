@@ -483,23 +483,23 @@ public class Cadastrar_PessoaController implements Initializable {
         );
         
         //Pergunta 3 = ALTO CHECKBOX - MAS VAI SAIR FORA 
-        id_sim_3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            id_nao_3.setSelected(false);
-            pessoa.setAlto(true);
-            }
-        }
-        );
-        id_nao_3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-            id_sim_3.setSelected(false);
-            pessoa.setAlto(false);
-            
-            }
-        }
-        );
+//        id_sim_3.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//            id_nao_3.setSelected(false);
+//            pessoa.setAlto(true);
+//            }
+//        }
+//        );
+//        id_nao_3.setOnAction(new EventHandler<ActionEvent>() {
+//            @Override
+//            public void handle(ActionEvent event) {
+//            id_sim_3.setSelected(false);
+//            pessoa.setAlto(false);
+//            
+//            }
+//        }
+//        );
         
         //Pergunta 4 - CHECKBOX USA BARBA
         id_sim_4.setOnAction(new EventHandler<ActionEvent>() {

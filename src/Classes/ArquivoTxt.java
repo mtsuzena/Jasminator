@@ -71,8 +71,6 @@ public class ArquivoTxt {
                 i+=1;
                 pessoa.setCabeloLongo(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
-                pessoa.setAlto(Boolean.parseBoolean(conteudo.split(";")[i]));
-                i+=1;
                 pessoa.setBarba(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
                 pessoa.setProfessor(Boolean.parseBoolean(conteudo.split(";")[i]));
@@ -156,8 +154,6 @@ public class ArquivoTxt {
                 pessoa.setUsaOculos(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
                 
-                pessoa.setAlto(Boolean.parseBoolean(conteudo.split(";")[i]));
-                i+=1;
                 
                 pessoa.setBarba(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
@@ -210,6 +206,71 @@ public class ArquivoTxt {
                 pessoa.setTemPiercing(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
                 
+                pessoa.setTomPelePardo(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTatuado(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setDependencia(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setAlturaAte69(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setAlturaAte79(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setAlturaAte90(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaBancoBrasil(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaDeltaCable(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaMundoCell(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaRenault(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaRefrio(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaPrefeituraLapa(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaGelopar(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaAbra(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaPrefeituraAraucaria(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setTrabalhaCameraAraucaria(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setJogaFortinite(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setJogaFifa(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setJogaOverwatch(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setJogaPubg(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setCursoSI(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setCursoADS(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
                 
                 lista_pessoas.add(index,pessoa);
                 index+=1;
@@ -276,7 +337,7 @@ public class ArquivoTxt {
                 gravarArq.println(lista_pessoas.get(i).getIdade()+";");
                 gravarArq.println(lista_pessoas.get(i).isCalvo()+";");
                 gravarArq.println(lista_pessoas.get(i).isCabeloLongo()+";");
-                gravarArq.println(lista_pessoas.get(i).isAlto()+";");
+                
                 gravarArq.println(lista_pessoas.get(i).isBarba()+";");
                 gravarArq.println(lista_pessoas.get(i).isProfessor()+";");
                 gravarArq.println(lista_pessoas.get(i).isMasculino()+";");
@@ -326,7 +387,7 @@ public class ArquivoTxt {
                 gravarArq.println(lista_pessoas.get(i).isTomOlhoCastanho()+";");
                 gravarArq.println(lista_pessoas.get(i).isUsaOculos()+";");
                 
-                gravarArq.println(lista_pessoas.get(i).isAlto()+";");
+                
                 
                 gravarArq.println(lista_pessoas.get(i).isBarba()+";");
                 
@@ -360,7 +421,52 @@ public class ArquivoTxt {
                 
                 gravarArq.println(lista_pessoas.get(i).isTrabalhaBrafer()+";");
                 
-                gravarArq.println(lista_pessoas.get(i).isTemPiercing()+";\r\n");  
+                gravarArq.println(lista_pessoas.get(i).isTemPiercing()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTomPelePardo()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTatuado()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isDependencia()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isAlturaAte69()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isAlturaAte79()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isAlturaAte90()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaBancoBrasil()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaDeltaCable()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaMundoCell()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaRenault()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaRefrio()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaPrefeituraLapa()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaGelopar()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaAbra()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaPrefeituraAraucaria()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaCameraAraucaria()+";");
+
+                gravarArq.println(lista_pessoas.get(i).isJogaFortinite()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isJogaFifa()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isJogaOverwatch()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isJogaPubg()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isCursoSI()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isCursoADS()+";\r\n");
+                
             }
             gravarArq.close();
             return true;

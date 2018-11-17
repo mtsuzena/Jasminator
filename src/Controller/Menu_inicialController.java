@@ -1,6 +1,5 @@
 package Controller;
 
-import Classes.GameRun;
 import Telas.Menuinicial;
 import Telas.TrocarCenas;
 import com.jfoenix.controls.JFXButton;

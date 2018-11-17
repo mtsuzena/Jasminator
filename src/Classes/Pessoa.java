@@ -24,15 +24,15 @@ public class Pessoa {
         private boolean cabeloCastanho;
         private boolean cabeloAvermelhado;
         
-        private boolean tomPeleClaro;
-        private boolean tomPeleEscura;
+        private boolean tomPeleClaro;   // BRANCO
+        private boolean tomPeleEscura; // NEGRO
+        
         
         private boolean tomOlhoVerde;
         private boolean tomOlhoAzul;
         private boolean tomOlhoCastanho;
         private boolean usaOculos;
         
-        private boolean alto; 
         
         private boolean barba;  //  tem barba?
         
@@ -62,7 +62,36 @@ public class Pessoa {
         private boolean trabalhaBrafer;
         
         private boolean temPiercing;
-	
+        
+        private boolean tomPelePardo;
+        
+        private boolean tatuado;
+        
+        private boolean dependencia;
+        
+        private boolean alturaAte69;
+        private boolean alturaAte79;
+        private boolean alturaAte90;
+        
+        private boolean trabalhaBancoBrasil;
+        private boolean trabalhaDeltaCable;
+        private boolean trabalhaMundoCell;
+        private boolean trabalhaRenault;
+        private boolean trabalhaRefrio;
+        private boolean trabalhaPrefeituraLapa;
+        private boolean trabalhaGelopar;
+        private boolean trabalhaAbra;
+        private boolean trabalhaPrefeituraAraucaria;
+        private boolean trabalhaCameraAraucaria;
+        
+	private boolean jogaFortinite;
+        private boolean jogaFifa;
+        private boolean jogaOverwatch;
+        private boolean jogaPubg;
+        
+        private boolean cursoSI;
+        private boolean cursoADS;
+        
 	
 
     public Integer getCodPessoa(){
@@ -103,14 +132,6 @@ public class Pessoa {
 
     public void setCabeloLongo(boolean cabeloLongo) {
         this.cabeloLongo = cabeloLongo;
-    }
-
-    public boolean isAlto() {
-        return alto;
-    }
-
-    public void setAlto(boolean alto) {
-        this.alto = alto;
     }
 
     public boolean isBarba() {
@@ -462,5 +483,311 @@ public class Pessoa {
     
     public void setTemPiercing(boolean temPiercing) {
         this.temPiercing = temPiercing;
+    }
+
+    /**
+     * @return the tomPelePardo
+     */
+    public boolean isTomPelePardo() {
+        return tomPelePardo;
+    }
+
+    /**
+     * @param tomPelePardo the tomPelePardo to set
+     */
+    public void setTomPelePardo(boolean tomPelePardo) {
+        this.tomPelePardo = tomPelePardo;
+    }
+
+    
+    public boolean isTrabalhaBancoBrasil() {
+        return trabalhaBancoBrasil;
+    }
+
+    /**
+     * @param trabalhaBancoBrasil the trabalhaBancoBrasil to set
+     */
+    public void setTrabalhaBancoBrasil(boolean trabalhaBancoBrasil) {
+        this.trabalhaBancoBrasil = trabalhaBancoBrasil;
+    }
+
+    /**
+     * @return the trabalhaDeltaCable
+     */
+    public boolean isTrabalhaDeltaCable() {
+        return trabalhaDeltaCable;
+    }
+
+    /**
+     * @param trabalhaDeltaCable the trabalhaDeltaCable to set
+     */
+    public void setTrabalhaDeltaCable(boolean trabalhaDeltaCable) {
+        this.trabalhaDeltaCable = trabalhaDeltaCable;
+    }
+
+    /**
+     * @return the trabalhaMundoCell
+     */
+    public boolean isTrabalhaMundoCell() {
+        return trabalhaMundoCell;
+    }
+
+    /**
+     * @param trabalhaMundoCell the trabalhaMundoCell to set
+     */
+    public void setTrabalhaMundoCell(boolean trabalhaMundoCell) {
+        this.trabalhaMundoCell = trabalhaMundoCell;
+    }
+
+    /**
+     * @return the trabalhaRenault
+     */
+    public boolean isTrabalhaRenault() {
+        return trabalhaRenault;
+    }
+
+    /**
+     * @param trabalhaRenault the trabalhaRenault to set
+     */
+    public void setTrabalhaRenault(boolean trabalhaRenault) {
+        this.trabalhaRenault = trabalhaRenault;
+    }
+
+    /**
+     * @return the trabalhaRefrio
+     */
+    public boolean isTrabalhaRefrio() {
+        return trabalhaRefrio;
+    }
+
+    /**
+     * @param trabalhaRefrio the trabalhaRefrio to set
+     */
+    public void setTrabalhaRefrio(boolean trabalhaRefrio) {
+        this.trabalhaRefrio = trabalhaRefrio;
+    }
+
+    /**
+     * @return the trabalhaPrefeituraLapa
+     */
+    public boolean isTrabalhaPrefeituraLapa() {
+        return trabalhaPrefeituraLapa;
+    }
+
+    /**
+     * @param trabalhaPrefeituraLapa the trabalhaPrefeituraLapa to set
+     */
+    public void setTrabalhaPrefeituraLapa(boolean trabalhaPrefeituraLapa) {
+        this.trabalhaPrefeituraLapa = trabalhaPrefeituraLapa;
+    }
+
+    /**
+     * @return the trabalhaGelopar
+     */
+    public boolean isTrabalhaGelopar() {
+        return trabalhaGelopar;
+    }
+
+    /**
+     * @param trabalhaGelopar the trabalhaGelopar to set
+     */
+    public void setTrabalhaGelopar(boolean trabalhaGelopar) {
+        this.trabalhaGelopar = trabalhaGelopar;
+    }
+
+    /**
+     * @return the trabalhaAbra
+     */
+    public boolean isTrabalhaAbra() {
+        return trabalhaAbra;
+    }
+
+    /**
+     * @param trabalhaAbra the trabalhaAbra to set
+     */
+    public void setTrabalhaAbra(boolean trabalhaAbra) {
+        this.trabalhaAbra = trabalhaAbra;
+    }
+
+    /**
+     * @return the trabalhaPrefeituraAraucaria
+     */
+    public boolean isTrabalhaPrefeituraAraucaria() {
+        return trabalhaPrefeituraAraucaria;
+    }
+
+    /**
+     * @param trabalhaPrefeituraAraucaria the trabalhaPrefeituraAraucaria to set
+     */
+    public void setTrabalhaPrefeituraAraucaria(boolean trabalhaPrefeituraAraucaria) {
+        this.trabalhaPrefeituraAraucaria = trabalhaPrefeituraAraucaria;
+    }
+
+    /**
+     * @return the trabalhaCameraAraucaria
+     */
+    public boolean isTrabalhaCameraAraucaria() {
+        return trabalhaCameraAraucaria;
+    }
+
+    /**
+     * @param trabalhaCameraAraucaria the trabalhaCameraAraucaria to set
+     */
+    public void setTrabalhaCameraAraucaria(boolean trabalhaCameraAraucaria) {
+        this.trabalhaCameraAraucaria = trabalhaCameraAraucaria;
+    }
+
+    /**
+     * @return the jogaFortinite
+     */
+    public boolean isJogaFortinite() {
+        return jogaFortinite;
+    }
+
+    /**
+     * @param jogaFortinite the jogaFortinite to set
+     */
+    public void setJogaFortinite(boolean jogaFortinite) {
+        this.jogaFortinite = jogaFortinite;
+    }
+
+    /**
+     * @return the jogaFifa
+     */
+    public boolean isJogaFifa() {
+        return jogaFifa;
+    }
+
+    /**
+     * @param jogaFifa the jogaFifa to set
+     */
+    public void setJogaFifa(boolean jogaFifa) {
+        this.jogaFifa = jogaFifa;
+    }
+
+    /**
+     * @return the jogaOverwatch
+     */
+    public boolean isJogaOverwatch() {
+        return jogaOverwatch;
+    }
+
+    /**
+     * @param jogaOverwatch the jogaOverwatch to set
+     */
+    public void setJogaOverwatch(boolean jogaOverwatch) {
+        this.jogaOverwatch = jogaOverwatch;
+    }
+
+    /**
+     * @return the jogaPubg
+     */
+    public boolean isJogaPubg() {
+        return jogaPubg;
+    }
+
+    /**
+     * @param jogaPubg the jogaPubg to set
+     */
+    public void setJogaPubg(boolean jogaPubg) {
+        this.jogaPubg = jogaPubg;
+    }
+
+    /**
+     * @return the tatuado
+     */
+    public boolean isTatuado() {
+        return tatuado;
+    }
+
+    /**
+     * @param tatuado the tatuado to set
+     */
+    public void setTatuado(boolean tatuado) {
+        this.tatuado = tatuado;
+    }
+
+    /**
+     * @return the dependencia
+     */
+    public boolean isDependencia() {
+        return dependencia;
+    }
+
+    /**
+     * @param dependencia the dependencia to set
+     */
+    public void setDependencia(boolean dependencia) {
+        this.dependencia = dependencia;
+    }
+
+    /**
+     * @return the alturaAte69
+     */
+    public boolean isAlturaAte69() {
+        return alturaAte69;
+    }
+
+    /**
+     * @param alturaAte69 the alturaAte69 to set
+     */
+    public void setAlturaAte69(boolean alturaAte69) {
+        this.alturaAte69 = alturaAte69;
+    }
+
+    /**
+     * @return the alturaAte79
+     */
+    public boolean isAlturaAte79() {
+        return alturaAte79;
+    }
+
+    /**
+     * @param alturaAte79 the alturaAte79 to set
+     */
+    public void setAlturaAte79(boolean alturaAte79) {
+        this.alturaAte79 = alturaAte79;
+    }
+
+    /**
+     * @return the alturaAte90
+     */
+    public boolean isAlturaAte90() {
+        return alturaAte90;
+    }
+
+    /**
+     * @param alturaAte90 the alturaAte90 to set
+     */
+    public void setAlturaAte90(boolean alturaAte90) {
+        this.alturaAte90 = alturaAte90;
+    }
+
+    /**
+     * @return the cursoSI
+     */
+    public boolean isCursoSI() {
+        return cursoSI;
+    }
+
+    /**
+     * @param cursoSI the cursoSI to set
+     */
+    public void setCursoSI(boolean cursoSI) {
+        this.cursoSI = cursoSI;
+    }
+
+    /**
+     * @return the cursoADS
+     */
+    public boolean isCursoADS() {
+        return cursoADS;
+    }
+
+    /**
+     * @param cursoADS the cursoADS to set
+     */
+    public void setCursoADS(boolean cursoADS) {
+        this.cursoADS = cursoADS;
     }
 }

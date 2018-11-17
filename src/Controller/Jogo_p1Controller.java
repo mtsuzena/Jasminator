@@ -700,8 +700,7 @@ public class Jogo_p1Controller implements Initializable {
                     System.out.println("Pergunta 20 permitida!!\n");
                     return true;
                 case 21:
-                    System.out.println("Pergunta 21 permitida!!\n");
-                    return true;
+                    break;
                 case 22:
                     if(isMasculino){    
                         System.out.println("Pergunta 22 permitida!!\n");
