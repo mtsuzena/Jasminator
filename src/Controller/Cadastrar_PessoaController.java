@@ -109,7 +109,7 @@ public class Cadastrar_PessoaController implements Initializable {
 
         pessoa = new Pessoa();
         disciplinas_combobox.setDisable(true);
-        disciplinas_combobox.setPromptText("Selecione a disciplina");
+        
         lista_pessoa = Capturar_pessoas();
         cmb_idade.setItems(lista_idade);
         cmb_alturas.setItems(lista_alturas);
@@ -121,7 +121,7 @@ public class Cadastrar_PessoaController implements Initializable {
         tom_pele_combobox.setItems(lista_tom_pele);
 
         cor_cabelo_combobox.setDisable(true);
-        cor_cabelo_combobox.setPromptText("Selecione a cor de cabelo");
+       
         cmb_jogos.setItems(lista_jogos);
         cmb_local_trabalho.setItems(lista_trabalho);
         cmb_curso.setItems(lista_curso);
