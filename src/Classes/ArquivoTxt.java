@@ -254,6 +254,9 @@ public class ArquivoTxt {
                 pessoa.setTrabalhaCameraAraucaria(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
                 
+                pessoa.setTrabalhaART(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
                 pessoa.setJogaFortinite(Boolean.parseBoolean(conteudo.split(";")[i]));
                 i+=1;
                 
@@ -273,6 +276,9 @@ public class ArquivoTxt {
                 i+=1;
                 
                 pessoa.setUsaAparelho(Boolean.parseBoolean(conteudo.split(";")[i]));
+                i+=1;
+                
+                pessoa.setCaminho_imagem(conteudo.split(";")[i]);
                 i+=1;
                 
                 lista_pessoas.add(index,pessoa);
@@ -457,6 +463,8 @@ public class ArquivoTxt {
                 gravarArq.println(lista_pessoas.get(i).isTrabalhaPrefeituraAraucaria()+";");
                 
                 gravarArq.println(lista_pessoas.get(i).isTrabalhaCameraAraucaria()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).isTrabalhaART()+";");
 
                 gravarArq.println(lista_pessoas.get(i).isJogaFortinite()+";");
                 
@@ -470,7 +478,9 @@ public class ArquivoTxt {
                 
                 gravarArq.println(lista_pessoas.get(i).isCursoADS()+";");
                 
-                gravarArq.println(lista_pessoas.get(i).isUsaAparelho()+";\r\n");
+                gravarArq.println(lista_pessoas.get(i).isUsaAparelho()+";");
+                
+                gravarArq.println(lista_pessoas.get(i).getCaminho_imagem()+";\r\n");
                 
             }
             gravarArq.close();

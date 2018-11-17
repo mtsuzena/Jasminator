@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
+import java.io.File;
 import java.io.IOException;
 
 import java.net.URL;
@@ -29,10 +30,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.util.Duration;
 import org.apache.commons.lang3.StringUtils;
 
@@ -49,7 +52,7 @@ public class Cadastrar_PessoaController implements Initializable {
     @FXML
     private JFXComboBox periodo_combobox; // Combo box para cadastrar o periodo do curso
     ObservableList<String> list_periodos = FXCollections.observableArrayList("1º Periodo", "2º Periodo",
-            "3º Periodo", "Nao Sou Aluno");
+            "3º Periodo");
 
     @FXML
     private JFXComboBox estilo_cabelo_combobox;
@@ -95,11 +98,11 @@ public class Cadastrar_PessoaController implements Initializable {
     private JFXComboBox cmb_local_trabalho;
     ObservableList<String> lista_trabalho = FXCollections.observableArrayList("Delta cable", "Mundo cell", "Renault",
             "Banco do Brasil", "Refrio", "Prefeitura da lapa", "Prefeitura de Araucária", "Camera municipal de Araucária", "Gelopar", "Abra",
-            "Aviário", "Mecânica");
+            "Aviário", "Mecânica","Alta Rail Technology");
 
     @FXML
     private JFXComboBox cmb_curso;
-    ObservableList<String> lista_curso = FXCollections.observableArrayList("Análise e Desenvolvimento de Sistemas", "Sistemas de Informação");
+    ObservableList<String> lista_curso = FXCollections.observableArrayList("Análise e Desenvolvimento de Sistemas", "Sistemas de Informação", "Nao Sou Aluno");
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -142,7 +145,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaBrafer(true);
                     pessoa.setTrabalhaMecanica(true);
                     pessoa.setTrabalhaAviario(true);
-
+                    System.out.println("ART: "+pessoa.isTrabalhaART());
                     ArquivoTxt.salvaTxt("dados_pessoas.txt", pessoa);
 
                     //mensagem_salvar();
@@ -183,6 +186,14 @@ public class Cadastrar_PessoaController implements Initializable {
             }
         }
         );
+        
+        btn_buscar_imagem.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                buscar_imagem();
+            }
+        }
+        );
 
         System.out.println("ComboPeriodo: " + periodo_combobox.getValue());
 
@@ -193,7 +204,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setIdade(0);
                     pessoa.setMaior20(false);
                 } else if (cmb_idade.getValue().equals("20 anos ou mais")) {
-                    pessoa.setIdade(null);
+                    pessoa.setIdade(0);
                     pessoa.setMaior20(true);
                 }
             }
@@ -206,10 +217,20 @@ public class Cadastrar_PessoaController implements Initializable {
                     System.out.println("KK EAE BAUM");
                     pessoa.setCursoADS(true);
                     pessoa.setCursoSI(false);
+                    periodo_combobox.setDisable(false);
                 } else if (cmb_curso.getValue().equals("Sistemas de Informação")) {
                     System.out.println("KK EAE BAUM 2");
-                     pessoa.setCursoADS(false);
+                    pessoa.setCursoADS(false);
                     pessoa.setCursoSI(true);
+                    periodo_combobox.setDisable(false);
+                } else if (cmb_curso.getValue().equals("Nao Sou Aluno")) {
+                    System.out.println("Nao sou aluno selecionado");
+                    pessoa.setP_periodo(false);
+                    pessoa.setS_periodo(false);
+                    pessoa.setT_periodo(false);
+                    pessoa.setCursoADS(false);
+                    pessoa.setCursoSI(false);
+                    periodo_combobox.setDisable(true);
                 }
             }
         });
@@ -318,6 +339,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Mundo cell")) {
                     System.out.println("Mundo cell");
                     pessoa.setTrabalhaAviario(false);
@@ -333,6 +355,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Renault")) {
                     System.out.println("Renault");
                        pessoa.setTrabalhaAviario(false);
@@ -348,6 +371,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Banco do Brasil")) {
                     System.out.println("Banco do Brasil");
                        pessoa.setTrabalhaAviario(false);
@@ -363,6 +387,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Refrio")) {
                     System.out.println("Refrio");
                        pessoa.setTrabalhaAviario(false);
@@ -378,6 +403,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Prefeitura da lapa")) {
                     System.out.println("Prefeitura da lapa");
                        pessoa.setTrabalhaAviario(false);
@@ -393,6 +419,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Prefeitura de Araucária")) {
                     System.out.println("Prefeitura da lapa");
                        pessoa.setTrabalhaAviario(false);
@@ -408,6 +435,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(true);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Camera municipal de Araucária")) {
                     System.out.println("Camera municipal de Araucária");
                        pessoa.setTrabalhaAviario(false);
@@ -423,6 +451,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(true);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Gelopar")) {
                     System.out.println("Gelopar");
                        pessoa.setTrabalhaAviario(false);
@@ -438,6 +467,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Abra")) {
                     System.out.println("Abra");
                     pessoa.setTrabalhaAviario(false);
@@ -453,6 +483,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(true);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Aviário")) {
                     System.out.println("Aviário");
                     pessoa.setTrabalhaAviario(true);
@@ -468,6 +499,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Mecânica")) {
                     System.out.println("Mecânica");
                      pessoa.setTrabalhaAviario(false);
@@ -483,6 +515,23 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaAbra(false);
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
+                } else if (cmb_local_trabalho.getValue().equals("Alta Rail Technology")) {
+                    System.out.println("Mecânica");
+                    pessoa.setTrabalhaAviario(false);
+                    pessoa.setTrabalhaMecanica(false);
+                    pessoa.setTrabalhaBrafer(false);
+                    pessoa.setTrabalhaBancoBrasil(false);
+                    pessoa.setTrabalhaDeltaCable(false);
+                    pessoa.setTrabalhaMundoCell(false);
+                    pessoa.setTrabalhaRenault(false);
+                    pessoa.setTrabalhaRefrio(false);
+                    pessoa.setTrabalhaPrefeituraLapa(false);
+                    pessoa.setTrabalhaGelopar(false);
+                    pessoa.setTrabalhaAbra(false);
+                    pessoa.setTrabalhaPrefeituraAraucaria(false);
+                    pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(true);
                 }
 
             }
@@ -507,11 +556,6 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setP_periodo(false);
                     pessoa.setS_periodo(false);
                     pessoa.setT_periodo(true);
-                } else if (periodo_combobox.getValue().equals("Nao Sou Aluno")) {
-                    System.out.println("Nao sou aluno selecionado");
-                    pessoa.setP_periodo(false);
-                    pessoa.setS_periodo(false);
-                    pessoa.setT_periodo(false);
                 }
             }
 
@@ -1037,6 +1081,12 @@ public class Cadastrar_PessoaController implements Initializable {
 
     @FXML
     private JFXCheckBox checkb_nao_tatuagem;
+    
+    @FXML
+    private JFXButton btn_buscar_imagem;
+
+    @FXML
+    private ImageView img_pessoa;
 
     public List<Pessoa> Capturar_pessoas() {
         List<Pessoa> lista_pessoa = new ArrayList();
@@ -1090,9 +1140,11 @@ public class Cadastrar_PessoaController implements Initializable {
             System.out.println("SELECIONAR CAMPO ESTILO CABELO");
             flag = false;
         }
-        if (cor_cabelo_combobox.getSelectionModel().getSelectedItem() == null) {
-            System.out.println("SELECIONAR CAMPO COR CABELO");
-            flag = false;
+        if(!estilo_cabelo_combobox.getValue().equals("Raspado/Calvo")){    
+            if (cor_cabelo_combobox.getSelectionModel().getSelectedItem() == null) {
+                System.out.println("SELECIONAR CAMPO COR CABELO");
+                flag = false;
+            }
         }
         if (cor_dos_olhos_combobox.getSelectionModel().getSelectedItem() == null) {
             System.out.println("SELECIONAR CAMPO COR OLHOS");
@@ -1153,6 +1205,17 @@ public class Cadastrar_PessoaController implements Initializable {
         id_chapeu_nao.setSelected(false);
         id_oculos_nao.setSelected(false);
 
+    }
+    
+    public void buscar_imagem(){
+       FileChooser fc = new FileChooser();
+       File seletedFile = fc.showOpenDialog(null);
+       if(seletedFile != null){
+           Image img = new Image(seletedFile.toURI().toString());
+           System.out.println(seletedFile.toURI().toString());
+           img_pessoa.setImage(img);
+           pessoa.setCaminho_imagem(seletedFile.toURI().toString());
+       }
     }
 
 }

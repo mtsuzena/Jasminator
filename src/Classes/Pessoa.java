@@ -83,6 +83,7 @@ public class Pessoa {
         private boolean trabalhaAbra;
         private boolean trabalhaPrefeituraAraucaria;
         private boolean trabalhaCameraAraucaria;
+        private boolean trabalhaART;
         
 	private boolean jogaFortinite;
         private boolean jogaFifa;
@@ -94,7 +95,10 @@ public class Pessoa {
         
         private boolean usaAparelho;
         
-	
+	private String caminho_imagem;
+        
+        
+        
 
     public Integer getCodPessoa(){
         return this.codPessoa;
@@ -805,5 +809,33 @@ public class Pessoa {
      */
     public void setUsaAparelho(boolean usaAparelho) {
         this.usaAparelho = usaAparelho;
+    }
+
+    /**
+     * @return the trabalhaART
+     */
+    public boolean isTrabalhaART() {
+        return trabalhaART;
+    }
+
+    /**
+     * @param trabalhaART the trabalhaART to set
+     */
+    public void setTrabalhaART(boolean trabalhaART) {
+        this.trabalhaART = trabalhaART;
+    }
+
+    /**
+     * @return the caminho_imagem
+     */
+    public String getCaminho_imagem() {
+        return caminho_imagem;
+    }
+
+    /**
+     * @param caminho_imagem the caminho_imagem to set
+     */
+    public void setCaminho_imagem(String caminho_imagem) {
+        this.caminho_imagem = caminho_imagem;
     }
 }
