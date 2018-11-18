@@ -39,6 +39,9 @@
             <Image url="@../Layout_telas/Giff_IA_Jogo_Principal_variacoes.gif" />
          </image>
       </ImageView>
-      <ImageView fx:id="img_pessoa_encontrada" fitHeight="260.0" fitWidth="376.0" layoutX="214.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img_pessoa_encontrada" fitHeight="262.0" fitWidth="376.0" layoutX="214.0" layoutY="179.0" pickOnBounds="true">
+         <image>
+            <Image url="@../fotos_pessoas/Pessoa_sem_foto.jpg" />
+         </image></ImageView>
    </children>
 </AnchorPane>

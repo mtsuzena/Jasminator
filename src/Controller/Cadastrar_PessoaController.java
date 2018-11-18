@@ -37,10 +37,11 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.util.Duration;
+import javax.swing.ImageIcon;
 import org.apache.commons.lang3.StringUtils;
 
 public class Cadastrar_PessoaController implements Initializable {
-
+    ArrayList<String> erros = new ArrayList<>();
     private List<Pessoa> lista_pessoa = new ArrayList<>();
     Pessoa pessoa = null;
 
@@ -106,7 +107,10 @@ public class Cadastrar_PessoaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+       
+        
+        
+       
         pessoa = new Pessoa();
         disciplinas_combobox.setDisable(true);
         
@@ -119,9 +123,9 @@ public class Cadastrar_PessoaController implements Initializable {
         cor_cabelo_combobox.setItems(list_cor_cabelo);
         cor_dos_olhos_combobox.setItems(lista_cor_olhos);
         tom_pele_combobox.setItems(lista_tom_pele);
-
+        
         cor_cabelo_combobox.setDisable(true);
-       
+        periodo_combobox.setDisable(true);
         cmb_jogos.setItems(lista_jogos);
         cmb_local_trabalho.setItems(lista_trabalho);
         cmb_curso.setItems(lista_curso);
@@ -161,12 +165,12 @@ public class Cadastrar_PessoaController implements Initializable {
                     }
 
                 } else {
-
+                    mensagem_erro(erros);
                     //Setar delay na mensagem 
-                    Timeline timeline = new Timeline(new KeyFrame(
-                            Duration.millis(5000),
-                            kk -> mensagem_erro()));
-                    timeline.play();
+//                    Timeline timeline = new Timeline(new KeyFrame(
+//                            Duration.millis(5000),
+//                            kk -> mensagem_erro()));
+//                    timeline.play();
                     //limpar_campos();
                 }
             }
@@ -1096,7 +1100,7 @@ public class Cadastrar_PessoaController implements Initializable {
     }
 
     public Boolean validacao() {
-
+        
         Boolean nome = StringUtils.isBlank(id_nome.getText());
 
         Boolean flag = true;
@@ -1114,51 +1118,137 @@ public class Cadastrar_PessoaController implements Initializable {
             AnimacaoCampos.vibrar(id_sim_1);
             AnimacaoCampos.vibrar(id_nao_1);
             flag = false;
+            erros.add("Sexo");
         }
         if (id_sim_2.isSelected() == false && id_nao_2.isSelected() == false) {
             AnimacaoCampos.vibrar(id_sim_2);
             AnimacaoCampos.vibrar(id_nao_2);
             flag = false;
+            erros.add("Usa roupa social");
         }
 
         if (id_sim_4.isSelected() == false && id_nao_4.isSelected() == false) {
             AnimacaoCampos.vibrar(id_sim_4);
             AnimacaoCampos.vibrar(id_nao_4);
             flag = false;
+            erros.add("Tem barba");
         }
         if (id_sim_5.isSelected() == false && id_nao_5.isSelected() == false) {
             AnimacaoCampos.vibrar(id_sim_5);
             AnimacaoCampos.vibrar(id_nao_5);
             flag = false;
+            erros.add("Professor");
         }
-
-        if (periodo_combobox.getSelectionModel().getSelectedItem() == null) {
-            System.out.println("SELECIONAR CAMPO PERIODO");
+       if (id_sim_8.isSelected() == false && id_nao_8.isSelected() == false) {
+            AnimacaoCampos.vibrar(id_sim_8);
+            AnimacaoCampos.vibrar(id_nao_8);
+            flag = false;
+            erros.add("Tem piercing");
+        }
+        if (id_oculos_sim.isSelected() == false && id_oculos_nao.isSelected() == false) {
+            AnimacaoCampos.vibrar(id_oculos_nao);
+            AnimacaoCampos.vibrar(id_oculos_sim);
+            flag = false;
+            erros.add("Usa óculos");
+        }
+         if (id_chapeu_sim.isSelected() == false && id_chapeu_nao.isSelected() == false) {
+            AnimacaoCampos.vibrar(id_chapeu_nao);
+            AnimacaoCampos.vibrar(id_chapeu_sim);
+            flag = false;
+            erros.add("Usa boné/chapeu");
+        }
+        
+        if(checkb_sim_depedencia.isSelected() == false && checkb_nao_depedencia.isSelected() == false){
+            AnimacaoCampos.vibrar(checkb_sim_depedencia);
+            AnimacaoCampos.vibrar(checkb_nao_depedencia);
+            flag = false;
+            erros.add("Faz depedencia");
+        }
+         if(checkb_nao_tatuagem.isSelected() == false && checkb_sim_tatuagem.isSelected() == false){
+            AnimacaoCampos.vibrar(checkb_nao_tatuagem);
+            AnimacaoCampos.vibrar(checkb_sim_tatuagem);
+            flag = false;
+            erros.add("Tem tatuagem");
+        }
+         if(checkb_nao_aparelho.isSelected() == false && checkb_sim_aparelho.isSelected() == false){
+            AnimacaoCampos.vibrar(checkb_sim_aparelho);
+            AnimacaoCampos.vibrar(checkb_sim_aparelho);
+            flag = false;
+            erros.add("Usa aparelho");
+        }
+         
+         
+         
+        if(cmb_idade.getSelectionModel().getSelectedItem() == null){
+            erros.add("Idade");
             flag = false;
         }
-        if (estilo_cabelo_combobox.getSelectionModel().getSelectedItem() == null) {
-            System.out.println("SELECIONAR CAMPO ESTILO CABELO");
+        
+        if(cmb_curso.getSelectionModel().getSelectedItem() == null){
+            erros.add("Curso");
             flag = false;
-        }
-        if(!estilo_cabelo_combobox.getValue().equals("Raspado/Calvo")){    
-            if (cor_cabelo_combobox.getSelectionModel().getSelectedItem() == null) {
-                System.out.println("SELECIONAR CAMPO COR CABELO");
+        }else{
+          if(!cmb_curso.getValue().equals("Nao Sou Aluno")){
+            if (periodo_combobox.getSelectionModel().getSelectedItem() == null) {
+                erros.add("Periodo");
                 flag = false;
+          }  
+          
+          }
+        }
+        
+      
+          
+    
+         
+        
+        if (estilo_cabelo_combobox.getSelectionModel().getSelectedItem() == null) {
+            erros.add("Estilo de cabelo");
+            flag = false;
+        }else{
+            if(!estilo_cabelo_combobox.getValue().equals("Raspado/Calvo"))
+            if (cor_cabelo_combobox.getSelectionModel().getSelectedItem() == null) {
+                 erros.add("Cor de cabelo");
+                 flag = false;
+                
             }
         }
+        
+         
+           
+         
+         
+        
         if (cor_dos_olhos_combobox.getSelectionModel().getSelectedItem() == null) {
-            System.out.println("SELECIONAR CAMPO COR OLHOS");
+            erros.add("Cor dos olhos");
             flag = false;
         }
         if (tom_pele_combobox.getSelectionModel().getSelectedItem() == null) {
-            System.out.println("SELECIONAR CAMPO TOM PELE");
-            flag = false;
+             erros.add("Tom de pele");
+             flag = false;
         }
         if (disciplinas_combobox.getSelectionModel().getSelectedItem() == null && id_sim_5.isSelected()) {
-            System.out.println("SELECIONAR CAMPO A DISCIPLINA!");
+            erros.add("Disciplinas");
             flag = false;
         }
-
+        if (cmb_local_trabalho.getSelectionModel().getSelectedItem() == null ) {
+            erros.add("Local de trabalho");
+            flag = false;
+        }
+        
+        if(cmb_alturas.getSelectionModel().getSelectedItem() == null){
+            erros.add("Altura");
+            
+            flag = false;
+        }
+        if(cmb_jogos.getSelectionModel().getSelectedItem() == null){
+             erros.add("Jogo favorito");
+             flag = false;
+        }
+        
+        
+        
+        
         if (flag) {
             return true;
         } else {
@@ -1176,12 +1266,13 @@ public class Cadastrar_PessoaController implements Initializable {
 
     }
 
-    public void mensagem_erro() {
+    public void mensagem_erro(ArrayList<String> erro) {
         Alert alert = new Alert(Alert.AlertType.WARNING);
-        alert.setHeaderText("Erro ao tentar cadastrar uma nova pessoa");
+        alert.setHeaderText("Os seguintes campos precisão ser preenchidos!");
         alert.setTitle(":(");
-        alert.setContentText("Nome, idade inválidos ou checkboxs em brancos!");
+        alert.setContentText(erro.toString());
         alert.show();
+        erros.clear();
     }
 
     public void limpar_campos() {
@@ -1209,6 +1300,7 @@ public class Cadastrar_PessoaController implements Initializable {
     
     public void buscar_imagem(){
        FileChooser fc = new FileChooser();
+       fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("jpg", "*.jpg","pnj","*.png"));
        File seletedFile = fc.showOpenDialog(null);
        if(seletedFile != null){
            Image img = new Image(seletedFile.toURI().toString());

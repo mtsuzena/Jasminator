@@ -26,16 +26,7 @@ public class Final_JogoController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         Image imagem = new Image(Jogo_p1Controller.img_caminho);
-        
         img_pessoa_encontrada.setImage(imagem);
-        
-        
-        
-        img_pessoa_encontrada.fitHeightProperty().set(376);
-        img_pessoa_encontrada.fitWidthProperty().set(260);
-//        stack_pane_img.setMaxSize(376, 26);
-        
-        
         id_label.setText(Jogo_p1Controller.nome);
         voltar();
         recomecar();

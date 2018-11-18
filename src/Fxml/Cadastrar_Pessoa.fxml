@@ -75,6 +75,9 @@
             <Font size="1.0" />
          </font>
       </JFXButton>
-      <ImageView fx:id="img_pessoa" fitHeight="107.0" fitWidth="142.0" layoutX="634.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img_pessoa" fitHeight="107.0" fitWidth="142.0" layoutX="635.0" layoutY="420.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../fotos_pessoas/Pessoa_sem_foto.jpg" />
+         </image></ImageView>
    </children>
 </AnchorPane>
