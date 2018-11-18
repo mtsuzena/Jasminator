@@ -30,8 +30,8 @@
       </JFXCheckBox>
       <JFXComboBox fx:id="cmb_curso" focusColor="TRANSPARENT" layoutX="94.0" layoutY="185.0" prefHeight="25.0" prefWidth="121.0" unFocusColor="TRANSPARENT" />
       <JFXComboBox fx:id="periodo_combobox" focusColor="TRANSPARENT" layoutX="332.0" layoutY="185.0" prefHeight="25.0" prefWidth="121.0" unFocusColor="TRANSPARENT" />
-      <JFXCheckBox fx:id="checkb_sim_depedencia" layoutX="750.0" layoutY="182.0" prefHeight="25.0" prefWidth="0.0" text=" " />
-      <JFXCheckBox fx:id="checkb_nao_depedencia" graphicTextGap="10.0" layoutX="677.0" layoutY="185.0" prefHeight="18.0" prefWidth="0.0" text=" ">
+      <JFXCheckBox fx:id="checkb_nao_depedencia" layoutX="750.0" layoutY="182.0" prefHeight="25.0" prefWidth="0.0" text=" " />
+      <JFXCheckBox fx:id="checkb_sim_depedencia" graphicTextGap="10.0" layoutX="677.0" layoutY="185.0" prefHeight="18.0" prefWidth="0.0" text=" ">
          <font>
             <Font size="1.0" />
          </font>
@@ -75,6 +75,9 @@
             <Font size="1.0" />
          </font>
       </JFXButton>
-      <ImageView fx:id="img_pessoa" fitHeight="107.0" fitWidth="142.0" layoutX="634.0" layoutY="420.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="img_pessoa" fitHeight="107.0" fitWidth="142.0" layoutX="634.0" layoutY="420.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../fotos_pessoas/Pessoa_sem_foto.jpg" />
+         </image></ImageView>
    </children>
 </AnchorPane>

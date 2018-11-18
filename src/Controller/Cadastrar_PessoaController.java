@@ -60,7 +60,7 @@ public class Cadastrar_PessoaController implements Initializable {
     @FXML
     private JFXComboBox cor_cabelo_combobox;
     ObservableList<String> list_cor_cabelo = FXCollections.observableArrayList("Loiro", "Preto",
-            "Castanho", "Avermelhado");
+            "Castanho", "Ruivo");
 
     @FXML
     private JFXComboBox cor_dos_olhos_combobox;
@@ -89,13 +89,18 @@ public class Cadastrar_PessoaController implements Initializable {
     @FXML
     private JFXComboBox cmb_jogos;
     ObservableList<String> lista_jogos = FXCollections.observableArrayList("Counter - Strike Global Offensive",
-            "Legue of Legends", "Fifa", "Overwatch", "Playerunknown's Battlegrounds", "Não jogo/Não listado");
+            "Legue of Legends", "Fifa", "Overwatch",
+            "Playerunknown's Battlegrounds","Fortnite",
+            "Não jogo","Não listado");
 
     @FXML
     private JFXComboBox cmb_local_trabalho;
-    ObservableList<String> lista_trabalho = FXCollections.observableArrayList("Delta cable", "Mundo cell", "Renault",
-            "Banco do Brasil", "Refrio", "Prefeitura da lapa", "Prefeitura de Araucária", "Camera municipal de Araucária", "Gelopar", "Abra",
-            "Aviário", "Mecânica","Alta Rail Technology");
+    ObservableList<String> lista_trabalho = FXCollections.observableArrayList("Delta cable", 
+            "Mundo cell", "Renault",
+            "Banco do Brasil", "Refrio", "Prefeitura da lapa", 
+            "Prefeitura de Araucária", "Camera municipal de Araucária", 
+            "Gelopar", "Abra","Brafer",
+            "Aviário", "Mecânica","Alta Rail Technology","Empresa não listada","Não trabalho");
 
     @FXML
     private JFXComboBox cmb_curso;
@@ -201,10 +206,12 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (cmb_idade.getValue().equals("Menor de 20 anos")) {
+                    System.out.println("Menor 20");
                     pessoa.setIdade(0);
                     pessoa.setMaior20(false);
                 } else if (cmb_idade.getValue().equals("20 anos ou mais")) {
                     pessoa.setIdade(0);
+                    System.out.println("20 anos ou mais");
                     pessoa.setMaior20(true);
                 }
             }
@@ -287,8 +294,16 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setJogaFortinite(false);
                     pessoa.setJogaOverwatch(false);
                     pessoa.setJogaPubg(true);
-                } else if (cmb_jogos.getValue().equals("Não jogo/Não listado")) {
+                } else if (cmb_jogos.getValue().equals("Não jogo")) {
                     System.out.println("Não jogo");
+                    pessoa.setJogaCSGO(false);
+                    pessoa.setJogaLOL(false);
+                    pessoa.setJogaFifa(false);
+                    pessoa.setJogaFortinite(false);
+                    pessoa.setJogaOverwatch(false);
+                    pessoa.setJogaPubg(false);
+                }else if (cmb_jogos.getValue().equals("Não listado")) {
+                    System.out.println("Não listado");
                     pessoa.setJogaCSGO(false);
                     pessoa.setJogaLOL(false);
                     pessoa.setJogaFifa(false);
@@ -358,7 +373,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Renault")) {
                     System.out.println("Renault");
-                       pessoa.setTrabalhaAviario(false);
+                    pessoa.setTrabalhaAviario(false);
                     pessoa.setTrabalhaMecanica(false);
                     pessoa.setTrabalhaBrafer(false);
                     pessoa.setTrabalhaBancoBrasil(false);
@@ -421,7 +436,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaCameraAraucaria(false);
                     pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Prefeitura de Araucária")) {
-                    System.out.println("Prefeitura da lapa");
+                    System.out.println("Prefeitura de araucaria");
                        pessoa.setTrabalhaAviario(false);
                     pessoa.setTrabalhaMecanica(false);
                     pessoa.setTrabalhaBrafer(false);
@@ -484,7 +499,8 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
                     pessoa.setTrabalhaART(false);
-                } else if (cmb_local_trabalho.getValue().equals("Aviário")) {
+                } 
+                else if (cmb_local_trabalho.getValue().equals("Aviário")) {
                     System.out.println("Aviário");
                     pessoa.setTrabalhaAviario(true);
                     pessoa.setTrabalhaMecanica(false);
@@ -500,9 +516,25 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
                     pessoa.setTrabalhaART(false);
+                }else if (cmb_local_trabalho.getValue().equals("Brafer")) {
+                    System.out.println("Brafer");
+                    pessoa.setTrabalhaAviario(false);
+                    pessoa.setTrabalhaMecanica(false);
+                    pessoa.setTrabalhaBrafer(true);
+                    pessoa.setTrabalhaBancoBrasil(false);
+                    pessoa.setTrabalhaDeltaCable(false);
+                    pessoa.setTrabalhaMundoCell(false);
+                    pessoa.setTrabalhaRenault(false);
+                    pessoa.setTrabalhaRefrio(false);
+                    pessoa.setTrabalhaPrefeituraLapa(false);
+                    pessoa.setTrabalhaGelopar(false);
+                    pessoa.setTrabalhaAbra(false);
+                    pessoa.setTrabalhaPrefeituraAraucaria(false);
+                    pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Mecânica")) {
                     System.out.println("Mecânica");
-                     pessoa.setTrabalhaAviario(false);
+                    pessoa.setTrabalhaAviario(false);
                     pessoa.setTrabalhaMecanica(true);
                     pessoa.setTrabalhaBrafer(false);
                     pessoa.setTrabalhaBancoBrasil(false);
@@ -517,7 +549,7 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaCameraAraucaria(false);
                     pessoa.setTrabalhaART(false);
                 } else if (cmb_local_trabalho.getValue().equals("Alta Rail Technology")) {
-                    System.out.println("Mecânica");
+                    System.out.println("Alta Rail Technology");
                     pessoa.setTrabalhaAviario(false);
                     pessoa.setTrabalhaMecanica(false);
                     pessoa.setTrabalhaBrafer(false);
@@ -532,6 +564,38 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
                     pessoa.setTrabalhaART(true);
+                }else if (cmb_local_trabalho.getValue().equals("Empresa não listada")) {
+                    System.out.println("Alta Rail Technology");
+                    pessoa.setTrabalhaAviario(false);
+                    pessoa.setTrabalhaMecanica(false);
+                    pessoa.setTrabalhaBrafer(false);
+                    pessoa.setTrabalhaBancoBrasil(false);
+                    pessoa.setTrabalhaDeltaCable(false);
+                    pessoa.setTrabalhaMundoCell(false);
+                    pessoa.setTrabalhaRenault(false);
+                    pessoa.setTrabalhaRefrio(false);
+                    pessoa.setTrabalhaPrefeituraLapa(false);
+                    pessoa.setTrabalhaGelopar(false);
+                    pessoa.setTrabalhaAbra(false);
+                    pessoa.setTrabalhaPrefeituraAraucaria(false);
+                    pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
+                }else if (cmb_local_trabalho.getValue().equals("Não trabalho")) {
+                    System.out.println("Não trabalho");
+                    pessoa.setTrabalhaAviario(false);
+                    pessoa.setTrabalhaMecanica(false);
+                    pessoa.setTrabalhaBrafer(false);
+                    pessoa.setTrabalhaBancoBrasil(false);
+                    pessoa.setTrabalhaDeltaCable(false);
+                    pessoa.setTrabalhaMundoCell(false);
+                    pessoa.setTrabalhaRenault(false);
+                    pessoa.setTrabalhaRefrio(false);
+                    pessoa.setTrabalhaPrefeituraLapa(false);
+                    pessoa.setTrabalhaGelopar(false);
+                    pessoa.setTrabalhaAbra(false);
+                    pessoa.setTrabalhaPrefeituraAraucaria(false);
+                    pessoa.setTrabalhaCameraAraucaria(false);
+                    pessoa.setTrabalhaART(false);
                 }
 
             }
@@ -720,8 +784,8 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setCabeloPreto(false);
                     pessoa.setCabeloCastanho(true);
                     pessoa.setCabeloAvermelhado(false);
-                } else if (cor_cabelo_combobox.getValue().equals("Avermelhado")) {
-                    System.out.println("Cabelo Avermelhado");
+                } else if (cor_cabelo_combobox.getValue().equals("Ruivo")) {
+                    System.out.println("Ruivo");
                     pessoa.setCabeloLoiro(false);
                     pessoa.setCabeloPreto(false);
                     pessoa.setCabeloCastanho(false);
@@ -735,14 +799,17 @@ public class Cadastrar_PessoaController implements Initializable {
             @Override
             public void handle(ActionEvent event) {
                 if (cor_dos_olhos_combobox.getValue().equals("Verde")) {
+                    System.out.println("Verde");
                     pessoa.setTomOlhoVerde(true);
                     pessoa.setTomOlhoAzul(false);
                     pessoa.setTomOlhoCastanho(false);
                 } else if (cor_dos_olhos_combobox.getValue().equals("Azul")) {
+                    System.out.println("Azul");
                     pessoa.setTomOlhoVerde(false);
                     pessoa.setTomOlhoAzul(true);
                     pessoa.setTomOlhoCastanho(false);
                 } else if (cor_dos_olhos_combobox.getValue().equals("Castanho")) {
+                    System.out.println("Castanho");
                     pessoa.setTomOlhoVerde(false);
                     pessoa.setTomOlhoAzul(false);
                     pessoa.setTomOlhoCastanho(true);
@@ -779,6 +846,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_sim_1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim_sexo");
                 id_nao_1.setSelected(false);
                 pessoa.setMasculino(true);
             }
@@ -787,6 +855,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_nao_1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_sexo");
                 id_sim_1.setSelected(false);
                 pessoa.setMasculino(false);
             }
@@ -797,6 +866,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_sim_2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim_roupa");
                 id_nao_2.setSelected(false);
                 pessoa.setUsaRoupaSocial(true);
 
@@ -806,6 +876,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_nao_2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_roupa");
                 id_sim_2.setSelected(false);
                 pessoa.setUsaRoupaSocial(false);
 
@@ -817,6 +888,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_sim_4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim_barba");
                 id_nao_4.setSelected(false);
                 pessoa.setBarba(true);
             }
@@ -825,6 +897,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_nao_4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_barba");
                 id_sim_4.setSelected(false);
                 pessoa.setBarba(false);
 
@@ -836,6 +909,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_sim_5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim_prof");
                 id_nao_5.setSelected(false);
                 pessoa.setProfessor(true);
                 if (id_sim_5.isSelected()) {
@@ -855,6 +929,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_nao_5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_prof");
                 id_sim_5.setSelected(false);
                 pessoa.setProfessor(false);
                 disciplinas_combobox.setDisable(true);
@@ -868,6 +943,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_sim_8.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim piercing");
                 id_nao_8.setSelected(false);
                 pessoa.setTemPiercing(true);
             }
@@ -876,6 +952,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_nao_8.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_pierc");
                 id_sim_8.setSelected(false);
                 pessoa.setTemPiercing(false);
             }
@@ -885,6 +962,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_oculos_sim.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim_oculos");
                 id_oculos_nao.setSelected(false);
                 pessoa.setUsaOculos(true);
             }
@@ -893,6 +971,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_oculos_nao.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_oculos");
                 id_oculos_sim.setSelected(false);
                 pessoa.setUsaOculos(false);
             }
@@ -902,6 +981,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_chapeu_sim.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim_chapeu");
                 id_chapeu_nao.setSelected(false);
                 pessoa.setUsaChapeu(true);
             }
@@ -910,6 +990,7 @@ public class Cadastrar_PessoaController implements Initializable {
         id_chapeu_nao.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_chape");
                 id_chapeu_sim.setSelected(false);
                 pessoa.setUsaChapeu(false);
             }
@@ -919,6 +1000,7 @@ public class Cadastrar_PessoaController implements Initializable {
         checkb_sim_depedencia.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim_depend");
                 checkb_nao_depedencia.setSelected(false);
                 pessoa.setDependencia(true);
             }
@@ -928,6 +1010,7 @@ public class Cadastrar_PessoaController implements Initializable {
         checkb_nao_depedencia.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_depend");
                 checkb_sim_depedencia.setSelected(false);
                 pessoa.setDependencia(false);
             }
@@ -937,6 +1020,7 @@ public class Cadastrar_PessoaController implements Initializable {
         checkb_sim_aparelho.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim_apaelho");
                 checkb_nao_aparelho.setSelected(false);
                 pessoa.setUsaAparelho(true);
             }
@@ -945,6 +1029,7 @@ public class Cadastrar_PessoaController implements Initializable {
         checkb_nao_aparelho.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_apaelho");
                 checkb_sim_aparelho.setSelected(false);
                 pessoa.setUsaAparelho(false);
             }
@@ -953,6 +1038,7 @@ public class Cadastrar_PessoaController implements Initializable {
         checkb_sim_tatuagem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Sim_tatu");
                 checkb_nao_tatuagem.setSelected(false);
                 pessoa.setTatuado(true);
             }
@@ -961,6 +1047,7 @@ public class Cadastrar_PessoaController implements Initializable {
         checkb_nao_tatuagem.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                System.out.println("Nao_tatu");
                 checkb_sim_tatuagem.setSelected(false);
                 pessoa.setTatuado(false);
             }
@@ -973,27 +1060,31 @@ public class Cadastrar_PessoaController implements Initializable {
             public void handle(ActionEvent event) {
 
                 if (disciplinas_combobox.getValue().equals("Programação orientada a objetos e Projeto Integrador")) {
+                    System.out.println("Programação orientada a objetos e Projeto Integrador");
                     pessoa.setLecionaPOO(true);
                     pessoa.setLecionaAC(false);
                     pessoa.setLecionaBD(false);
                     pessoa.setLecionaMAC(false);
                 } else if (disciplinas_combobox.getValue().equals("Matemática aplicada a computação")) {
+                    System.out.println("Matemática aplicada a computação");
                     pessoa.setLecionaPOO(false);
                     pessoa.setLecionaAC(false);
                     pessoa.setLecionaBD(false);
                     pessoa.setLecionaMAC(true);
                 } else if (disciplinas_combobox.getValue().equals("Banco de dados")) {
+                    System.out.println("Banco de dados");
                     pessoa.setLecionaPOO(false);
                     pessoa.setLecionaAC(false);
                     pessoa.setLecionaBD(true);
                     pessoa.setLecionaMAC(false);
                 } else if (disciplinas_combobox.getValue().equals("Arquitetura de computadores")) {
+                    System.out.println("Arquitetura de computadores");
                     pessoa.setLecionaPOO(false);
                     pessoa.setLecionaAC(true);
                     pessoa.setLecionaBD(false);
                     pessoa.setLecionaMAC(false);
                 } else if (disciplinas_combobox.getValue().equals("Não listado")) {
-                    System.out.println("Selecionado outras");
+                    System.out.println("Não listado");
                     pessoa.setLecionaPOO(false);
                     pessoa.setLecionaAC(false);
                     pessoa.setLecionaBD(false);
