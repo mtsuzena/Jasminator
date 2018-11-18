@@ -11,7 +11,16 @@
 
 <AnchorPane id="AnchorPane" fx:id="id_pane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Cadastrar_PessoaController">
    <children>
-      <JFXComboBox fx:id="cmb_idade" focusColor="TRANSPARENT" layoutX="457.0" layoutY="140.0" prefHeight="0.0" prefWidth="83.0" unFocusColor="TRANSPARENT" />
+      <ImageView fitHeight="600.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Layout_telas/Tela_cadastro_pessoa.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_pessoa" fitHeight="107.0" fitWidth="142.0" layoutX="635.0" layoutY="420.0" pickOnBounds="true" smooth="false">
+         <image>
+            <Image url="@../fotos_pessoas/Pessoa_sem_foto.jpg" />
+         </image></ImageView>
+      <JFXComboBox fx:id="cmb_idade" focusColor="BLACK" layoutX="457.0" layoutY="140.0" prefHeight="0.0" prefWidth="83.0" unFocusColor="BLACK" />
 			<JFXTextField fx:id="id_nome" focusColor="TRANSPARENT" layoutX="96.0" layoutY="137.0" maxWidth="313.0" minWidth="35.0" prefHeight="31.0" prefWidth="269.0" unFocusColor="TRANSPARENT" />
       <JFXCheckBox fx:id="id_sim_1" layoutX="687.0" layoutY="137.0" prefHeight="25.0" prefWidth="10.0" text=" ">
          <font>
@@ -23,8 +32,8 @@
             <Font size="1.0" />
          </font>
       </JFXCheckBox>
-      <JFXComboBox fx:id="cmb_curso" focusColor="TRANSPARENT" layoutX="94.0" layoutY="185.0" prefHeight="25.0" prefWidth="121.0" unFocusColor="TRANSPARENT" />
-      <JFXComboBox fx:id="periodo_combobox" focusColor="TRANSPARENT" layoutX="332.0" layoutY="185.0" prefHeight="25.0" prefWidth="121.0" unFocusColor="TRANSPARENT" />
+      <JFXComboBox fx:id="cmb_curso" focusColor="BLACK" layoutX="94.0" layoutY="185.0" prefHeight="25.0" prefWidth="121.0" unFocusColor="BLACK" />
+      <JFXComboBox fx:id="periodo_combobox" focusColor="BLACK" layoutX="332.0" layoutY="185.0" prefHeight="25.0" prefWidth="121.0" unFocusColor="BLACK" />
       <JFXCheckBox fx:id="checkb_sim_depedencia" layoutX="750.0" layoutY="182.0" prefHeight="25.0" prefWidth="0.0" text=" " />
       <JFXCheckBox fx:id="checkb_nao_depedencia" graphicTextGap="10.0" layoutX="677.0" layoutY="185.0" prefHeight="18.0" prefWidth="0.0" text=" ">
          <font>
@@ -38,17 +47,17 @@
       </JFXButton>
       <JFXCheckBox fx:id="id_sim_5" layoutX="159.0" layoutY="234.0" prefHeight="18.0" prefWidth="0.0" text=" " />
       <JFXCheckBox fx:id="id_nao_5" layoutX="233.0" layoutY="234.0" prefHeight="16.0" prefWidth="0.0" text=" " />
-      <JFXComboBox fx:id="disciplinas_combobox" focusColor="TRANSPARENT" layoutX="392.0" layoutY="231.0" prefHeight="18.0" prefWidth="121.0" unFocusColor="TRANSPARENT" />
-      <JFXComboBox fx:id="cmb_local_trabalho" focusColor="TRANSPARENT" layoutX="679.0" layoutY="231.0" prefHeight="17.0" prefWidth="113.0" unFocusColor="TRANSPARENT" />
-      <JFXComboBox fx:id="tom_pele_combobox" focusColor="TRANSPARENT" layoutX="144.0" layoutY="275.0" prefHeight="25.0" prefWidth="83.0" unFocusColor="TRANSPARENT" />
+      <JFXComboBox fx:id="disciplinas_combobox" focusColor="BLACK" layoutX="392.0" layoutY="231.0" prefHeight="18.0" prefWidth="121.0" unFocusColor="BLACK" />
+      <JFXComboBox fx:id="cmb_local_trabalho" focusColor="#000000ee" layoutX="679.0" layoutY="231.0" prefHeight="17.0" prefWidth="113.0" unFocusColor="BLACK" />
+      <JFXComboBox fx:id="tom_pele_combobox" focusColor="#000000fd" layoutX="144.0" layoutY="275.0" prefHeight="25.0" prefWidth="83.0" unFocusColor="BLACK" />
       <JFXCheckBox fx:id="checkb_sim_tatuagem" layoutX="423.0" layoutY="275.0" prefHeight="25.0" prefWidth="0.0" text=" " />
       <JFXCheckBox fx:id="checkb_nao_tatuagem" layoutX="495.0" layoutY="279.0" prefHeight="18.0" prefWidth="3.0" text=" " unCheckedColor="#575757" />
       <JFXCheckBox fx:id="id_sim_8" layoutX="687.0" layoutY="279.0" prefHeight="18.0" prefWidth="0.0" text=" " />
       <JFXCheckBox fx:id="id_nao_8" layoutX="760.0" layoutY="272.0" prefHeight="31.0" prefWidth="43.0" text=" " />
-      <JFXComboBox fx:id="estilo_cabelo_combobox" focusColor="TRANSPARENT" layoutX="179.0" layoutY="319.0" prefHeight="25.0" prefWidth="92.0" unFocusColor="TRANSPARENT" />
-      <JFXComboBox fx:id="cor_cabelo_combobox" focusColor="TRANSPARENT" layoutX="438.0" layoutY="319.0" prefHeight="25.0" prefWidth="92.0" unFocusColor="TRANSPARENT" />
-      <JFXComboBox fx:id="cor_dos_olhos_combobox" focusColor="TRANSPARENT" layoutX="692.0" layoutY="319.0" prefHeight="25.0" prefWidth="92.0" unFocusColor="TRANSPARENT" />
-      <JFXComboBox fx:id="cmb_alturas" focusColor="TRANSPARENT" layoutX="98.0" layoutY="363.0" prefHeight="6.0" prefWidth="92.0" unFocusColor="TRANSPARENT" />
+      <JFXComboBox fx:id="estilo_cabelo_combobox" focusColor="BLACK" layoutX="179.0" layoutY="319.0" prefHeight="25.0" prefWidth="92.0" unFocusColor="BLACK" />
+      <JFXComboBox fx:id="cor_cabelo_combobox" focusColor="BLACK" layoutX="438.0" layoutY="319.0" prefHeight="25.0" prefWidth="92.0" unFocusColor="BLACK" />
+      <JFXComboBox fx:id="cor_dos_olhos_combobox" focusColor="BLACK" layoutX="692.0" layoutY="319.0" prefHeight="25.0" prefWidth="92.0" unFocusColor="BLACK" />
+      <JFXComboBox fx:id="cmb_alturas" focusColor="BLACK" layoutX="98.0" layoutY="363.0" prefHeight="6.0" prefWidth="92.0" unFocusColor="BLACK" />
       <JFXCheckBox fx:id="id_sim_4" layoutX="339.0" layoutY="364.0" prefHeight="18.0" prefWidth="0.0" text=" " />
       <JFXCheckBox fx:id="id_nao_4" layoutX="412.0" layoutY="361.0" prefHeight="25.0" prefWidth="0.0" text=" " />
       <JFXCheckBox fx:id="checkb_sim_aparelho" layoutX="619.0" layoutY="361.0" prefHeight="25.0" prefWidth="0.0" text=" " />
@@ -57,7 +66,7 @@
       <JFXCheckBox fx:id="id_nao_2" layoutX="296.0" layoutY="406.0" prefHeight="25.0" prefWidth="0.0" text=" " />
       <JFXCheckBox fx:id="id_oculos_sim" layoutX="483.0" layoutY="410.0" prefHeight="18.0" prefWidth="10.0" text=" " />
       <JFXCheckBox fx:id="id_oculos_nao" layoutX="556.0" layoutY="406.0" prefHeight="25.0" prefWidth="0.0" text=" " />
-      <JFXComboBox fx:id="cmb_jogos" focusColor="TRANSPARENT" layoutX="159.0" layoutY="447.0" prefHeight="25.0" prefWidth="142.0" unFocusColor="TRANSPARENT" />
+      <JFXComboBox fx:id="cmb_jogos" focusColor="BLACK" layoutX="159.0" layoutY="447.0" prefHeight="25.0" prefWidth="142.0" unFocusColor="BLACK" />
       <JFXCheckBox fx:id="id_chapeu_sim" layoutX="525.0" layoutY="451.0" prefHeight="18.0" prefWidth="0.0" text=" " />
       <JFXCheckBox fx:id="id_chapeu_nao" layoutX="598.0" layoutY="447.0" prefHeight="25.0" prefWidth="0.0" text=" " />
       <JFXButton fx:id="id_salvar" layoutX="158.0" layoutY="549.0" prefHeight="25.0" prefWidth="113.0">
@@ -70,9 +79,5 @@
             <Font size="1.0" />
          </font>
       </JFXButton>
-      <ImageView fx:id="img_pessoa" fitHeight="107.0" fitWidth="142.0" layoutX="635.0" layoutY="420.0" pickOnBounds="true" smooth="false">
-         <image>
-            <Image url="@../fotos_pessoas/Pessoa_sem_foto.jpg" />
-         </image></ImageView>
    </children>
 </AnchorPane>

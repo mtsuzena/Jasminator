@@ -45,12 +45,8 @@ public class Cadastrar_PessoaController implements Initializable {
     private List<Pessoa> lista_pessoa = new ArrayList<>();
     Pessoa pessoa = null;
 
-    @FXML
-    private GridPane id_grid;
-    @FXML
-    private Text id_label;
-
-    @FXML
+    
+      @FXML
     private JFXComboBox periodo_combobox; // Combo box para cadastrar o periodo do curso
     ObservableList<String> list_periodos = FXCollections.observableArrayList("1º Periodo", "2º Periodo",
             "3º Periodo");
@@ -1020,8 +1016,7 @@ public class Cadastrar_PessoaController implements Initializable {
     @FXML
     private JFXButton id_salvar;
 
-    @FXML
-    private Text id_label_disciplinas;
+
 
     @FXML
     private JFXCheckBox id_sim_1;
