@@ -91,7 +91,7 @@ public class Cadastrar_PessoaController implements Initializable {
     ObservableList<String> lista_jogos = FXCollections.observableArrayList("Counter - Strike Global Offensive",
             "Legue of Legends", "Fifa", "Overwatch",
             "Playerunknown's Battlegrounds","Fortnite",
-            "Não jogo","Não listado");
+            "Não jogo/Não listado");
 
     @FXML
     private JFXComboBox cmb_local_trabalho;
@@ -100,7 +100,7 @@ public class Cadastrar_PessoaController implements Initializable {
             "Banco do Brasil", "Refrio", "Prefeitura da lapa", 
             "Prefeitura de Araucária", "Camera municipal de Araucária", 
             "Gelopar", "Abra","Brafer",
-            "Aviário", "Mecânica","Alta Rail Technology","Empresa não listada","Não trabalho");
+            "Aviário", "Mecânica","Alta Rail Technology","Empresa não listada/Não trabalho");
 
     @FXML
     private JFXComboBox cmb_curso;
@@ -289,16 +289,8 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setJogaFortinite(false);
                     pessoa.setJogaOverwatch(false);
                     pessoa.setJogaPubg(true);
-                } else if (cmb_jogos.getValue().equals("Não jogo")) {
+                } else if (cmb_jogos.getValue().equals("Não jogo/Não listado")) {
                     System.out.println("Não jogo");
-                    pessoa.setJogaCSGO(false);
-                    pessoa.setJogaLOL(false);
-                    pessoa.setJogaFifa(false);
-                    pessoa.setJogaFortinite(false);
-                    pessoa.setJogaOverwatch(false);
-                    pessoa.setJogaPubg(false);
-                }else if (cmb_jogos.getValue().equals("Não listado")) {
-                    System.out.println("Não listado");
                     pessoa.setJogaCSGO(false);
                     pessoa.setJogaLOL(false);
                     pessoa.setJogaFifa(false);
@@ -559,24 +551,8 @@ public class Cadastrar_PessoaController implements Initializable {
                     pessoa.setTrabalhaPrefeituraAraucaria(false);
                     pessoa.setTrabalhaCameraAraucaria(false);
                     pessoa.setTrabalhaART(true);
-                }else if (cmb_local_trabalho.getValue().equals("Empresa não listada")) {
-                    System.out.println("Alta Rail Technology");
-                    pessoa.setTrabalhaAviario(false);
-                    pessoa.setTrabalhaMecanica(false);
-                    pessoa.setTrabalhaBrafer(false);
-                    pessoa.setTrabalhaBancoBrasil(false);
-                    pessoa.setTrabalhaDeltaCable(false);
-                    pessoa.setTrabalhaMundoCell(false);
-                    pessoa.setTrabalhaRenault(false);
-                    pessoa.setTrabalhaRefrio(false);
-                    pessoa.setTrabalhaPrefeituraLapa(false);
-                    pessoa.setTrabalhaGelopar(false);
-                    pessoa.setTrabalhaAbra(false);
-                    pessoa.setTrabalhaPrefeituraAraucaria(false);
-                    pessoa.setTrabalhaCameraAraucaria(false);
-                    pessoa.setTrabalhaART(false);
-                }else if (cmb_local_trabalho.getValue().equals("Não trabalho")) {
-                    System.out.println("Não trabalho");
+                }else if (cmb_local_trabalho.getValue().equals("Empresa não listada/Não trabalho")) {
+                
                     pessoa.setTrabalhaAviario(false);
                     pessoa.setTrabalhaMecanica(false);
                     pessoa.setTrabalhaBrafer(false);

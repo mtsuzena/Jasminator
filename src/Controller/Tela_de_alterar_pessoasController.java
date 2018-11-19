@@ -144,6 +144,8 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
                     cmb_disciplinas.getSelectionModel().select(2);
                 } else if (lista_pessoas.get(i).isLecionaBD()) {
                     cmb_disciplinas.getSelectionModel().select(3);
+                }else{
+                    cmb_disciplinas.getSelectionModel().select(4);
                 }
 
                 if (lista_pessoas.get(i).isBarba()) {
@@ -170,7 +172,7 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
                     cmb_idade.getSelectionModel().select(0);
                 }
 
-                if (lista_pessoas.get(i).isP_periodo() && lista_pessoas.get(i).isProfessor() == false) {
+                if (lista_pessoas.get(i).isP_periodo()) {
                     cmb_periodo.getSelectionModel().select(0);
                 } else if (lista_pessoas.get(i).isS_periodo()) {
                     cmb_periodo.getSelectionModel().select(1);
@@ -266,6 +268,8 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
                     cmb_local_trabalho.getSelectionModel().select(12);
                 } else if (lista_pessoas.get(i).isTrabalhaART()) {
                     cmb_local_trabalho.getSelectionModel().select(13);
+                }else{
+                    cmb_local_trabalho.getSelectionModel().select(14);
                 }
 
 //terminar o combobox de local trabalho
@@ -308,7 +312,9 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
                     cmb_jogos.getSelectionModel().select(4);
                 } else if (lista_pessoas.get(i).isJogaFortinite()) {
                     cmb_jogos.getSelectionModel().select(5);
-                }// msm coisa do local de trabalho
+                }else{
+                    cmb_jogos.getSelectionModel().select(6);
+                }
 
             }
         }
@@ -553,6 +559,14 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
                     lista_pessoas.get(cod2).setJogaOverwatch(false);
                     lista_pessoas.get(cod2).setJogaPubg(false);
                     lista_pessoas.get(cod2).setJogaFortinite(true);
+                }else if(cmb_jogos.getValue().equals("Não jogo/Não listado")){
+                    
+                    lista_pessoas.get(cod2).setJogaCSGO(false);
+                    lista_pessoas.get(cod2).setJogaLOL(false);
+                    lista_pessoas.get(cod2).setJogaFifa(false);
+                    lista_pessoas.get(cod2).setJogaOverwatch(false);
+                    lista_pessoas.get(cod2).setJogaPubg(false);
+                    lista_pessoas.get(cod2).setJogaFortinite(false);
                 }
             }
         });
@@ -771,6 +785,21 @@ public class Tela_de_alterar_pessoasController extends Cadastrar_PessoaControlle
                     lista_pessoas.get(cod2).setTrabalhaAviario(false);
                     lista_pessoas.get(cod2).setTrabalhaMecanica(false);
                     lista_pessoas.get(cod2).setTrabalhaART(true);
+                }else if(cmb_local_trabalho.getValue().equals("Empresa não listada/Não trabalho")){
+                    lista_pessoas.get(cod2).setTrabalhaDeltaCable(false);
+                    lista_pessoas.get(cod2).setTrabalhaMundoCell(false);
+                    lista_pessoas.get(cod2).setTrabalhaRenault(false);
+                    lista_pessoas.get(cod2).setTrabalhaBancoBrasil(false);
+                    lista_pessoas.get(cod2).setTrabalhaRefrio(false);
+                    lista_pessoas.get(cod2).setTrabalhaPrefeituraLapa(false);
+                    lista_pessoas.get(cod2).setTrabalhaPrefeituraAraucaria(false);
+                    lista_pessoas.get(cod2).setTrabalhaCameraAraucaria(false);
+                    lista_pessoas.get(cod2).setTrabalhaGelopar(false);
+                    lista_pessoas.get(cod2).setTrabalhaAbra(false);
+                    lista_pessoas.get(cod2).setTrabalhaBrafer(false);
+                    lista_pessoas.get(cod2).setTrabalhaAviario(false);
+                    lista_pessoas.get(cod2).setTrabalhaMecanica(false);
+                    lista_pessoas.get(cod2).setTrabalhaART(false);
                 }
 
             }
