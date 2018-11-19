@@ -22,7 +22,7 @@ public class ListaPerguntas {
         return (ArrayList) lista_perguntaPadrao;
     }
     
-    public static ArrayList retornaLista_sons(){
+    /*public static ArrayList retornaLista_sons(){
         List<String> lista_sons = new ArrayList<String>();
         
         lista_sons.add(0,"p_periodo.m4a");
@@ -79,18 +79,18 @@ public class ListaPerguntas {
                 
                 
         return (ArrayList) lista_sons;
-    }
+    }*/
     
     public static ArrayList retornaLista_New(){
         List<String> lista_perguntaPadrao = new ArrayList<String>();
         
-        lista_perguntaPadrao.add(0,"A pessoa esta no primeiro periodo?");
-        lista_perguntaPadrao.add(1,"A pessoa esta no segundo periodo?");
-        lista_perguntaPadrao.add(2,"A pessoa esta no terceiro periodo?");
+        lista_perguntaPadrao.add(0,"A pessoa estuda no primeiro periodo?");
+        lista_perguntaPadrao.add(1,"A pessoa estuda no segundo periodo?");
+        lista_perguntaPadrao.add(2,"A pessoa estuda no terceiro periodo?");
         lista_perguntaPadrao.add(3,"A pessoa é do sexo masculino?");
-        
+       
         // Perguntas sobre cabelo
-        lista_perguntaPadrao.add(4,"A pessoa tem estilo de corte careca?");
+        lista_perguntaPadrao.add(4,"A pessoa tem estilo de corte careca ou é calvo?");
         lista_perguntaPadrao.add(5,"A pessoa tem cabelo ondulado?");
         lista_perguntaPadrao.add(6,"A pessoa tem cabelo crespo?");
         lista_perguntaPadrao.add(7,"A pessoa tem cabelo liso?");
@@ -100,18 +100,18 @@ public class ListaPerguntas {
         lista_perguntaPadrao.add(11,"A pessoa tem cabelo da cor loiro?");
         lista_perguntaPadrao.add(12,"A pessoa tem cabelo da cor preto?");
         lista_perguntaPadrao.add(13,"A pessoa tem cabelo da cor castanho?");
-        lista_perguntaPadrao.add(14,"A pessoa tem cabelo da cor avermelhado?");
-        
+        lista_perguntaPadrao.add(14,"A pessoa tem cabelo da cor ruivo?");
+       
         //Tom da pele
-        lista_perguntaPadrao.add(15,"A pessoa é branca?");
-        lista_perguntaPadrao.add(16,"A pessoa é negra?");
-        
+        lista_perguntaPadrao.add(15,"A pessoa tem a pele branca?");
+        lista_perguntaPadrao.add(16,"A pessoa tem a pele negra?");
+       
         //Tom olhos
         lista_perguntaPadrao.add(17,"A pessoa tem o tom dos olhos verde?");
         lista_perguntaPadrao.add(18,"A pessoa tem o tom dos olhos azul?");
-        lista_perguntaPadrao.add(19,"A pessoa tem o tom dos olhos castanhos");
+        lista_perguntaPadrao.add(19,"A pessoa tem o tom dos olhos castanhos?");
         lista_perguntaPadrao.add(20,"A pessoa usa óculos?");
-        
+       
         //Caracteristicas gerais
         lista_perguntaPadrao.add(21,"A pessoa é alta?");
         lista_perguntaPadrao.add(22,"A pessoa tem barba ?");
@@ -119,47 +119,47 @@ public class ListaPerguntas {
         lista_perguntaPadrao.add(24,"A pessoa usa roupa social?");
         lista_perguntaPadrao.add(25,"A pessoa é professor?");
         lista_perguntaPadrao.add(26,"A pessoa tem 20 anos ou mais?");
-        
+       
         // Jogos
-        lista_perguntaPadrao.add(27,"A pessoa joga League of Legends?");
-        lista_perguntaPadrao.add(28,"A pessoa joga CS:GO?");
-        
+        lista_perguntaPadrao.add(27,"League of Legends é o jogo favorito da pessoa?");
+        lista_perguntaPadrao.add(28,"Counter-Strike: Global Ofenssive é o jogo favorito da pessoa?");
+       
         //Específicas
         lista_perguntaPadrao.add(29,"A pessoa é graduado em química na UFPR?");
         lista_perguntaPadrao.add(30,"A pessoa é do exercíto?");
-        lista_perguntaPadrao.add(31,"A pessoa leciona a disciplina Programacao Orietada a Objetos?");
+        lista_perguntaPadrao.add(31,"A pessoa leciona a disciplina Programacao Orietada a Objetos e Projeto Integrador?");
         lista_perguntaPadrao.add(32,"A pessoa leciona a disciplina Arquitetura de Computadores?");
-        lista_perguntaPadrao.add(33,"A pessoa leciona a disciplina Matematica Aplicada a Computacao?");
+        lista_perguntaPadrao.add(33,"A pessoa leciona a disciplina Matemática Aplicada a Computação?");
         lista_perguntaPadrao.add(34,"A pessoa leciona a disciplina Banco de Dados?");
-        lista_perguntaPadrao.add(35,"A pessoa trabalha em um aviario?");
-        lista_perguntaPadrao.add(36,"A pessoa trabalha em uma mecanica?");
+        lista_perguntaPadrao.add(35,"A pessoa trabalha em um aviário?");
+        lista_perguntaPadrao.add(36,"A pessoa trabalha em uma mecânica?");
         lista_perguntaPadrao.add(37,"A pessoa trabalha na Brafer?");
         lista_perguntaPadrao.add(38,"A pessoa tem piercing?");
         // novas perguntas
-        lista_perguntaPadrao.add(39,"A pessoa e parda?");
-        lista_perguntaPadrao.add(40,"Tatuado?");
-        lista_perguntaPadrao.add(41,"Faz dependencia");
-        lista_perguntaPadrao.add(42,"Altura ate 1.69");
-        lista_perguntaPadrao.add(43,"Altura ate 1.79");
-        lista_perguntaPadrao.add(44,"Altura ate 1.90");
-        lista_perguntaPadrao.add(45,"Trabalha banco brasil");
-        lista_perguntaPadrao.add(46,"Trabalha delta cable");
-        lista_perguntaPadrao.add(47,"Trabalha mundo cell");
-        lista_perguntaPadrao.add(48,"Trabalha renault");
-        lista_perguntaPadrao.add(49,"Trabalha refrio");
-        lista_perguntaPadrao.add(50,"Trabalha prefeit lapa");
-        lista_perguntaPadrao.add(51,"Trabalha gelopar");
-        lista_perguntaPadrao.add(52,"Trabalha na empresa abra");
-        lista_perguntaPadrao.add(53,"Trabalha prefeit araucity");
-        lista_perguntaPadrao.add(54,"Trabalha camera araucaria");
-        lista_perguntaPadrao.add(55,"jogada foritinite");
-        lista_perguntaPadrao.add(56,"joga fifa");
-        lista_perguntaPadrao.add(57,"joga overwatch");
-        lista_perguntaPadrao.add(58,"joga pubg");
-        lista_perguntaPadrao.add(59,"cursa SI");
-        lista_perguntaPadrao.add(60,"cursa ADS");
-        lista_perguntaPadrao.add(61,"usa aparelho");
-        lista_perguntaPadrao.add(62,"Trabalha Alta Rail Technology");
+        lista_perguntaPadrao.add(39,"A pessoa tem a pele parda?");
+        lista_perguntaPadrao.add(40,"A pessoa tem tatuagem?");
+        lista_perguntaPadrao.add(41,"A pessoa faz dependncia?");
+        lista_perguntaPadrao.add(42,"A pessoa tem a altura entre 1.50 e 1.69?");
+        lista_perguntaPadrao.add(43,"A pessoa tem a altura entre 1.70 e 1.79?");
+        lista_perguntaPadrao.add(44,"A pessoa tem a altura entre 1.80 e 1.90?");
+        lista_perguntaPadrao.add(45,"A pessoa trabalha no Banco do Brasil?");
+        lista_perguntaPadrao.add(46,"A pessoa trabalha no Delta Cable?");
+        lista_perguntaPadrao.add(47,"A pessoa trabalha na Mundo Cell?");
+        lista_perguntaPadrao.add(48,"A pessoa trabalha na Renault?");
+        lista_perguntaPadrao.add(49,"A pessoa trabalha na Refrio?");
+        lista_perguntaPadrao.add(50,"A pessoa trabalha na Prefeitura da Lapa?");
+        lista_perguntaPadrao.add(51,"A pessoa trabalha na Gelopar?");
+        lista_perguntaPadrao.add(52,"A pessoa trabalha na Abra?");
+        lista_perguntaPadrao.add(53,"A pessoa trabalha na Prefeitura de Araucária?");
+        lista_perguntaPadrao.add(54,"A pessoa trabalha na Câmera Municipal de Araucária?");
+        lista_perguntaPadrao.add(55,"Fortnite é o jogo favorito da pessoa?");
+        lista_perguntaPadrao.add(56,"Fifa é o jogo favorito da pessoa?");
+        lista_perguntaPadrao.add(57,"Overwatch é o jogo favorito da pessoa?");
+        lista_perguntaPadrao.add(58,"Playerunknown's Battlegrounds é o jogo favorito da pessoa?");
+        lista_perguntaPadrao.add(59,"A pessoa cursa Sistemas de Informação?");
+        lista_perguntaPadrao.add(60,"A pessoa cursa Análise e Desenvolvimento de Sistemas?");
+        lista_perguntaPadrao.add(61,"A pessoa usa aparelho?");
+        lista_perguntaPadrao.add(62,"A pessoa trabalha na Alta Rail Technology?");
            
         
         return (ArrayList) lista_perguntaPadrao;

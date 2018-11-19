@@ -1358,7 +1358,7 @@ public class Cadastrar_PessoaController implements Initializable {
     
     public void buscar_imagem(){
        FileChooser fc = new FileChooser();
-       fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("jpg", "*.jpg","pnj","*.png"));
+       fc.getExtensionFilters().add(new FileChooser.ExtensionFilter("jpg", "*.jpg","pnj","*.png","jpeg","*.jpeg"));
        File seletedFile = fc.showOpenDialog(null);
        if(seletedFile != null){
            Image img = new Image(seletedFile.toURI().toString());

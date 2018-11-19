@@ -31,11 +31,10 @@ public class Jogo_p1Controller implements Initializable {
     ArrayList<Integer> id_pergunta_NaoPermitidas = new ArrayList<>();
     ArrayList<String> lista_perguntas = new ArrayList<>();
     List<Pessoa> lista_pessoas = new ArrayList<>();
-    ArrayList<String> lista_sons = ListaPerguntas.retornaLista_sons();
+//    ArrayList<String> lista_sons = ListaPerguntas.retornaLista_sons();
     Integer resposta ;
     Integer k;
     Integer numero;
-    private boolean reproduzir_audio;
     
     // ####### INICIO - Atributos para pertmissoes de perguntas
     // ## 0 - Pergunta nao foi feita
@@ -104,7 +103,6 @@ public class Jogo_p1Controller implements Initializable {
         lista_perguntas = ListaPerguntas.retornaLista_New();
         embaralhar_pergunta();
         k=0;
-        reproduzir_audio=true;
         
         set_pergunta();
         
@@ -199,7 +197,6 @@ public class Jogo_p1Controller implements Initializable {
         
         if(k >62){
             final_jogo();
-            reproduzir_audio=false;
         }
         
         if(k < 63){
@@ -211,7 +208,6 @@ public class Jogo_p1Controller implements Initializable {
             }
  
             if(lista_pessoas.size()==1){
-                reproduzir_audio=false;
                 Parent root;
                 try {
                     nome = lista_pessoas.get(0).getNome();
@@ -310,8 +306,7 @@ public class Jogo_p1Controller implements Initializable {
                     k++;
                 }else{
                     id_label.setText(lista_perguntas.get(numero));
-                    if(reproduzir_audio)
-                        reproduzir_audio(0, lista_sons.get(5));  
+                    
                 }
                 
                 if(k>61)
