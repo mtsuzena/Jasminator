@@ -25,8 +25,13 @@ public class Final_JogoController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Image imagem = new Image(Jogo_p1Controller.img_caminho);
-        img_pessoa_encontrada.setImage(imagem);
+        if(Jogo_p1Controller.img_caminho.equals("null")){
+            
+        }else{
+            Image imagem = new Image(Jogo_p1Controller.img_caminho);
+            img_pessoa_encontrada.setImage(imagem);
+        }
+        
         id_label.setText(Jogo_p1Controller.nome);
         voltar();
         recomecar();

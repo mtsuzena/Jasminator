@@ -145,11 +145,6 @@ public class Cadastrar_PessoaController implements Initializable {
                         }
                     }
 
-                    pessoa.setGraduadoQuimica(true);
-                    pessoa.seteDoExercito(true);
-                    pessoa.setTrabalhaBrafer(true);
-                    pessoa.setTrabalhaMecanica(true);
-                    pessoa.setTrabalhaAviario(true);
                     System.out.println("ART: "+pessoa.isTrabalhaART());
                     ArquivoTxt.salvaTxt("dados_pessoas.txt", pessoa);
 
