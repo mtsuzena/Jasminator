@@ -20,7 +20,7 @@ public class Menuinicial extends Application{
         Scene scene = new Scene(root);
         
         //Setar titulo da janela
-        stage.setTitle("Castle of Question");
+        stage.setTitle("Jasminator - Versão BETA");
         
         //Setar scena na janela
         stage.setScene(scene);

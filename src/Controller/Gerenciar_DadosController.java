@@ -127,7 +127,7 @@ public class Gerenciar_DadosController implements Initializable {
             TrocarCenas.trocarcena_baixo(root,btn_alterar, id_anchor);
         }catch(Exception e){
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Selecione alguém por favor caraiooo!");
+            alert.setHeaderText("Ninguem foi selecionado!");
             alert.setTitle(":(");
             alert.show();
         }
@@ -155,7 +155,7 @@ public class Gerenciar_DadosController implements Initializable {
             Image image = new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/4/42/Emojione_1F62D.svg/64px-Emojione_1F62D.svg.png");
             ImageView imageView = new ImageView(image);
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setHeaderText("Seleciona ai ku!");
+            alert.setHeaderText("Ninguem foi selecionado!!");
             alert.setTitle(":(");
             alert.setGraphic(imageView);
             alert.showAndWait();
