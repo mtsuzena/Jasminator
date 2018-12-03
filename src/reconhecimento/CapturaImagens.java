@@ -7,6 +7,7 @@ import Controller.Menu_loginController;
 import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.scene.media.AudioClip;
 import org.bytedeco.javacpp.DoublePointer;
 import org.bytedeco.javacpp.IntPointer;
 import static org.bytedeco.javacpp.opencv_core.FONT_HERSHEY_PLAIN;
@@ -177,6 +178,10 @@ public class CapturaImagens {
                                                     imwrite("src\\fotos\\pessoa."+idPessoa+"."+amostra+".jpg",faceCapturada);
                                                     // Imprimi quantas fotos que foi tirada para maior controla
                                                     System.out.println("Foto "+idPessoa+"."+amostra+" capturada\n");
+                                                    String musicFile = getClass().getResource("/sons/tirando_foto.mp3").toString();
+                                                    AudioClip clip = new AudioClip(musicFile);
+                                                    
+                                                    clip.play();
                                                     amostra++;
                                                     fotosTirada++;
                                                     sequencia_foto++;
@@ -187,7 +192,7 @@ public class CapturaImagens {
                                         tirando_foto++;
                                     }
                                     
-                                    if(tirando_foto>4){
+                                    if(tirando_foto>1){
                                         tirando_foto=0;
                                     }
                                     
@@ -285,5 +290,7 @@ public class CapturaImagens {
     public static void setIniciFotos(boolean set){
         inicio_fotos=set;
     }
+    
+   
 
 }
