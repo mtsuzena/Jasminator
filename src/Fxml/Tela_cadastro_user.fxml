@@ -7,17 +7,16 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane id="AnchorPane" fx:id="pane_tela_cadatro_user" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="Controller.Tela_cadastro_userController">
+<AnchorPane id="AnchorPane" fx:id="pane_tela_cadatro_user" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Tela_cadastro_userController">
    <children>
       <ImageView fitHeight="602.0" fitWidth="808.0" layoutX="-4.0">
          <image>
             <Image url="@../Layout_telas/Tela_cadastro_user.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="txtfd_user" focusColor="TRANSPARENT" layoutX="241.0" layoutY="282.0" maxWidth="385.0" minWidth="181.0" prefHeight="46.0" prefWidth="385.0" unFocusColor="TRANSPARENT" />
-      <JFXPasswordField fx:id="txtfd_passwd" focusColor="WHITE" layoutX="238.0" layoutY="338.0" maxWidth="385.0" minWidth="286.0" prefHeight="31.0" prefWidth="385.0" unFocusColor="WHITE" />
-      <JFXButton fx:id="btn_finalizar_cadastro" layoutX="272.0" layoutY="460.0" prefHeight="38.0" prefWidth="320.0" text=" " />
-      <JFXButton fx:id="btn_cancelar" layoutX="345.0" layoutY="510.0" prefHeight="38.0" prefWidth="181.0" text=" " />
+      <JFXTextField fx:id="txtfd_user" focusColor="TRANSPARENT" layoutX="237.0" layoutY="282.0" maxWidth="397.0" minWidth="181.0" prefHeight="38.0" prefWidth="385.0" unFocusColor="TRANSPARENT" />
+      <JFXPasswordField fx:id="txtfd_passwd" focusColor="#ffffff00" layoutX="238.0" layoutY="338.0" maxWidth="385.0" minWidth="286.0" prefHeight="31.0" prefWidth="385.0" unFocusColor="#ffffff00" />
+      <JFXButton fx:id="btn_finalizar_cadastro" layoutX="279.0" layoutY="464.0" prefHeight="38.0" prefWidth="301.0" text=" " />
+      <JFXButton fx:id="btn_cancelar" layoutX="346.0" layoutY="510.0" prefHeight="38.0" prefWidth="174.0" text=" " />
    </children>
 </AnchorPane>

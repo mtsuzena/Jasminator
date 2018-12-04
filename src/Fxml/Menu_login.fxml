@@ -17,26 +17,26 @@
       </ImageView>
       <JFXTextField fx:id="id_textusuario" focusColor="TRANSPARENT" layoutX="261.0" layoutY="243.0" maxWidth="314.0" minWidth="181.0" prefHeight="38.0" prefWidth="275.0" unFocusColor="TRANSPARENT" />
 	  <JFXPasswordField fx:id="id_textsenha" focusColor="TRANSPARENT" layoutX="261.0" layoutY="285.0" maxWidth="294.0" minWidth="181.0" prefHeight="31.0" prefWidth="275.0" unFocusColor="#5c1b1b00" />
-      <JFXButton fx:id="id_entrar" layoutX="312.0" layoutY="349.0" prefHeight="45.0" prefWidth="175.0" text=" ">
+      <JFXButton fx:id="id_entrar" layoutX="312.0" layoutY="349.0" prefHeight="38.0" prefWidth="175.0" text=" ">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
-	  <JFXButton fx:id="id_reconhecimento" layoutX="201.0" layoutY="477.0" prefHeight="45.0" prefWidth="404.0" text=" ">
+	  <JFXButton fx:id="id_reconhecimento" layoutX="201.0" layoutY="477.0" prefHeight="45.0" prefWidth="394.0" text=" ">
          <font>
             <Font size="17.0" />
          </font>
       </JFXButton>
-	  <JFXButton fx:id="id_reconhe_cads" layoutX="201.0" layoutY="536.0" prefHeight="45.0" prefWidth="404.0" text=" ">
+	  <JFXButton fx:id="id_reconhe_cads" layoutX="201.0" layoutY="537.0" prefHeight="38.0" prefWidth="394.0" text=" ">
          <font>
             <Font size="18.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="id_voltar" layoutX="584.0" layoutY="39.0" prefHeight="31.0" prefWidth="200.0" text=" ">
+      <JFXButton fx:id="id_voltar" layoutX="591.0" layoutY="32.0" prefHeight="38.0" prefWidth="175.0" text=" ">
          <font>
             <Font size="15.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="btn_cadast_user" layoutX="199.0" layoutY="426.0" prefHeight="39.0" prefWidth="396.0" text=" " /> 
+      <JFXButton fx:id="btn_cadast_user" layoutX="199.0" layoutY="426.0" prefHeight="39.0" prefWidth="394.0" text=" " /> 
    </children>
 </AnchorPane>

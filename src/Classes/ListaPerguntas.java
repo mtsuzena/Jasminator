@@ -138,7 +138,7 @@ public class ListaPerguntas {
         // novas perguntas
         lista_perguntaPadrao.add(39,"A pessoa tem a pele parda?");
         lista_perguntaPadrao.add(40,"A pessoa tem tatuagem?");
-        lista_perguntaPadrao.add(41,"A pessoa faz dependncia?");
+        lista_perguntaPadrao.add(41,"A pessoa faz dependência?");
         lista_perguntaPadrao.add(42,"A pessoa tem a altura entre 1.50 e 1.69?");
         lista_perguntaPadrao.add(43,"A pessoa tem a altura entre 1.70 e 1.79?");
         lista_perguntaPadrao.add(44,"A pessoa tem a altura entre 1.80 e 1.90?");

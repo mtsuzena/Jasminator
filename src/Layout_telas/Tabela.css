@@ -1,0 +1,56 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03/12/2018, 21:28:16
+    Author     : Flávio
+*/
+.table-view {
+    -fx-base: #1d1d1d;
+    -fx-control-inner-background: #1d1d1d;
+    -fx-background-color: #1d1d1d;
+    -fx-table-cell-border-color: transparent;
+    -fx-table-header-border-color: transparent;
+    -fx-padding: 5;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: transparent;
+}
+.table-view .table-cell{
+    -fx-font-family: "Borgens Burlesque";
+    -fx-font-weight:bold;
+    -fx-font-size:26px; 
+}
+
+.table-view .column-header, .table-view .filler {
+    -fx-size: 35;
+    -fx-border-width: 0 0 1 0;
+    -fx-background-color: transparent;
+    -fx-border-color: 
+        transparent
+        transparent
+        derive(-fx-base, 80%) 
+        transparent;
+    -fx-border-insets: 0 10 1 0;
+}
+
+/*.table-view .table-cell{
+        -fx-alignment: CENTER-RIGHT;
+}*/
+
+
+.table-view .column-header .label {
+    -fx-font-size: 30pt;
+    -fx-font-family: "Borgens Burlesque";
+    -fx-text-fill: white;
+    -fx-alignment: CENTER;
+    -fx-opacity: 1;
+}
+
+.table-view:focused .table-row-cell:filled:focused:selected {
+    -fx-background-color: -fx-focus-color;
+}
+

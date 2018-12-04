@@ -4,6 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 public class Menuinicial extends Application{
@@ -19,8 +20,10 @@ public class Menuinicial extends Application{
         //Instanciar uma nova scena, e passar o FXML
         Scene scene = new Scene(root);
         
+        stage.getIcons().add(new Image(getClass().getResourceAsStream("/Layout_telas/Logo.png")));
+        
         //Setar titulo da janela
-        stage.setTitle("Jasminator - Versão BETA");
+        stage.setTitle("Jasminator");
         
         //Setar scena na janela
         stage.setScene(scene);

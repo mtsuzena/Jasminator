@@ -47,9 +47,9 @@
       <JFXCheckBox fx:id="checkb_sim_chapeu" layoutX="525.0" layoutY="451.0" prefHeight="18.0" prefWidth="5.0" text=" " />
       <JFXCheckBox fx:id="checkb_nao_chapeu" layoutX="597.0" layoutY="451.0" text=" " />
       <JFXComboBox fx:id="cmb_jogos" focusColor="TRANSPARENT" layoutX="160.0" layoutY="448.0" prefHeight="25.0" prefWidth="141.0" unFocusColor="TRANSPARENT" />
-      <JFXButton fx:id="btn_salvar" layoutX="164.0" layoutY="547.0" prefHeight="32.0" prefWidth="107.0" text=" " />
-      <JFXButton fx:id="btn_voltar" layoutX="29.0" layoutY="551.0" prefHeight="25.0" prefWidth="107.0" text=" " />
-      <JFXButton fx:id="btn_carregar_imagem" layoutX="629.0" layoutY="548.0" prefHeight="32.0" prefWidth="157.0" text=" " />
+      <JFXButton fx:id="btn_salvar" layoutX="160.0" layoutY="544.0" prefHeight="32.0" prefWidth="114.0" text=" " />
+      <JFXButton fx:id="btn_voltar" layoutX="26.0" layoutY="548.0" prefHeight="32.0" prefWidth="114.0" text=" " />
+      <JFXButton fx:id="btn_carregar_imagem" layoutX="621.0" layoutY="544.0" prefHeight="32.0" prefWidth="170.0" text=" " />
       <ImageView fx:id="img_view" fitHeight="108.0" fitWidth="143.0" layoutX="635.0" layoutY="419.0" pickOnBounds="true" smooth="false">
          <image>
             <Image url="@../fotos_pessoas/Pessoa_sem_foto.jpg" />

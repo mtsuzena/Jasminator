@@ -36,7 +36,7 @@
             <Font size="1.0" />
          </font>
       </JFXCheckBox>
-      <JFXButton fx:id="btn_buscar_imagem" layoutX="625.0" layoutY="550.0" prefHeight="25.0" prefWidth="163.0">
+      <JFXButton fx:id="btn_buscar_imagem" layoutX="620.0" layoutY="547.0" prefHeight="31.0" prefWidth="170.0">
          <font>
             <Font size="1.0" />
          </font>
@@ -65,12 +65,12 @@
       <JFXComboBox fx:id="cmb_jogos" focusColor="TRANSPARENT" layoutX="159.0" layoutY="447.0" prefHeight="25.0" prefWidth="142.0" unFocusColor="TRANSPARENT" />
       <JFXCheckBox fx:id="id_chapeu_sim" layoutX="525.0" layoutY="451.0" prefHeight="18.0" prefWidth="0.0" text=" " />
       <JFXCheckBox fx:id="id_chapeu_nao" layoutX="598.0" layoutY="447.0" prefHeight="25.0" prefWidth="0.0" text=" " />
-      <JFXButton fx:id="id_salvar" layoutX="158.0" layoutY="549.0" prefHeight="25.0" prefWidth="113.0">
+      <JFXButton fx:id="id_salvar" layoutX="159.0" layoutY="547.0" prefHeight="31.0" prefWidth="113.0">
          <font>
             <Font size="1.0" />
          </font>
       </JFXButton>
-      <JFXButton fx:id="id_voltar" layoutX="31.0" layoutY="549.0" prefHeight="25.0" prefWidth="104.0" text="Button">
+      <JFXButton fx:id="id_voltar" layoutX="24.0" layoutY="547.0" prefHeight="31.0" prefWidth="113.0" text="Button">
          <font>
             <Font size="1.0" />
          </font>

@@ -7,26 +7,26 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="id_stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_inicialController">
+<StackPane fx:id="id_stackpane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" styleClass="body" stylesheets="@../Layout_telas/Fundo.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Menu_inicialController">
    <children>
-      <AnchorPane fx:id="id_anchor" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;">
+      <AnchorPane fx:id="id_anchor" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #000000;" styleClass="body" stylesheets="@../Layout_telas/Fundo.css">
          <children>
             <ImageView fx:id="layout_menu_inicial" fitHeight="608.0" fitWidth="819.0" layoutX="12.0">
                <image>
                   <Image url="@../Layout_telas/Tela_inicial.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="id_jogar" layoutX="276.0" layoutY="276.0" prefHeight="73.0" prefWidth="312.0" text=" ">
+            <JFXButton fx:id="id_jogar" layoutX="282.0" layoutY="276.0" prefHeight="67.0" prefWidth="281.0" text=" ">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="id_entrar" layoutX="216.0" layoutY="372.0" prefHeight="73.0" prefWidth="394.0" text=" ">
+            <JFXButton fx:id="id_entrar" layoutX="253.0" layoutY="372.0" prefHeight="67.0" prefWidth="334.0" text=" ">
                <font>
                   <Font size="24.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="id_sairjogo" layoutX="278.0" layoutY="473.0" prefHeight="67.0" prefWidth="287.0" text=" ">
+            <JFXButton fx:id="id_sairjogo" layoutX="284.0" layoutY="473.0" prefHeight="67.0" prefWidth="281.0" text=" ">
                <font>
                   <Font size="24.0" />
                </font>
